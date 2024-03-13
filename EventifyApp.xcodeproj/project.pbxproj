@@ -3,17 +3,20 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
 		ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF82BA248E8004550F7 /* ViewController.swift */; };
-		ECB94FFC2BA248E8004550F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ECB94FFB2BA248E8004550F7 /* Base */; };
 		ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FFD2BA248E8004550F7 /* EventifyApp.xcdatamodeld */; };
 		ECB950012BA248E9004550F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECB950002BA248E9004550F7 /* Assets.xcassets */; };
 		ECB950042BA248E9004550F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ECB950032BA248E9004550F7 /* Base */; };
+		ECB9500D2BA24A56004550F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500C2BA24A56004550F7 /* SnapKit */; };
+		ECB950102BA24A6D004550F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500F2BA24A6D004550F7 /* Alamofire */; };
+		ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECB950112BA24D88004550F7 /* GoogleService-Info.plist */; };
+		ECB950162BA24ECB004550F7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECB950152BA24ECB004550F7 /* FirebaseAnalytics */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,11 +24,11 @@
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF82BA248E8004550F7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		ECB94FFB2BA248E8004550F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECB94FFE2BA248E8004550F7 /* EventifyApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EventifyApp.xcdatamodel; sourceTree = "<group>"; };
 		ECB950002BA248E9004550F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECB950032BA248E9004550F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB950052BA248E9004550F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ECB950112BA24D88004550F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +36,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ECB9500D2BA24A56004550F7 /* SnapKit in Frameworks */,
+				ECB950102BA24A6D004550F7 /* Alamofire in Frameworks */,
+				ECB950162BA24ECB004550F7 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				ECB94FF32BA248E8004550F7 /* EventifyApp */,
+				ECB94FFD2BA248E8004550F7 /* EventifyApp.xcdatamodeld */,
 				ECB94FF22BA248E8004550F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,16 +65,47 @@
 		ECB94FF32BA248E8004550F7 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
-				ECB94FF42BA248E8004550F7 /* AppDelegate.swift */,
-				ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */,
-				ECB94FF82BA248E8004550F7 /* ViewController.swift */,
-				ECB94FFA2BA248E8004550F7 /* Main.storyboard */,
-				ECB950002BA248E9004550F7 /* Assets.xcassets */,
-				ECB950022BA248E9004550F7 /* LaunchScreen.storyboard */,
-				ECB950052BA248E9004550F7 /* Info.plist */,
-				ECB94FFD2BA248E8004550F7 /* EventifyApp.xcdatamodeld */,
+				ECB950172BA250D0004550F7 /* AppDelegate */,
+				ECB950192BA25110004550F7 /* Home */,
+				ECB950182BA250E7004550F7 /* Resources */,
+				ECB9501A2BA25335004550F7 /* Firebase */,
 			);
 			path = EventifyApp;
+			sourceTree = "<group>";
+		};
+		ECB950172BA250D0004550F7 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				ECB94FF42BA248E8004550F7 /* AppDelegate.swift */,
+				ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		ECB950182BA250E7004550F7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				ECB950052BA248E9004550F7 /* Info.plist */,
+				ECB950002BA248E9004550F7 /* Assets.xcassets */,
+				ECB950022BA248E9004550F7 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		ECB950192BA25110004550F7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				ECB94FF82BA248E8004550F7 /* ViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		ECB9501A2BA25335004550F7 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				ECB950112BA24D88004550F7 /* GoogleService-Info.plist */,
+			);
+			name = Firebase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -86,6 +124,11 @@
 			dependencies = (
 			);
 			name = EventifyApp;
+			packageProductDependencies = (
+				ECB9500C2BA24A56004550F7 /* SnapKit */,
+				ECB9500F2BA24A6D004550F7 /* Alamofire */,
+				ECB950152BA24ECB004550F7 /* FirebaseAnalytics */,
+			);
 			productName = EventifyApp;
 			productReference = ECB94FF12BA248E8004550F7 /* EventifyApp.app */;
 			productType = "com.apple.product-type.application";
@@ -106,7 +149,7 @@
 				};
 			};
 			buildConfigurationList = ECB94FEC2BA248E8004550F7 /* Build configuration list for PBXProject "EventifyApp" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -114,6 +157,11 @@
 				Base,
 			);
 			mainGroup = ECB94FE82BA248E8004550F7;
+			packageReferences = (
+				ECB9500B2BA24A56004550F7 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				ECB9500E2BA24A6D004550F7 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				ECB950142BA24ECB004550F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = ECB94FF22BA248E8004550F7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,8 +177,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECB950012BA248E9004550F7 /* Assets.xcassets in Resources */,
+				ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */,
 				ECB950042BA248E9004550F7 /* Base in Resources */,
-				ECB94FFC2BA248E8004550F7 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,14 +199,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ECB94FFA2BA248E8004550F7 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ECB94FFB2BA248E8004550F7 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ECB950022BA248E9004550F7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -298,12 +338,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EventifyApp/Info.plist;
+				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +351,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.EventifyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -326,12 +370,12 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = EventifyApp/Info.plist;
+				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,9 +383,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = io.raynelz.EventifyApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -367,6 +415,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		ECB9500B2BA24A56004550F7 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		ECB9500E2BA24A6D004550F7 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.0;
+			};
+		};
+		ECB950142BA24ECB004550F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		ECB9500C2BA24A56004550F7 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECB9500B2BA24A56004550F7 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		ECB9500F2BA24A6D004550F7 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECB9500E2BA24A6D004550F7 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		ECB950152BA24ECB004550F7 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ECB950142BA24ECB004550F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		ECB94FFD2BA248E8004550F7 /* EventifyApp.xcdatamodeld */ = {

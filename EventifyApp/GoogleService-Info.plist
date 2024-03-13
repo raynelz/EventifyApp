@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCJ6BVGhI62BajtRrpaTwMJHKTkmuLVPNU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>779530612057</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>io.raynelz.EventifyApp</string>
+	<key>PROJECT_ID</key>
+	<string>eventifyapp-1af87</string>
+	<key>STORAGE_BUCKET</key>
+	<string>eventifyapp-1af87.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:779530612057:ios:77f90abc8fa3f018203048</string>
+</dict>
+</plist>
