@@ -115,6 +115,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ECB950082BA248E9004550F7 /* Build configuration list for PBXNativeTarget "EventifyApp" */;
 			buildPhases = (
+				EC1459032BA45A98002D39C2 /* SwiftLint */,
 				ECB94FED2BA248E8004550F7 /* Sources */,
 				ECB94FEE2BA248E8004550F7 /* Frameworks */,
 				ECB94FEF2BA248E8004550F7 /* Resources */,
@@ -183,6 +184,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		EC1459032BA45A98002D39C2 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "PATH=/opt/homebrew/bin:$PATH\nif [ -f ~/io.eventify.swiftlint.yml ]; then\n  if which swiftlint >/dev/null; then\n    swiftlint --no-cache --config ~/io.eventify.swiftlint.yml\n  fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ECB94FED2BA248E8004550F7 /* Sources */ = {
@@ -337,6 +360,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -369,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = X6KB2A8YM9;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
