@@ -11,6 +11,8 @@
 		2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */; };
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
+		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
+		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
 		ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF82BA248E8004550F7 /* ViewController.swift */; };
@@ -21,6 +23,7 @@
 		ECB950102BA24A6D004550F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500F2BA24A6D004550F7 /* Alamofire */; };
 		ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECB950112BA24D88004550F7 /* GoogleService-Info.plist */; };
 		ECB950162BA24ECB004550F7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECB950152BA24ECB004550F7 /* FirebaseAnalytics */; };
+		ECF338142BA882770055994D /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF338132BA882770055994D /* CategoriesModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,8 @@
 		2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
+		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +42,7 @@
 		ECB950032BA248E9004550F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB950052BA248E9004550F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECB950112BA24D88004550F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ECF338132BA882770055994D /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,16 @@
 			path = AppTabBar;
 			sourceTree = "<group>";
 		};
+		EC3101812BA845A900EC55D2 /* SearchVC */ = {
+			isa = PBXGroup;
+			children = (
+				EC3101822BA845BC00EC55D2 /* SearchViewController.swift */,
+				EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */,
+				ECF338132BA882770055994D /* CategoriesModel.swift */,
+			);
+			path = SearchVC;
+			sourceTree = "<group>";
+		};
 		ECB94FE82BA248E8004550F7 = {
 			isa = PBXGroup;
 			children = (
@@ -91,10 +107,11 @@
 		ECB94FF32BA248E8004550F7 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
-				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
-				2DCD4BFE2BA7B110009A5521 /* Extensions */,
 				ECB950172BA250D0004550F7 /* AppDelegate */,
+				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
+				EC3101812BA845A900EC55D2 /* SearchVC */,
 				ECB950192BA25110004550F7 /* Home */,
+				2DCD4BFE2BA7B110009A5521 /* Extensions */,
 				ECB950182BA250E7004550F7 /* Resources */,
 				ECB9501A2BA25335004550F7 /* Firebase */,
 			);
@@ -243,10 +260,13 @@
 				ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */,
 				ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */,
 				2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */,
+				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
+				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
 				2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */,
 				ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */,
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
+				ECF338142BA882770055994D /* CategoriesModel.swift in Sources */,
 				ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +415,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Eventify;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -428,6 +449,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = EventifyApp/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Eventify;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
