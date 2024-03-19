@@ -18,7 +18,7 @@ enum AppTabBarItem: CaseIterable {
         switch self {
         case .main: return UIViewController() // MainViewController
         case .search: return SearchViewController() // SearchViewController
-        case .events: return UIViewController() // EventsViewController
+        case .events: return MyEventsViewController() // EventsViewController
         case .favorites: return UIViewController() // FavoritesViewController
         case .profile: return UIViewController() // ProfileViewController
         }
