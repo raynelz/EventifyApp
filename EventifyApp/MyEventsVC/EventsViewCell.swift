@@ -98,7 +98,6 @@ class EventsViewCell: UICollectionViewCell {
 
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.backgroundColor = UIColor(hex: "#F18EF0")
         contentView.layer.cornerRadius = 10
 
         [titleLabel, detailsStackView, qrImageView].forEach({ contentView.addSubview($0) })
