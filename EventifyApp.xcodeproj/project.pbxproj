@@ -11,6 +11,7 @@
 		2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */; };
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
+		DD4CC8582BAC5EA900A1E34F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD4CC8572BAC5EA900A1E34F /* SignUpViewController.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
@@ -31,6 +32,7 @@
 		2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
+		DD4CC8572BAC5EA900A1E34F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,6 +79,14 @@
 			path = AppTabBar;
 			sourceTree = "<group>";
 		};
+		DD4CC8562BAC5E8100A1E34F /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DD4CC8572BAC5EA900A1E34F /* SignUpViewController.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
 		EC3101812BA845A900EC55D2 /* SearchVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +117,7 @@
 		ECB94FF32BA248E8004550F7 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
+				DD4CC8562BAC5E8100A1E34F /* Auth */,
 				ECB950172BA250D0004550F7 /* AppDelegate */,
 				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
 				EC3101812BA845A900EC55D2 /* SearchVC */,
@@ -263,6 +274,7 @@
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
 				2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */,
+				DD4CC8582BAC5EA900A1E34F /* SignUpViewController.swift in Sources */,
 				ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */,
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
