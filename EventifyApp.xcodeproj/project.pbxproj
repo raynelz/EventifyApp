@@ -13,6 +13,9 @@
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
+		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
+		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
+		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
 		ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF82BA248E8004550F7 /* ViewController.swift */; };
@@ -33,6 +36,9 @@
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -87,6 +93,16 @@
 			path = SearchVC;
 			sourceTree = "<group>";
 		};
+		ECA12F032BAC9E5700720D1A /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				ECA12F062BAC9E9900720D1A /* LogInViewController.swift */,
+				ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */,
+				ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		ECB94FE82BA248E8004550F7 = {
 			isa = PBXGroup;
 			children = (
@@ -109,6 +125,7 @@
 			children = (
 				ECB950172BA250D0004550F7 /* AppDelegate */,
 				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
+				ECA12F032BAC9E5700720D1A /* Authentication */,
 				EC3101812BA845A900EC55D2 /* SearchVC */,
 				ECB950192BA25110004550F7 /* Home */,
 				2DCD4BFE2BA7B110009A5521 /* Extensions */,
@@ -260,13 +277,16 @@
 				ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */,
 				ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */,
 				2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */,
+				ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */,
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
 				2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */,
 				ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */,
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
+				ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */,
 				ECF338142BA882770055994D /* CategoriesModel.swift in Sources */,
+				ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */,
 				ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
