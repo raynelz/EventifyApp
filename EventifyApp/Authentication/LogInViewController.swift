@@ -1,5 +1,5 @@
 //
-//  SignUpViewController.swift
+//  LogInViewController.swift
 //  EventifyApp
 //
 //  Created by Станислав on 19.03.2024.
@@ -103,6 +103,7 @@ final class LogInViewController: UIViewController {
         label.text = "Забыли пароль?"
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        
         return label
     }()
     
@@ -121,8 +122,8 @@ final class LogInViewController: UIViewController {
         button.setTitle("Нет аккаунта?", for: .normal)
         button.setTitleColor(UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1), for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        return button
         
+        return button
     }()
     
     private lazy var registrationButton: UIButton = {
@@ -204,5 +205,4 @@ final class LogInViewController: UIViewController {
         let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
         sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
     }
-    
 }

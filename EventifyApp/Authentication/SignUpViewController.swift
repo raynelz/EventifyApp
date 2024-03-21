@@ -98,8 +98,6 @@ final class SignUpViewController: UIViewController {
         return field
     }()
 
-
-    
     private lazy var registerButton: UIButton = {
         let button = UIButton()
         button.setTitle("Зарегестрироваться", for: .normal)
@@ -115,8 +113,8 @@ final class SignUpViewController: UIViewController {
         label.text = "Уже есть аккаунт?"
         label.font = .systemFont(ofSize: 17, weight: .regular)
         label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
-        return label
         
+        return label
     }()
     
     private lazy var loginButton: UIButton = {
@@ -192,6 +190,5 @@ final class SignUpViewController: UIViewController {
             make.top.equalTo(registerButton.snp.bottom).offset(20)
             make.bottom.equalTo(questionLabel.snp.bottom)
         }
-        
     }
 }

@@ -102,9 +102,5 @@ final class ResetPasswordViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(46)
         }
-        
-        
     }
-    
-    
 }
