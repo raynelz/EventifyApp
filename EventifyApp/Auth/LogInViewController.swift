@@ -8,11 +8,11 @@
 import UIKit
 import SnapKit
 
-final class SignUpViewController: UIViewController {
+final class LogInViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Регистрация"
+        label.text = "Вход"
         label.font = .systemFont(ofSize: 40, weight: .semibold)
         label.textColor = .white
         
@@ -22,7 +22,7 @@ final class SignUpViewController: UIViewController {
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = """
-        Пожалуйста, создайте новый аккаунт.
+        Пожалуйста,  войдите в свой аккаунт.
         Это займёт меньше минуты.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
@@ -97,12 +97,18 @@ final class SignUpViewController: UIViewController {
 
         return field
     }()
-
-
     
-    private lazy var registerButton: UIButton = {
+    private lazy var forgetPasswordLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Забыли пароль?"
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        return label
+    }()
+    
+    private lazy var enterButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Зарегестрироваться", for: .normal)
+        button.setTitle("Войти", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor(hex: "DDF14A")
         button.layer.cornerRadius = 10
@@ -110,36 +116,30 @@ final class SignUpViewController: UIViewController {
         return button
     }()
     
-    private lazy var questionLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Уже есть аккаунт?"
-        label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
-        return label
+    private lazy var dontHaveAnAccountButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Нет аккаунта?", for: .normal)
+        button.setTitleColor(UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
+        return button
         
     }()
     
-    private lazy var loginButton: UIButton = {
+    private lazy var registrationButton: UIButton = {
         let button = UIButton()
         
         let attributedTitle = NSAttributedString(
-            string: "Войти",
+            string: "Регистрация",
             attributes: [
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
                 .foregroundColor: UIColor(hex: "DDF14A"),
-                .font: UIFont.systemFont(ofSize: 17, weight: .regular)
+                .font: UIFont.systemFont(ofSize: 16, weight: .regular)
             ])
         
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         return button
     }()
-
-    @objc private func togglePasswordVisibility(_ sender: UIButton) {
-        passwordTextField.isSecureTextEntry.toggle()
-        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
-        sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +150,7 @@ final class SignUpViewController: UIViewController {
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
         
-        [loginButton, questionLabel, registerButton, passwordTextField, emailTextField, titleLabel, descriptionLabel].forEach({ view.addSubview($0) })
+        [registrationButton, dontHaveAnAccountButton, enterButton, passwordTextField, emailTextField, titleLabel, descriptionLabel, forgetPasswordLabel].forEach({ view.addSubview($0) })
     }
     
     private func setupLayout() {
@@ -176,22 +176,33 @@ final class SignUpViewController: UIViewController {
             make.height.equalTo(44)
         }
         
-        registerButton.snp.makeConstraints { make in
+        enterButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(60)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
         
-        questionLabel.snp.makeConstraints { make in
-            make.top.equalTo(registerButton.snp.bottom).offset(20)
+        dontHaveAnAccountButton.snp.makeConstraints { make in
+            make.top.equalTo(enterButton.snp.bottom).offset(20)
             make.leading.equalToSuperview().inset(120)
         }
         
-        loginButton.snp.makeConstraints { make in
-            make.leading.equalTo(questionLabel.snp.trailing).offset(12)
-            make.top.equalTo(registerButton.snp.bottom).offset(20)
-            make.bottom.equalTo(questionLabel.snp.bottom)
+        registrationButton.snp.makeConstraints { make in
+            make.leading.equalTo(dontHaveAnAccountButton.snp.trailing).offset(12)
+            make.top.equalTo(enterButton.snp.bottom).offset(20)
+            make.bottom.equalTo(dontHaveAnAccountButton.snp.bottom)
         }
         
+        forgetPasswordLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(passwordTextField.snp.trailing)
+            make.top.equalTo(passwordTextField.snp.bottom).offset(8)
+        }
     }
+    
+    @objc private func togglePasswordVisibility(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
+        sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
+    }
+    
 }
