@@ -11,7 +11,11 @@ import SnapKit
 class SearchViewController: UIViewController {
 
     let segmentItems = ["Для студентов", "Для поступающих"]
-    let categoriesItems = [CategoriesModel(title: "Спорт", image: UIImage(named: "sport"), color: "#A4473F"), CategoriesModel(title: "Наука", image: UIImage(named: "science"), color: "#073B8F"), CategoriesModel(title: "ITAM", image: UIImage(named: "itam"), color: "#000000")]
+    let categoriesItems = [
+        CategoriesModel(title: "Спорт", image: UIImage(named: "sport"), color: "#A4473F"),
+        CategoriesModel(title: "Наука", image: UIImage(named: "science"), color: "#073B8F"),
+        CategoriesModel(title: "ITAM", image: UIImage(named: "itam"), color: "#000000")
+    ]
 
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -49,7 +53,7 @@ class SearchViewController: UIViewController {
     private func setupViews() {
         title = "Поиск"
         view.backgroundColor = UIColor(hex: "#161618")
-        [searchBar, segmentControl, collectionView].forEach({ view.addSubview($0) })
+        view.addSubviews(searchBar, segmentControl, collectionView)
     }
 
     private func setupCollection() {
@@ -86,7 +90,10 @@ extension SearchViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoriesCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "categoriesCell",
+            for: indexPath
+        ) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
         cell.setText(text: categoriesItems[indexPath.row].title)
         cell.setImage(image: categoriesItems[indexPath.row].image)
         cell.setColor(colorString: categoriesItems[indexPath.row].color)

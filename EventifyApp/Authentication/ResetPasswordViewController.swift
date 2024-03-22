@@ -75,8 +75,7 @@ final class ResetPasswordViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
-        
-        [titleLabel, descriptionLabel, emailTextField, sendButton].forEach({ view.addSubview($0) })
+        view.addSubviews(titleLabel, descriptionLabel, emailTextField, sendButton)
     }
     
     private func setupLayout() {

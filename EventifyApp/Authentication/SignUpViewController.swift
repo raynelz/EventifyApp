@@ -69,11 +69,9 @@ final class SignUpViewController: UIViewController {
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
 
-        
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: field.frame.height))
         field.leftViewMode = .always
 
-        
         var eyeButtonConfig = UIButton.Configuration.plain()
         eyeButtonConfig.image = UIImage(systemName: "eye")
         eyeButtonConfig.baseForegroundColor = UIColor.gray
@@ -81,14 +79,18 @@ final class SignUpViewController: UIViewController {
         let eyeButton = UIButton(configuration: eyeButtonConfig)
         eyeButton.addTarget(self, action: #selector(togglePasswordVisibility), for: .touchUpInside)
 
-        
         let eyeButtonWidth = eyeButton.intrinsicContentSize.width + 16
         let totalRightViewWidth = eyeButtonWidth + 60
 
-        
-        let rightViewContainer = UIView(frame: CGRect(x: 0, y: 0, width: totalRightViewWidth, height: eyeButton.intrinsicContentSize.height))
-        
-        
+        let rightViewContainer = UIView(
+            frame: CGRect(
+                x: 0,
+                y: 0,
+                width: totalRightViewWidth,
+                height: eyeButton.intrinsicContentSize.height
+            )
+        )
+
         eyeButton.frame = CGRect(x: 60, y: 0, width: eyeButtonWidth, height: eyeButton.intrinsicContentSize.height)
         rightViewContainer.addSubview(eyeButton)
 
@@ -126,19 +128,14 @@ final class SignUpViewController: UIViewController {
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
                 .foregroundColor: UIColor(hex: "DDF14A"),
                 .font: UIFont.systemFont(ofSize: 17, weight: .regular)
-            ])
-        
+            ]
+        )
+
         button.setAttributedTitle(attributedTitle, for: .normal)
         
         return button
     }()
 
-    @objc private func togglePasswordVisibility(_ sender: UIButton) {
-        passwordTextField.isSecureTextEntry.toggle()
-        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
-        sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -147,8 +144,15 @@ final class SignUpViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
-        
-        [loginButton, questionLabel, registerButton, passwordTextField, emailTextField, titleLabel, descriptionLabel].forEach({ view.addSubview($0) })
+        view.addSubviews(
+            loginButton,
+            questionLabel,
+            registerButton,
+            passwordTextField,
+            emailTextField,
+            titleLabel,
+            descriptionLabel
+        )
     }
     
     private func setupLayout() {
@@ -191,4 +195,12 @@ final class SignUpViewController: UIViewController {
             make.bottom.equalTo(questionLabel.snp.bottom)
         }
     }
+
+    @objc
+    private func togglePasswordVisibility(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+        let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
+        sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
+    }
+
 }

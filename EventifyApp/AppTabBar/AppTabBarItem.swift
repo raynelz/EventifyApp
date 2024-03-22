@@ -13,34 +13,46 @@ enum AppTabBarItem: CaseIterable {
     case events
     case favorites
     case profile
-    
     var viewController: UIViewController {
         switch self {
-        case .main: return UIViewController() // MainViewController
-        case .search: return SearchViewController() // SearchViewController
-        case .events: return UIViewController() // EventsViewController
-        case .favorites: return UIViewController() // FavoritesViewController
-        case .profile: return UIViewController() // ProfileViewController
+        case .main:
+            return UIViewController() // MainViewController
+        case .search:
+            return SearchViewController() // SearchViewController
+        case .events:
+            return UIViewController() // EventsViewController
+        case .favorites:
+            return UIViewController() // FavoritesViewController
+        case .profile:
+            return UIViewController() // ProfileViewController
         }
     }
-    
     var icon: UIImage? {
         switch self {
-        case .main: return UIImage(systemName: "house")
-        case .search: return UIImage(systemName: "magnifyingglass")
-        case .events: return UIImage(systemName: "bookmark")
-        case .favorites: return UIImage(systemName: "suit.heart")
-        case .profile: return UIImage(systemName: "person")
+        case .main:
+            return UIImage(systemName: "house")
+        case .search:
+            return UIImage(systemName: "magnifyingglass")
+        case .events:
+            return UIImage(systemName: "bookmark")
+        case .favorites:
+            return UIImage(systemName: "suit.heart")
+        case .profile:
+            return UIImage(systemName: "person")
         }
     }
-    
     var title: String {
         switch self {
-        case .main: return "Главная"
-        case .search: return "Поиск"
-        case .events: return "Мои ивенты"
-        case .favorites: return "Избранное"
-        case .profile: return "Профиль"
+        case .main:
+            return "Главная"
+        case .search:
+            return "Поиск"
+        case .events:
+            return "Мои ивенты"
+        case .favorites:
+            return "Избранное"
+        case .profile:
+            return "Профиль"
         }
     }
 }
