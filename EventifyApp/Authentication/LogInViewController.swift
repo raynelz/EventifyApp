@@ -63,6 +63,7 @@ final class LogInViewController: UIViewController {
         field.isSecureTextEntry = true
         field.returnKeyType = .done
         field.textColor = .white
+        field.delegate = self
 
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(
@@ -256,6 +257,7 @@ extension LogInViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         }
+        textField.resignFirstResponder()
         loginIntoAccount(UIButton())
         return true
     }
