@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 final class LogInViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
@@ -39,6 +40,7 @@ final class LogInViewController: UIViewController {
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.textColor = .white
+        field.delegate = self
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(
             string: placeholder,
@@ -211,10 +213,21 @@ final class LogInViewController: UIViewController {
     @objc
     private func loginIntoAccount(_ sender: UIButton) {
         let nextVc = AppTabBarController()
-        if let window = self.view.window {
-            window.rootViewController = nextVc
-            window.makeKeyAndVisible()
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
+                guard let self = self else { return }
+                if let e = error {
+                    print(e.localizedDescription)
+                } else {
+                    if let window = self.view.window {
+                        window.rootViewController = nextVc
+                        window.makeKeyAndVisible()
+                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                    }
+                }
+            }
+
         }
     }
 
@@ -234,5 +247,20 @@ final class LogInViewController: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()
         let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
         sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        loginIntoAccount(UIButton())
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
