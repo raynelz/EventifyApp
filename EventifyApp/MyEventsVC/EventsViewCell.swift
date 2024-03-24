@@ -33,7 +33,6 @@ class EventsViewCell: UICollectionViewCell {
         label.textColor = .white
         label.textAlignment = .center
         label.backgroundColor = .black
-        label.setMargins()
         return label
     }()
 
@@ -74,6 +73,7 @@ class EventsViewCell: UICollectionViewCell {
     private lazy var detailsStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [dayBackgroundContainer, timeBackgroundContainer, audienceBackgroundContainer])
         stack.axis = .horizontal
+        stack.distribution = .fillProportionally
         stack.spacing = 8
         return stack
     }()
@@ -117,40 +117,29 @@ class EventsViewCell: UICollectionViewCell {
 
         detailsStackView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(32)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(16)
+            $0.trailing.equalTo(qrImageView.snp.leading).offset(-16)
         }
 
-        dayBackgroundContainer.snp.makeConstraints({
-            $0.height.equalTo(20)
-            $0.width.equalTo(83)
-        })
-
-        timeBackgroundContainer.snp.makeConstraints({
-            $0.height.equalTo(20)
-            $0.width.equalTo(83)
-        })
-
-        audienceBackgroundContainer.snp.makeConstraints({
-            $0.height.equalTo(20)
-            $0.width.equalTo(83)
-        })
-
-
         dayLabel.snp.makeConstraints({
-            $0.center.equalTo(dayBackgroundContainer.snp.center)
+            $0.verticalEdges.equalToSuperview().inset(4)
+            $0.horizontalEdges.equalToSuperview().inset(8)
         })
 
         timeLabel.snp.makeConstraints({
-            $0.center.equalTo(timeBackgroundContainer.snp.center)
+            $0.verticalEdges.equalToSuperview().inset(4)
+            $0.horizontalEdges.equalToSuperview().inset(8)
         })
 
         audienceLabel.snp.makeConstraints({
-            $0.center.equalTo(audienceBackgroundContainer.snp.center)
+            $0.verticalEdges.equalToSuperview().inset(4)
+            $0.horizontalEdges.equalToSuperview().inset(8)
         })
 
         qrImageView.snp.makeConstraints({
             $0.top.bottom.equalToSuperview().inset(16)
             $0.trailing.equalToSuperview().inset(16)
+            $0.size.equalTo(77)
         })
     }
 

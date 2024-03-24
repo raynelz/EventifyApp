@@ -13,7 +13,6 @@
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
-		EC7A9F222BAA2F5F0014A045 /* UILabel + Margins.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7A9F212BAA2F5F0014A045 /* UILabel + Margins.swift */; };
 		EC7D5B1C2BA9CCE100DC4640 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
@@ -37,7 +36,6 @@
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
-		EC7A9F212BAA2F5F0014A045 /* UILabel + Margins.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Margins.swift"; sourceTree = "<group>"; };
 		EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 			children = (
 				2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */,
 				2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */,
-				EC7A9F212BAA2F5F0014A045 /* UILabel + Margins.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,7 +282,6 @@
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
 				2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */,
-				EC7A9F222BAA2F5F0014A045 /* UILabel + Margins.swift in Sources */,
 				ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */,
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
