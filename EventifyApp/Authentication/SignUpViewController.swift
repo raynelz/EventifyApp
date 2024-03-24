@@ -7,18 +7,19 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 final class SignUpViewController: UIViewController {
-    
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
         label.font = .systemFont(ofSize: 40, weight: .semibold)
         label.textColor = .white
-        
+
         return label
     }()
-    
+
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = """
@@ -28,10 +29,10 @@ final class SignUpViewController: UIViewController {
         label.font = .systemFont(ofSize: 17, weight: .regular)
         label.textColor = UIColor(hex: "#858591")
         label.numberOfLines = 0
-        
+
         return label
     }()
-    
+
     private lazy var emailTextField: UITextField = {
         let field = UITextField()
         field.placeholder = "Email"
@@ -42,19 +43,20 @@ final class SignUpViewController: UIViewController {
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.textColor = .white
-        
+        field.delegate = self
+
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
-        
+
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: field.frame.height))
         field.leftViewMode = .always
-        
+
         field.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 104, height: field.frame.height))
         field.rightViewMode = .always
-        
+
         return field
     }()
-    
+
     private lazy var passwordTextField: UITextField = {
         let field = UITextField()
         field.placeholder = "Пароль"
@@ -65,6 +67,7 @@ final class SignUpViewController: UIViewController {
         field.isSecureTextEntry = true
         field.returnKeyType = .done
         field.textColor = .white
+        field.delegate = self
 
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
@@ -102,26 +105,26 @@ final class SignUpViewController: UIViewController {
 
     private lazy var registerButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Зарегестрироваться", for: .normal)
+        button.setTitle("Зарегистрироваться", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor(hex: "DDF14A")
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(registerAccount), for: .touchUpInside)
         return button
     }()
-    
+
     private lazy var questionLabel: UILabel = {
         let label = UILabel()
         label.text = "Уже есть аккаунт?"
-        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.font = .systemFont(ofSize: 16, weight: .regular)
         label.textColor = UIColor(hex: "#858591")
-        
+
         return label
     }()
-    
+
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        
+
         let attributedTitle = NSAttributedString(
             string: "Войти",
             attributes: [
@@ -141,7 +144,7 @@ final class SignUpViewController: UIViewController {
         setupViews()
         setupLayout()
     }
-    
+
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
         navigationItem.setHidesBackButton(true, animated: true)
@@ -155,44 +158,44 @@ final class SignUpViewController: UIViewController {
             descriptionLabel
         )
     }
-    
+
     private func setupLayout() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(153)
             make.leading.equalToSuperview().offset(16)
         }
-        
+
         descriptionLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(12)
             make.leading.equalToSuperview().offset(16)
         }
-        
+
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(44)
         }
-        
+
         passwordTextField.snp.makeConstraints { make in
             make.top.equalTo(emailTextField.snp.bottom).offset(8)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(44)
         }
-        
+
         registerButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(60)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
-        
+
         questionLabel.snp.makeConstraints { make in
-            make.top.equalTo(registerButton.snp.bottom).offset(20)
-            make.leading.equalToSuperview().inset(120)
+            make.top.equalTo(registerButton.snp.bottom).offset(22)
+            make.leading.equalToSuperview().offset(120)
         }
-        
+
         loginButton.snp.makeConstraints { make in
             make.leading.equalTo(questionLabel.snp.trailing).offset(12)
-            make.top.equalTo(registerButton.snp.bottom).offset(20)
+            make.top.equalTo(registerButton.snp.bottom).offset(22)
             make.bottom.equalTo(questionLabel.snp.bottom)
         }
     }
@@ -207,10 +210,19 @@ final class SignUpViewController: UIViewController {
     @objc
     private func registerAccount(_ sender: UIButton) {
         let nextVC = AppTabBarController()
-        if let window = self.view.window {
-            window.rootViewController = nextVC
-            window.makeKeyAndVisible()
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            Auth.auth().createUser(withEmail: email, password: password) { _, error in
+                if let e = error {
+                    print(e.localizedDescription)
+                } else {
+                    if let window = self.view.window {
+                        window.rootViewController = nextVC
+                        window.makeKeyAndVisible()
+                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                    }
+                }
+
+            }
         }
     }
 
@@ -220,4 +232,20 @@ final class SignUpViewController: UIViewController {
         navigationController?.pushViewController(nextVC, animated: true)
     }
 
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            textField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        }
+        textField.resignFirstResponder()
+        registerAccount(UIButton())
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }

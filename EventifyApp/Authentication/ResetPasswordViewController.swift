@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import FirebaseAuth
 
 final class ResetPasswordViewController: UIViewController {
     
@@ -43,7 +44,8 @@ final class ResetPasswordViewController: UIViewController {
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
         field.textColor = .white
-        
+        field.delegate = self
+
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [.foregroundColor: UIColor.gray])
         
@@ -62,7 +64,8 @@ final class ResetPasswordViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor(hex: "#DDF14A")
         button.layer.cornerRadius = 10
-        
+        button.addTarget(self, action: #selector(sendResetEmail), for: .touchUpInside)
+
         return button
     }()
     
@@ -101,5 +104,31 @@ final class ResetPasswordViewController: UIViewController {
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(46)
         }
+    }
+
+    @objc
+    private func sendResetEmail(_ sender: UIButton) {
+        if let email = emailTextField.text {
+            Auth.auth().sendPasswordReset(withEmail: email) { error in
+                if let e = error {
+                    print(e.localizedDescription)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+
+            }
+        }
+    }
+}
+
+extension ResetPasswordViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        sendResetEmail(UIButton())
+        return true
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
