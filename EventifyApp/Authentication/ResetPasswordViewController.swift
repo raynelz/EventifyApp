@@ -27,7 +27,7 @@ final class ResetPasswordViewController: UIViewController {
         сыллкой для сброса пароля.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        label.textColor = UIColor(hex: "#858591")
         label.numberOfLines = 0
         
         return label
@@ -60,7 +60,7 @@ final class ResetPasswordViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Отправить", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(hex: "DDF14A")
+        button.backgroundColor = UIColor(hex: "#DDF14A")
         button.layer.cornerRadius = 10
         
         return button

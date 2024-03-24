@@ -24,7 +24,7 @@ final class LogInViewController: UIViewController {
         Это займёт меньше минуты.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        label.textColor = UIColor(hex: "#858591")
         label.numberOfLines = 0
         return label
     }()
@@ -99,29 +99,31 @@ final class LogInViewController: UIViewController {
         return field
     }()
 
-    private lazy var forgetPasswordLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Забыли пароль?"
-        label.font = .systemFont(ofSize: 16, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
-        return label
+    private lazy var forgetPasswordButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Забыли пароль?", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
+        button.setTitleColor(UIColor(hex: "#858591"), for: .normal)
+        button.addTarget(self, action: #selector(restorePassword), for: .touchUpInside)
+        return button
     }()
 
-    private lazy var enterButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(hex: "DDF14A")
+        button.backgroundColor = UIColor(hex: "#DDF14A")
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(loginIntoAccount), for: .touchUpInside)
         return button
     }()
 
-    private lazy var dontHaveAnAccountButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Нет аккаунта?", for: .normal)
-        button.setTitleColor(UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        return button
+    private lazy var questionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Нет аккаунта?"
+        label.textColor = UIColor(hex: "#858591")
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        return label
     }()
     private lazy var registrationButton: UIButton = {
         let button = UIButton()
@@ -130,13 +132,12 @@ final class LogInViewController: UIViewController {
             string: "Регистрация",
             attributes: [
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
-                .foregroundColor: UIColor(hex: "DDF14A"),
+                .foregroundColor: UIColor(hex: "#DDF14A"),
                 .font: UIFont.systemFont(ofSize: 16, weight: .regular)
             ]
         )
-
         button.setAttributedTitle(attributedTitle, for: .normal)
-
+        button.addTarget(self, action: #selector(registrationSegue), for: .touchUpInside)
         return button
     }()
 
@@ -148,15 +149,16 @@ final class LogInViewController: UIViewController {
 
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
-
-        view.addSubviews(registrationButton,
-                         dontHaveAnAccountButton,
-                         enterButton,
-                         passwordTextField,
-                         emailTextField,
-                         titleLabel,
-                         descriptionLabel,
-                         forgetPasswordLabel
+        navigationItem.setHidesBackButton(true, animated: true)
+        view.addSubviews(
+            registrationButton,
+            questionLabel,
+            loginButton,
+            passwordTextField,
+            emailTextField,
+            titleLabel,
+            descriptionLabel,
+            forgetPasswordButton
         )
     }
 
@@ -183,27 +185,48 @@ final class LogInViewController: UIViewController {
             make.height.equalTo(44)
         }
 
-        enterButton.snp.makeConstraints { make in
+        loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordTextField.snp.bottom).offset(60)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(40)
         }
 
-        dontHaveAnAccountButton.snp.makeConstraints { make in
-            make.top.equalTo(enterButton.snp.bottom).offset(20)
+        questionLabel.snp.makeConstraints { make in
+            make.top.equalTo(loginButton.snp.bottom).offset(20)
             make.leading.equalToSuperview().inset(120)
         }
 
         registrationButton.snp.makeConstraints { make in
-            make.leading.equalTo(dontHaveAnAccountButton.snp.trailing).offset(12)
-            make.top.equalTo(enterButton.snp.bottom).offset(20)
-            make.bottom.equalTo(dontHaveAnAccountButton.snp.bottom)
+            make.leading.equalTo(questionLabel.snp.trailing).offset(12)
+            make.top.equalTo(loginButton.snp.bottom).offset(20)
+            make.bottom.equalTo(questionLabel.snp.bottom)
         }
 
-        forgetPasswordLabel.snp.makeConstraints { make in
+        forgetPasswordButton.snp.makeConstraints { make in
             make.trailing.equalTo(passwordTextField.snp.trailing)
             make.top.equalTo(passwordTextField.snp.bottom).offset(8)
         }
+    }
+
+    @objc
+    private func loginIntoAccount(_ sender: UIButton) {
+        let nextVc = AppTabBarController()
+        if let window = self.view.window {
+            window.rootViewController = nextVc
+            window.makeKeyAndVisible()
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+        }
+    }
+
+    @objc
+    private func registrationSegue(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+
+    @objc
+    private func restorePassword(_ sender: UIButton) {
+        let nextVC = ResetPasswordViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 
     @objc

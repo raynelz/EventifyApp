@@ -26,7 +26,7 @@ final class SignUpViewController: UIViewController {
         Это займёт меньше минуты.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        label.textColor = UIColor(hex: "#858591")
         label.numberOfLines = 0
         
         return label
@@ -106,7 +106,7 @@ final class SignUpViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor(hex: "DDF14A")
         button.layer.cornerRadius = 10
-        
+        button.addTarget(self, action: #selector(registerAccount), for: .touchUpInside)
         return button
     }()
     
@@ -114,7 +114,7 @@ final class SignUpViewController: UIViewController {
         let label = UILabel()
         label.text = "Уже есть аккаунт?"
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(red: 0.523, green: 0.523, blue: 0.568, alpha: 1)
+        label.textColor = UIColor(hex: "#858591")
         
         return label
     }()
@@ -132,7 +132,7 @@ final class SignUpViewController: UIViewController {
         )
 
         button.setAttributedTitle(attributedTitle, for: .normal)
-        
+        button.addTarget(self, action: #selector(loginSegue), for: .touchUpInside)
         return button
     }()
 
@@ -144,6 +144,7 @@ final class SignUpViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
+        navigationItem.setHidesBackButton(true, animated: true)
         view.addSubviews(
             loginButton,
             questionLabel,
@@ -201,6 +202,22 @@ final class SignUpViewController: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()
         let eyeImageName = passwordTextField.isSecureTextEntry ? "eye" : "eye.slash"
         sender.setImage(UIImage(systemName: eyeImageName), for: .normal)
+    }
+
+    @objc
+    private func registerAccount(_ sender: UIButton) {
+        let nextVC = AppTabBarController()
+        if let window = self.view.window {
+            window.rootViewController = nextVC
+            window.makeKeyAndVisible()
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+        }
+    }
+
+    @objc
+    private func loginSegue(_ sender: UIButton) {
+        let nextVC = LogInViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 
 }
