@@ -166,48 +166,48 @@ final class LogInViewController: UIViewController {
     }
 
     private func setupLayout() {
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(153)
-            make.leading.equalToSuperview().offset(16)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(153)
+            $0.leading.equalToSuperview().offset(16)
         }
 
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.equalToSuperview().offset(16)
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.leading.equalToSuperview().offset(16)
         }
 
-        emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(44)
+        emailTextField.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(44)
         }
 
-        passwordTextField.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).offset(8)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(44)
+        passwordTextField.snp.makeConstraints {
+            $0.top.equalTo(emailTextField.snp.bottom).offset(8)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(44)
         }
 
-        loginButton.snp.makeConstraints { make in
-            make.top.equalTo(passwordTextField.snp.bottom).offset(60)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(40)
+        loginButton.snp.makeConstraints {
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(60)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(40)
         }
 
-        questionLabel.snp.makeConstraints { make in
-            make.top.equalTo(loginButton.snp.bottom).offset(20)
-            make.leading.equalToSuperview().inset(120)
+        questionLabel.snp.makeConstraints {
+            $0.top.equalTo(loginButton.snp.bottom).offset(20)
+            $0.leading.equalToSuperview().inset(120)
         }
 
-        registrationButton.snp.makeConstraints { make in
-            make.leading.equalTo(questionLabel.snp.trailing).offset(12)
-            make.top.equalTo(loginButton.snp.bottom).offset(20)
-            make.bottom.equalTo(questionLabel.snp.bottom)
+        registrationButton.snp.makeConstraints {
+            $0.leading.equalTo(questionLabel.snp.trailing).offset(12)
+            $0.top.equalTo(loginButton.snp.bottom).offset(20)
+            $0.bottom.equalTo(questionLabel.snp.bottom)
         }
 
-        forgetPasswordButton.snp.makeConstraints { make in
-            make.trailing.equalTo(passwordTextField.snp.trailing)
-            make.top.equalTo(passwordTextField.snp.bottom).offset(8)
+        forgetPasswordButton.snp.makeConstraints {
+            $0.trailing.equalTo(passwordTextField.snp.trailing)
+            $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
         }
     }
 
@@ -215,23 +215,21 @@ final class LogInViewController: UIViewController {
     private func loginIntoAccount(_ sender: UIButton) {
         let nextVc = AppTabBarController()
 
-        if let email = emailTextField.text, let password = passwordTextField.text {
-            Auth.auth().signIn(withEmail: email, password: password) { [weak self] _, error in
-                guard let self = self else { return }
-                if let e = error {
-                    print(e.localizedDescription)
-                } else {
-                    if let window = self.view.window {
-                        window.rootViewController = nextVc
-                        window.makeKeyAndVisible()
-                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
-                    }
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        let userModel = UserModel(email: email, password: password)
+        AuthService.shared.loginUser(with: userModel) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                if let window = self.view.window {
+                    window.rootViewController = nextVc
+                    window.makeKeyAndVisible()
+                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
                 }
             }
-
         }
     }
-
+    
     @objc
     private func registrationSegue(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)

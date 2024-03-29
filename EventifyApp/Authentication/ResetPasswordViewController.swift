@@ -83,26 +83,26 @@ final class ResetPasswordViewController: UIViewController {
     
     private func setupLayout() {
         
-        titleLabel.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(153)
-            make.leading.equalToSuperview().inset(16)
+        titleLabel.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).inset(153)
+            $0.leading.equalToSuperview().inset(16)
         }
         
-        descriptionLabel.snp.makeConstraints { make in
-            make.top.equalTo(titleLabel.snp.bottom).offset(12)
-            make.leading.equalToSuperview().inset(16)
+        descriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(titleLabel.snp.bottom).offset(12)
+            $0.leading.equalToSuperview().inset(16)
         }
         
-        emailTextField.snp.makeConstraints { make in
-            make.top.equalTo(descriptionLabel.snp.bottom).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(44)
+        emailTextField.snp.makeConstraints {
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(44)
         }
         
-        sendButton.snp.makeConstraints { make in
-            make.top.equalTo(emailTextField.snp.bottom).offset(40)
-            make.horizontalEdges.equalToSuperview().inset(16)
-            make.height.equalTo(46)
+        sendButton.snp.makeConstraints {
+            $0.top.equalTo(emailTextField.snp.bottom).offset(40)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(46)
         }
     }
 
