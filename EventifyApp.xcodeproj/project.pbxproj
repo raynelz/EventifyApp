@@ -19,6 +19,8 @@
 		EC859D102BB0CDD6003FDF5C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D0F2BB0CDD6003FDF5C /* FirebaseFirestoreCombine-Community */; };
 		EC859D122BB0CDD6003FDF5C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D112BB0CDD6003FDF5C /* FirebaseFunctions */; };
 		EC859D142BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D132BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community */; };
+		EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2862BB15AFD00633AA0 /* AuthService.swift */; };
+		EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2892BB15C1500633AA0 /* UserModel.swift */; };
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
 		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
 		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
@@ -42,6 +44,8 @@
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		EC93D2862BB15AFD00633AA0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EC93D2892BB15C1500633AA0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -106,9 +110,19 @@
 			path = SearchVC;
 			sourceTree = "<group>";
 		};
+		EC93D2882BB15C0400633AA0 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				EC93D2892BB15C1500633AA0 /* UserModel.swift */,
+				EC93D2862BB15AFD00633AA0 /* AuthService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 		ECA12F032BAC9E5700720D1A /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				EC93D2882BB15C0400633AA0 /* Firebase */,
 				ECA12F062BAC9E9900720D1A /* LogInViewController.swift */,
 				ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */,
 				ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */,
@@ -307,6 +321,8 @@
 				ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */,
 				ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */,
 				ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */,
+				EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */,
+				EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
