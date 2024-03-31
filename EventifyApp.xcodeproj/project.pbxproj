@@ -11,7 +11,6 @@
 		2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */; };
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
-		EC1C314B2BB982B3000FFBC9 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314A2BB982B3000FFBC9 /* UIView+AddSubviews.swift */; };
 		EC1C314D2BB98BB7000FFBC9 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */; };
 		EC1C314F2BB99A6A000FFBC9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314E2BB99A6A000FFBC9 /* Section.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
@@ -37,7 +36,6 @@
 		2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
-		EC1C314A2BB982B3000FFBC9 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		EC1C314E2BB99A6A000FFBC9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +74,6 @@
 			children = (
 				2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */,
 				2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */,
-				EC1C314A2BB982B3000FFBC9 /* UIView+AddSubviews.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -295,7 +292,6 @@
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				EC1C314D2BB98BB7000FFBC9 /* SectionHeader.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
-				EC1C314B2BB982B3000FFBC9 /* UIView+AddSubviews.swift in Sources */,
 				ECF338142BA882770055994D /* CategoriesModel.swift in Sources */,
 				ECD3282A2BA8D66E00234FCF /* EventsViewCell.swift in Sources */,
 				EC1C314F2BB99A6A000FFBC9 /* Section.swift in Sources */,

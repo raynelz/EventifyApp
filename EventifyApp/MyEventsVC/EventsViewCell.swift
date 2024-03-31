@@ -101,7 +101,7 @@ class EventsViewCell: UICollectionViewCell {
     // MARK: - Setup Views
     private func setupViews() {
         contentView.addSubview(backgroundContainer)
-        backgroundContainer.addSubviews(titleLabel, detailsStackView, qrImageView)
+        [titleLabel, detailsStackView, qrImageView].forEach({ backgroundContainer.addSubview($0) })
     }
 
     // MARK: - Setup Layout
