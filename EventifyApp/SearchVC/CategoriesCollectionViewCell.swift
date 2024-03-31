@@ -39,7 +39,6 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     private func setupViews() {
         contentView.layer.cornerRadius = 10
         [textLabel, containerImageView].forEach({ contentView.addSubview($0) })
-
     }
 
     private func setupLayout() {

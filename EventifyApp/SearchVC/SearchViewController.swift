@@ -53,7 +53,7 @@ final class SearchViewController: UIViewController {
     private func setupViews() {
         title = "Поиск"
         view.backgroundColor = UIColor(hex: "#161618")
-        [searchBar, segmentControl, collectionView].forEach({ view.addSubview($0) })
+        view.addSubviews(searchBar, segmentControl, collectionView)
     }
 
     private func setupCollection() {
