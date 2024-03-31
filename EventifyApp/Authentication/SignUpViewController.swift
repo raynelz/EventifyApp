@@ -143,7 +143,6 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupLayout()
-        isUserSignedIn()
     }
 
     private func setupViews() {
@@ -198,19 +197,6 @@ final class SignUpViewController: UIViewController {
             $0.leading.equalTo(questionLabel.snp.trailing).offset(12)
             $0.top.equalTo(registerButton.snp.bottom).offset(22)
             $0.bottom.equalTo(questionLabel.snp.bottom)
-        }
-    }
-
-    private func isUserSignedIn() {
-        if Auth.auth().currentUser != nil {
-            let nextVC = AppTabBarController()
-            if let window = self.view.window {
-                window.rootViewController = nextVC
-                window.makeKeyAndVisible()
-                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
-            }
-        } else {
-            print("user is not sign in!")
         }
     }
 
