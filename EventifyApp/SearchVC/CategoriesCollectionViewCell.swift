@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CategoriesCollectionViewCell: UICollectionViewCell {
+final class CategoriesCollectionViewCell: UICollectionViewCell {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel()
@@ -59,16 +59,9 @@ class CategoriesCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func setText(text: String) {
-        textLabel.text = text
+    func configureCell(model: CategoriesModel) {
+        textLabel.text = model.title
+        containerImageView.image = model.image
+        contentView.backgroundColor = UIColor(hex: model.color)
     }
-
-    func setImage(image: UIImage?) {
-        containerImageView.image = image
-    }
-
-    func setColor(colorString: String) {
-        contentView.backgroundColor = UIColor(hex: colorString)
-    }
-
 }
