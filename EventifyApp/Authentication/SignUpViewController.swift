@@ -138,6 +138,15 @@ final class SignUpViewController: UIViewController {
         button.addTarget(self, action: #selector(loginSegue), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Введен некорректный формат электронной почты/пароля."
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(hex: "#FF8F88")
+        label.isHidden = true
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -155,7 +164,8 @@ final class SignUpViewController: UIViewController {
             passwordTextField,
             emailTextField,
             titleLabel,
-            descriptionLabel
+            descriptionLabel,
+            errorLabel
         )
     }
 
@@ -198,6 +208,11 @@ final class SignUpViewController: UIViewController {
             $0.top.equalTo(registerButton.snp.bottom).offset(22)
             $0.bottom.equalTo(questionLabel.snp.bottom)
         }
+        
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(registerButton.snp.bottom).offset(140)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(89)
+        }
     }
 
     @objc
@@ -214,6 +229,17 @@ final class SignUpViewController: UIViewController {
 
         AuthService.shared.registerUser(with: userModel) { wasRegistered, error in
             if let error = error {
+                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                self.passwordTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                
+                self.errorLabel.isHidden = false
+                
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
+                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
+                    self?.passwordTextField.layer.borderColor = UIColor.white.cgColor
+                    
+                    self?.errorLabel.isHidden = true
+                }
                 print(error.localizedDescription)
             } else {
                 print("wasRegistered", wasRegistered)
