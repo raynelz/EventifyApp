@@ -9,10 +9,16 @@ import UIKit
 import SnapKit
 
 class EventsViewCell: UICollectionViewCell {
+    static let cellId = "eventsCell"
     // MARK: UI Elements
+    private lazy var backgroundContainer: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 10
+        return view
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "День открытых дверей"
         label.textColor = .black
         label.font = .systemFont(ofSize: 17, weight: .semibold)
         return label
@@ -28,7 +34,6 @@ class EventsViewCell: UICollectionViewCell {
 
     private lazy var dayLabel: UILabel = {
         let label = UILabel()
-        label.text = "2 марта"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .center
@@ -46,7 +51,6 @@ class EventsViewCell: UICollectionViewCell {
 
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "17:30"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .center
@@ -63,7 +67,6 @@ class EventsViewCell: UICollectionViewCell {
 
     private lazy var audienceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Б-3"
         label.font = .systemFont(ofSize: 12, weight: .semibold)
         label.textColor = .white
         label.textAlignment = .center
@@ -80,7 +83,6 @@ class EventsViewCell: UICollectionViewCell {
 
     private lazy var qrImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "qr")
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
@@ -98,18 +100,16 @@ class EventsViewCell: UICollectionViewCell {
 
     // MARK: - Setup Views
     private func setupViews() {
-        contentView.layer.cornerRadius = 10
-
-        [titleLabel, detailsStackView, qrImageView].forEach({ contentView.addSubview($0) })
+        contentView.addSubview(backgroundContainer)
+        backgroundContainer.addSubviews(titleLabel, detailsStackView, qrImageView)
     }
 
     // MARK: - Setup Layout
     private func setupLayout() {
-        contentView.snp.makeConstraints {
+        backgroundContainer.snp.makeConstraints({
             $0.top.bottom.equalToSuperview()
             $0.horizontalEdges.equalToSuperview().inset(16)
-            $0.height.equalTo(108)
-        }
+        })
 
         titleLabel.snp.makeConstraints {
             $0.top.leading.equalToSuperview().offset(16)
@@ -139,7 +139,7 @@ class EventsViewCell: UICollectionViewCell {
         qrImageView.snp.makeConstraints({
             $0.top.bottom.equalToSuperview().inset(16)
             $0.trailing.equalToSuperview().inset(16)
-            $0.size.equalTo(77)
+            $0.width.equalTo(77)
         })
     }
 
@@ -148,7 +148,7 @@ class EventsViewCell: UICollectionViewCell {
         dayLabel.text = model.day
         timeLabel.text = model.time
         audienceLabel.text = model.audience
-        contentView.backgroundColor = UIColor(hex: model.color)
+        backgroundContainer.backgroundColor = UIColor(hex: model.color)
         qrImageView.image = model.qrCode
     }
 }

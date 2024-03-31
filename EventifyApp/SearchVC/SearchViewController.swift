@@ -11,7 +11,11 @@ import SnapKit
 final class SearchViewController: UIViewController {
 
     let segmentItems = ["Для студентов", "Для поступающих"]
-    let categoriesItems = [CategoriesModel(title: "Спорт", image: UIImage(named: "sport"), color: "#A4473F"), CategoriesModel(title: "Наука", image: UIImage(named: "science"), color: "#073B8F"), CategoriesModel(title: "ITAM", image: UIImage(named: "itam"), color: "#000000")]
+    let categoriesItems = [
+        CategoriesModel(title: "Спорт", image: UIImage(named: "sport"), color: "#A4473F"),
+        CategoriesModel(title: "Наука", image: UIImage(named: "science"), color: "#073B8F"),
+        CategoriesModel(title: "ITAM", image: UIImage(named: "itam"), color: "#000000")
+    ]
 
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -85,8 +89,14 @@ extension SearchViewController: UICollectionViewDataSource {
         return categoriesItems.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoriesCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "categoriesCell",
+            for: indexPath
+        ) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
         cell.configureCell(model: categoriesItems[indexPath.row])
         return cell
     }
