@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
 
     let segmentItems = ["Для студентов", "Для поступающих"]
     let categoriesItems = [
@@ -76,7 +76,7 @@ class SearchViewController: UIViewController {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(segmentControl.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-10)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
     }
 }
@@ -89,14 +89,15 @@ extension SearchViewController: UICollectionViewDataSource {
         return categoriesItems.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: "categoriesCell",
             for: indexPath
         ) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
-        cell.setText(text: categoriesItems[indexPath.row].title)
-        cell.setImage(image: categoriesItems[indexPath.row].image)
-        cell.setColor(colorString: categoriesItems[indexPath.row].color)
+        cell.configureCell(model: categoriesItems[indexPath.row])
         return cell
     }
 
