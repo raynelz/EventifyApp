@@ -69,6 +69,16 @@ final class ResetPasswordViewController: UIViewController {
         return button
     }()
     
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Электронная почта не найдена."
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(hex: "#FF8F88")
+        label.isHidden = true
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -78,7 +88,7 @@ final class ResetPasswordViewController: UIViewController {
     
     private func setupViews() {
         view.backgroundColor = UIColor(hex: "#161618")
-        view.addSubviews(titleLabel, descriptionLabel, emailTextField, sendButton)
+        view.addSubviews(titleLabel, descriptionLabel, emailTextField, sendButton, errorLabel)
     }
     
     private func setupLayout() {
@@ -104,6 +114,11 @@ final class ResetPasswordViewController: UIViewController {
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(46)
         }
+        
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(sendButton.snp.bottom).offset(140)
+            $0.centerX.equalToSuperview()
+        }
     }
 
     @objc
@@ -112,6 +127,15 @@ final class ResetPasswordViewController: UIViewController {
         let userModel = UserModel(email: email, password: "no password")
         AuthService.shared.forgotPassword(with: userModel) { error in
             if let error = error {
+                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                
+                self.errorLabel.isHidden = false
+                
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
+                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
+                    
+                    self?.errorLabel.isHidden = true
+                }
                 print(error.localizedDescription)
             } else {
                 self.navigationController?.popViewController(animated: true)

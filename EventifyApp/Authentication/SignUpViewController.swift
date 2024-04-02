@@ -142,6 +142,7 @@ final class SignUpViewController: UIViewController {
     private lazy var errorLabel: UILabel = {
         let label = UILabel()
         label.text = "Введен некорректный формат электронной почты/пароля."
+        label.numberOfLines = 0
         label.font = .systemFont(ofSize: 14)
         label.textColor = UIColor(hex: "#FF8F88")
         label.isHidden = true
@@ -211,7 +212,7 @@ final class SignUpViewController: UIViewController {
         
         errorLabel.snp.makeConstraints {
             $0.top.equalTo(registerButton.snp.bottom).offset(140)
-            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(89)
+            $0.centerX.equalToSuperview()
         }
     }
 
