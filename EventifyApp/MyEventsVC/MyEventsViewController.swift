@@ -17,7 +17,7 @@ final class MyEventsViewController: UIViewController {
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 108)
         layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 20)
         layout.minimumLineSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 8, left: 0, bottom: 28, right: 0)
         layout.scrollDirection = .vertical
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

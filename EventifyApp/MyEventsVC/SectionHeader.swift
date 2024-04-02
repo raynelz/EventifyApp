@@ -14,7 +14,7 @@ class SectionHeader: UICollectionReusableView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
-        label.font = .systemFont(ofSize: 20, weight: .medium)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         return label
     }()
 
