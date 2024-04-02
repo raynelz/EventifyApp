@@ -50,6 +50,17 @@ class AuthService {
         }
     }
 
+    public func forgotPassword(with userModel: UserModel, completion: @escaping (Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: userModel.email) { error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
+            }
+
+        }
+    }
+
     // swiftlint:disable all
     public func logOut(completion: @escaping (Error?) -> Void) {
         do {

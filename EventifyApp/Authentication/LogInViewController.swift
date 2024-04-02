@@ -228,8 +228,6 @@ final class LogInViewController: UIViewController {
 
     @objc
     private func loginIntoAccount(_ sender: UIButton) {
-        let nextVc = AppTabBarController()
-
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let userModel = UserModel(email: email, password: password)
         AuthService.shared.loginUser(with: userModel) { error in
@@ -249,6 +247,7 @@ final class LogInViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 if let window = self.view.window {
+                    let nextVc = AppTabBarController()
                     window.rootViewController = nextVc
                     window.makeKeyAndVisible()
                     UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})

@@ -243,11 +243,13 @@ final class SignUpViewController: UIViewController {
                 print(error.localizedDescription)
             } else {
                 print("wasRegistered", wasRegistered)
-                if let window = self.view.window {
-                    let nextVC = AppTabBarController()
-                    window.rootViewController = nextVC
-                    window.makeKeyAndVisible()
-                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                if wasRegistered == true {
+                    if let window = self.view.window {
+                        let nextVC = AppTabBarController()
+                        window.rootViewController = nextVC
+                        window.makeKeyAndVisible()
+                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                    }
                 }
             }
         }

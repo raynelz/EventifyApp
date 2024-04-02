@@ -108,14 +108,13 @@ final class ResetPasswordViewController: UIViewController {
 
     @objc
     private func sendResetEmail(_ sender: UIButton) {
-        if let email = emailTextField.text {
-            Auth.auth().sendPasswordReset(withEmail: email) { error in
-                if let e = error {
-                    print(e.localizedDescription)
-                } else {
-                    self.navigationController?.popViewController(animated: true)
-                }
-
+        guard let email = emailTextField.text else { return }
+        let userModel = UserModel(email: email, password: "no password")
+        AuthService.shared.forgotPassword(with: userModel) { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                self.navigationController?.popViewController(animated: true)
             }
         }
     }
