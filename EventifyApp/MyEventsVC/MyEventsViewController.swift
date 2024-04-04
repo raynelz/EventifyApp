@@ -117,6 +117,13 @@ extension MyEventsViewController: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sections.count
     }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = EventCardViewController()
+        if indexPath.row == 0 {
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
 }
 
 extension MyEventsViewController: UICollectionViewDataSource {

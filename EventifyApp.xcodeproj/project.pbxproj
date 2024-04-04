@@ -13,8 +13,11 @@
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
 		EC1C314D2BB98BB7000FFBC9 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */; };
 		EC1C314F2BB99A6A000FFBC9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314E2BB99A6A000FFBC9 /* Section.swift */; };
+		EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */; };
+		EC2D28692BBCAEA1005EDB10 /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D28682BBCAEA1005EDB10 /* DetailsView.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
+		EC7D5B1C2BA9CCE100DC4640 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */; };
 		EC859D0A2BB0CDD6003FDF5C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D092BB0CDD6003FDF5C /* FirebaseAuth */; };
 		EC859D0C2BB0CDD6003FDF5C /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D0B2BB0CDD6003FDF5C /* FirebaseAuthCombine-Community */; };
 		EC859D0E2BB0CDD6003FDF5C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D0D2BB0CDD6003FDF5C /* FirebaseFirestore */; };
@@ -26,7 +29,6 @@
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
 		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
 		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
-		EC7D5B1C2BA9CCE100DC4640 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
 		ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF82BA248E8004550F7 /* ViewController.swift */; };
@@ -36,10 +38,9 @@
 		ECB9500D2BA24A56004550F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500C2BA24A56004550F7 /* SnapKit */; };
 		ECB950102BA24A6D004550F7 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500F2BA24A6D004550F7 /* Alamofire */; };
 		ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECB950112BA24D88004550F7 /* GoogleService-Info.plist */; };
-		ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */; };
-		ECB950162BA24ECB004550F7 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = ECB950152BA24ECB004550F7 /* FirebaseAnalytics */; };
 		ECD328282BA8CCC600234FCF /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD328272BA8CCC600234FCF /* MyEventsViewController.swift */; };
 		ECD3282A2BA8D66E00234FCF /* EventsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECD328292BA8D66E00234FCF /* EventsViewCell.swift */; };
+		ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */; };
 		ECF338142BA882770055994D /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF338132BA882770055994D /* CategoriesModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,14 +51,16 @@
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
 		EC1C314E2BB99A6A000FFBC9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
+		EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewController.swift; sourceTree = "<group>"; };
+		EC2D28682BBCAEA1005EDB10 /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
+		EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		EC93D2862BB15AFD00633AA0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EC93D2892BB15C1500633AA0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
-		EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,9 +70,9 @@
 		ECB950032BA248E9004550F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB950052BA248E9004550F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECB950112BA24D88004550F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		ECD328272BA8CCC600234FCF /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
 		ECD328292BA8D66E00234FCF /* EventsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewCell.swift; sourceTree = "<group>"; };
+		ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		ECF338132BA882770055994D /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -217,6 +220,8 @@
 				EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */,
 				EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */,
 				EC1C314E2BB99A6A000FFBC9 /* Section.swift */,
+				EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */,
+				EC2D28682BBCAEA1005EDB10 /* DetailsView.swift */,
 			);
 			path = MyEventsVC;
 			sourceTree = "<group>";
@@ -335,6 +340,7 @@
 				EC7D5B1C2BA9CCE100DC4640 /* EventsModel.swift in Sources */,
 				ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */,
 				2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */,
+				EC2D28692BBCAEA1005EDB10 /* DetailsView.swift in Sources */,
 				ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */,
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
@@ -352,6 +358,7 @@
 				ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */,
 				EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */,
 				EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */,
+				EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
