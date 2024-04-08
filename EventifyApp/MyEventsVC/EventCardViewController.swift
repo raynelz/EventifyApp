@@ -77,6 +77,7 @@ final class EventCardViewController: UIViewController {
             for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
         button.setTitleColor(UIColor(hex: "#DDF14A"), for: .normal)
+        button.addTarget(self, action: #selector(linkTapped), for: .touchUpInside)
         return button
     }()
 
@@ -143,6 +144,13 @@ final class EventCardViewController: UIViewController {
         detailsCollectionView.delegate = self
         detailsCollectionView.dataSource = self
         detailsCollectionView.register(DetailsItemCell.self, forCellWithReuseIdentifier: DetailsItemCell.cellId)
+    }
+
+    @objc
+    func linkTapped(_ sender: UIButton) {
+        if let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
