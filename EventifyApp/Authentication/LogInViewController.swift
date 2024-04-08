@@ -143,6 +143,15 @@ final class LogInViewController: UIViewController {
         button.addTarget(self, action: #selector(registrationSegue), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Неправильно введён email или пароль."
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(hex: "#FF8F88")
+        label.isHidden = true
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,7 +170,8 @@ final class LogInViewController: UIViewController {
             emailTextField,
             titleLabel,
             descriptionLabel,
-            forgetPasswordButton
+            forgetPasswordButton,
+            errorLabel
         )
     }
 
@@ -209,19 +219,35 @@ final class LogInViewController: UIViewController {
             $0.trailing.equalTo(passwordTextField.snp.trailing)
             $0.top.equalTo(passwordTextField.snp.bottom).offset(8)
         }
+        
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(loginButton.snp.bottom).offset(140)
+            $0.leading.equalTo(view.safeAreaLayoutGuide.snp.leading).offset(89)
+        }
     }
 
     @objc
     private func loginIntoAccount(_ sender: UIButton) {
-        let nextVc = AppTabBarController()
-
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
         let userModel = UserModel(email: email, password: password)
         AuthService.shared.loginUser(with: userModel) { error in
             if let error = error {
+                
+                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                self.passwordTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                
+                self.errorLabel.isHidden = false
+                
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
+                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
+                    self?.passwordTextField.layer.borderColor = UIColor.white.cgColor
+                    
+                    self?.errorLabel.isHidden = true
+                }
                 print(error.localizedDescription)
             } else {
                 if let window = self.view.window {
+                    let nextVc = AppTabBarController()
                     window.rootViewController = nextVc
                     window.makeKeyAndVisible()
                     UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})

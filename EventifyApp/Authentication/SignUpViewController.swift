@@ -138,12 +138,21 @@ final class SignUpViewController: UIViewController {
         button.addTarget(self, action: #selector(loginSegue), for: .touchUpInside)
         return button
     }()
+    
+    private lazy var errorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Введен некорректный формат электронной почты/пароля."
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = UIColor(hex: "#FF8F88")
+        label.isHidden = true
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupLayout()
-        isUserSignedIn()
     }
 
     private func setupViews() {
@@ -156,7 +165,8 @@ final class SignUpViewController: UIViewController {
             passwordTextField,
             emailTextField,
             titleLabel,
-            descriptionLabel
+            descriptionLabel,
+            errorLabel
         )
     }
 
@@ -199,18 +209,10 @@ final class SignUpViewController: UIViewController {
             $0.top.equalTo(registerButton.snp.bottom).offset(22)
             $0.bottom.equalTo(questionLabel.snp.bottom)
         }
-    }
-
-    private func isUserSignedIn() {
-        if Auth.auth().currentUser != nil {
-            let nextVC = AppTabBarController()
-            if let window = self.view.window {
-                window.rootViewController = nextVC
-                window.makeKeyAndVisible()
-                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
-            }
-        } else {
-            print("user is not sign in!")
+        
+        errorLabel.snp.makeConstraints {
+            $0.top.equalTo(registerButton.snp.bottom).offset(140)
+            $0.centerX.equalToSuperview()
         }
     }
 
@@ -228,14 +230,27 @@ final class SignUpViewController: UIViewController {
 
         AuthService.shared.registerUser(with: userModel) { wasRegistered, error in
             if let error = error {
+                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                self.passwordTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                
+                self.errorLabel.isHidden = false
+                
+                Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
+                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
+                    self?.passwordTextField.layer.borderColor = UIColor.white.cgColor
+                    
+                    self?.errorLabel.isHidden = true
+                }
                 print(error.localizedDescription)
             } else {
                 print("wasRegistered", wasRegistered)
-                if let window = self.view.window {
-                    let nextVC = AppTabBarController()
-                    window.rootViewController = nextVC
-                    window.makeKeyAndVisible()
-                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                if wasRegistered == true {
+                    if let window = self.view.window {
+                        let nextVC = AppTabBarController()
+                        window.rootViewController = nextVC
+                        window.makeKeyAndVisible()
+                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                    }
                 }
             }
         }
