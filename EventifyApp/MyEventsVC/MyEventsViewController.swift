@@ -15,9 +15,9 @@ final class MyEventsViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 108)
-        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 20)
+        layout.headerReferenceSize = CGSize(width: UIScreen.main.bounds.width, height: 50)
         layout.minimumLineSpacing = 8
-        layout.sectionInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 28, right: 0)
         layout.scrollDirection = .vertical
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -36,6 +36,7 @@ final class MyEventsViewController: UIViewController {
 
     private func setupViews() {
         title = "Мои ивенты"
+        navigationController?.addCustomBottomLine(color: .white, height: 1.0)
         view.backgroundColor = UIColor(hex: "#161618")
         view.addSubview(collectionView)
     }
@@ -106,6 +107,22 @@ final class MyEventsViewController: UIViewController {
                         audience: "Онлайн",
                         color: "#DDF14A",
                         qrCode: UIImage(named: "qr")
+                    ),
+                    EventsModel(
+                        title: "Баскетбол: МИСИС Vs МФТИ",
+                        day: "12 марта",
+                        time: "14:30",
+                        audience: "Горный",
+                        color: "#F18EF0",
+                        qrCode: UIImage(named: "qr")
+                    ),
+                    EventsModel(
+                        title: "Hackaton Meetup",
+                        day: "14 марта",
+                        time: "18:00",
+                        audience: "Онлайн",
+                        color: "#DDF14A",
+                        qrCode: UIImage(named: "qr")
                     )
                 ]
             )
@@ -116,6 +133,13 @@ final class MyEventsViewController: UIViewController {
 extension MyEventsViewController: UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         sections.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = EventCardViewController()
+        if indexPath.row == 0 {
+            navigationController?.pushViewController(nextVC, animated: true)
+        }
     }
 }
 

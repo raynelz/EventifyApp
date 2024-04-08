@@ -74,7 +74,13 @@ class EventsViewCell: UICollectionViewCell {
     }()
 
     private lazy var detailsStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [dayBackgroundContainer, timeBackgroundContainer, audienceBackgroundContainer])
+        let stack = UIStackView(
+            arrangedSubviews: [
+                dayBackgroundContainer,
+                timeBackgroundContainer,
+                audienceBackgroundContainer
+            ]
+        )
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
         stack.spacing = 8
@@ -101,7 +107,7 @@ class EventsViewCell: UICollectionViewCell {
     // MARK: - Setup Views
     private func setupViews() {
         contentView.addSubview(backgroundContainer)
-        [titleLabel, detailsStackView, qrImageView].forEach({ backgroundContainer.addSubview($0) })
+        backgroundContainer.addSubviews(titleLabel, detailsStackView, qrImageView)
     }
 
     // MARK: - Setup Layout
