@@ -10,11 +10,11 @@ import SnapKit
 
 final class EventCardViewController: UIViewController {
 
-    let containers = [
-        DetailsView() : DetailModel(id: 1,title: "2 марта"),
-        DetailsView() : DetailModel(id: 2,title: "17:30"),
-        DetailsView() : DetailModel(id: 3,title: "Б-3")
-    ].sorted { $0.value.id < $1.value.id }
+    let data = [
+        DetailModel(id: 1, title: "2 марта"),
+        DetailModel(id: 2, title: "17:30"),
+        DetailModel(id: 3, title: "Б-3")
+    ].sorted { $0.id < $1.id }
 
     private lazy var qrImageView: UIImageView = {
         let imageView = UIImageView()
@@ -45,20 +45,46 @@ final class EventCardViewController: UIViewController {
         return label
     }()
 
-    private lazy var detailsStackView: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.distribution = .fill
-        stack.spacing = 12
-        return stack
+    private lazy var detailsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .clear
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.itemSize = UICollectionViewFlowLayout.automaticSize
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 12
+        return collection
+    }()
+
+    private lazy var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России."
+        label.textColor = .white
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        return label
+    }()
+
+    private lazy var linkButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Перейти к странице мероприятия", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
+        button.setImage(
+            UIImage(systemName: "chevron.right")?.withTintColor(
+                UIColor(hex: "#DDF14A"),
+                renderingMode: .alwaysOriginal
+            ),
+            for: .normal)
+        button.semanticContentAttribute = .forceRightToLeft
+        button.setTitleColor(UIColor(hex: "#DDF14A"), for: .normal)
+        return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         setupLayout()
-        setupContainers()
-        setupContainersData()
+        configureCollection()
     }
 
     private func setupViews() {
@@ -68,7 +94,9 @@ final class EventCardViewController: UIViewController {
             divider,
             typeOfEventLabel,
             titleLabel,
-            detailsStackView
+            detailsCollectionView,
+            descriptionLabel,
+            linkButton
         )
     }
 
@@ -94,21 +122,46 @@ final class EventCardViewController: UIViewController {
             $0.leading.equalTo(typeOfEventLabel.snp.leading)
         })
         
-        detailsStackView.snp.makeConstraints({
+        detailsCollectionView.snp.makeConstraints({
             $0.top.equalTo(titleLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(40)
+        })
+
+        descriptionLabel.snp.makeConstraints({
+            $0.top.equalTo(detailsCollectionView.snp.bottom).offset(28)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+        })
+
+        linkButton.snp.makeConstraints({
+            $0.top.equalTo(descriptionLabel.snp.bottom).offset(8)
+            $0.leading.equalToSuperview().offset(16)
         })
     }
 
-    func setupContainers() {
-        containers.forEach { view, _ in
-            detailsStackView.addArrangedSubview(view)
-        }
+    private func configureCollection() {
+        detailsCollectionView.delegate = self
+        detailsCollectionView.dataSource = self
+        detailsCollectionView.register(DetailsItemCell.self, forCellWithReuseIdentifier: DetailsItemCell.cellId)
+    }
+}
+
+extension EventCardViewController: UICollectionViewDelegate {
+
+}
+
+extension EventCardViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        data.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: DetailsItemCell.cellId,
+            for: indexPath
+        ) as? DetailsItemCell  else { return UICollectionViewCell() }
+        cell.configure(with: data[indexPath.row])
+        return cell
     }
 
-    func setupContainersData() {
-        containers.forEach { view, model in
-            view.setText(with: model)
-        }
-    }
 }
