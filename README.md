@@ -1,6 +1,6 @@
 # Eventify - платформа event'ов!
 <img src="EventifyApp/Resources/Screens/darkTheme.jpeg" alt="Логотип" width="375" height="812">
-## Технологии
+# Технологии
 
 - Язык программирования: Swift
 - UI: UIKit
