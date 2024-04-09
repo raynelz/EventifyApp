@@ -1,5 +1,5 @@
 # Eventify - платформа event'ов!
-<img src="EventifyApp/Resources/Screens/darkTheme.png" alt="Логотип" width="375" height="812"> <img src="VkServicesApp/Resources/Screens/ServiceLightTheme.png" alt="Логотип" width="375" height="812">
+<img src="EventifyApp/Resources/Screens/darkTheme.png" alt="Логотип" width="375" height="812">
 ## Технологии
 
 - Язык программирования: Swift
