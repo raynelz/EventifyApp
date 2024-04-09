@@ -25,7 +25,7 @@
 		EC859D102BB0CDD6003FDF5C /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D0F2BB0CDD6003FDF5C /* FirebaseFirestoreCombine-Community */; };
 		EC859D122BB0CDD6003FDF5C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D112BB0CDD6003FDF5C /* FirebaseFunctions */; };
 		EC859D142BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D132BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community */; };
-		EC900E962BC5C97000F112AC /* RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EC900E952BC5C97000F112AC /* RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg */; };
+		EC900E962BC5C97000F112AC /* darkTheme.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = EC900E952BC5C97000F112AC /* darkTheme.jpeg */; };
 		EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2862BB15AFD00633AA0 /* AuthService.swift */; };
 		EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2892BB15C1500633AA0 /* UserModel.swift */; };
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
@@ -60,7 +60,7 @@
 		EC5A9AD52BC1F7000028AB03 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		EC5B29922BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+CustomBottomLine.swift"; sourceTree = "<group>"; };
 		EC7D5B1B2BA9CCE100DC4640 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
-		EC900E952BC5C97000F112AC /* RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg"; sourceTree = "<group>"; };
+		EC900E952BC5C97000F112AC /* darkTheme.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = darkTheme.jpeg; sourceTree = "<group>"; };
 		EC93D2862BB15AFD00633AA0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EC93D2892BB15C1500633AA0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -134,7 +134,7 @@
 		EC900E942BC5C96300F112AC /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				EC900E952BC5C97000F112AC /* RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg */,
+				EC900E952BC5C97000F112AC /* darkTheme.jpeg */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -319,7 +319,7 @@
 			files = (
 				ECB950012BA248E9004550F7 /* Assets.xcassets in Resources */,
 				ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */,
-				EC900E962BC5C97000F112AC /* RocketSim_Screenshot_iPhone_15_Pro_Max_6.7_2024-04-09_22.01.41.jpeg in Resources */,
+				EC900E962BC5C97000F112AC /* darkTheme.jpeg in Resources */,
 				ECB950042BA248E9004550F7 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
