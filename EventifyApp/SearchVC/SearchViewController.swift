@@ -51,7 +51,7 @@ final class SearchViewController: UIViewController {
     }
 
     private func setupViews() {
-        navigationController?.addCustomBottomLine(color: .white, height: 1)
+        navigationController?.addCustomBottomLine(color: UIColor(hex: "#858591"), height: 1)
         title = "Поиск"
         view.backgroundColor = UIColor(hex: "#161618")
         view.addSubviews(searchBar, segmentControl, collectionView)
@@ -65,7 +65,7 @@ final class SearchViewController: UIViewController {
 
     private func setupLayout() {
         searchBar.snp.makeConstraints {
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             $0.horizontalEdges.equalToSuperview()
         }
 

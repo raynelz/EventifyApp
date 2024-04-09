@@ -36,7 +36,7 @@ final class MyEventsViewController: UIViewController {
 
     private func setupViews() {
         title = "Мои ивенты"
-        navigationController?.addCustomBottomLine(color: .white, height: 1.0)
+        navigationController?.addCustomBottomLine(color: UIColor(hex: "#858591"), height: 1.0)
         view.backgroundColor = UIColor(hex: "#161618")
         view.addSubview(collectionView)
     }
