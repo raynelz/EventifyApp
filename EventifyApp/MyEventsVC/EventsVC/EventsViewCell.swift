@@ -26,7 +26,9 @@ class EventsViewCell: UICollectionViewCell {
 
     private lazy var dayContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         return view
     }()
@@ -34,14 +36,16 @@ class EventsViewCell: UICollectionViewCell {
     private lazy var dayLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
 
     private lazy var timeContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         return view
     }()
@@ -49,14 +53,16 @@ class EventsViewCell: UICollectionViewCell {
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()
 
     private lazy var audienceContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .clear
+        view.layer.borderColor = UIColor.black.cgColor
+        view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
         return view
     }()
@@ -64,7 +70,7 @@ class EventsViewCell: UICollectionViewCell {
     private lazy var audienceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .black
         label.textAlignment = .center
         return label
     }()

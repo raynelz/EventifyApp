@@ -14,7 +14,7 @@ final class EventCardViewController: UIViewController {
         DetailModel(id: 1, title: "2 марта"),
         DetailModel(id: 2, title: "17:30"),
         DetailModel(id: 3, title: "Б-3")
-    ].sorted { $0.id < $1.id }
+    ]
 
     private lazy var qrImageView: UIImageView = {
         let imageView = UIImageView()
@@ -58,7 +58,9 @@ final class EventCardViewController: UIViewController {
 
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        // swiftlint: disable all
         label.text = "Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России."
+        // swiftlint: enable all
         label.textColor = .white
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 17, weight: .regular)

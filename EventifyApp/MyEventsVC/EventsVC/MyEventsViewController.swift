@@ -5,8 +5,8 @@
 //  Created by Захар Литвинчук on 18.03.2024.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class MyEventsViewController: UIViewController {
     let sectionTitle = ["Предстоящие мероприятия", "Ждут оценки"]
@@ -44,7 +44,10 @@ final class MyEventsViewController: UIViewController {
     private func setupCollection() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(EventsViewCell.self, forCellWithReuseIdentifier: EventsViewCell.cellId)
+        collectionView.register(
+            EventsViewCell.self,
+            forCellWithReuseIdentifier: EventsViewCell.cellId
+        )
         collectionView.register(
             SectionHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -53,11 +56,11 @@ final class MyEventsViewController: UIViewController {
     }
 
     private func setupLayout() {
-        collectionView.snp.makeConstraints({
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
-        })
+        }
     }
 
     private func configureSections() {
@@ -87,7 +90,7 @@ final class MyEventsViewController: UIViewController {
                         audience: "Онлайн",
                         color: "#F18EF0",
                         qrCode: UIImage(named: "qr")
-                    )
+                    ),
                 ]
             ),
             .wait(
@@ -123,19 +126,19 @@ final class MyEventsViewController: UIViewController {
                         audience: "Онлайн",
                         color: "#DDF14A",
                         qrCode: UIImage(named: "qr")
-                    )
+                    ),
                 ]
-            )
+            ),
         ]
     }
 }
 
 extension MyEventsViewController: UICollectionViewDelegate {
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    func numberOfSections(in _: UICollectionView) -> Int {
         sections.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let nextVC = EventCardViewController()
         if indexPath.row == 0 {
             navigationController?.pushViewController(nextVC, animated: true)
@@ -144,23 +147,30 @@ extension MyEventsViewController: UICollectionViewDelegate {
 }
 
 extension MyEventsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         sections[section].items.count
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: EventsViewCell.cellId,
             for: indexPath
-        ) as? EventsViewCell  else { return UICollectionViewCell() }
+        ) as? EventsViewCell else { return UICollectionViewCell() }
 
         let item = sections[indexPath.section].items[indexPath.row]
         cell.configureCell(model: item)
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader
+        else { return UICollectionReusableView() }
         guard let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
             withReuseIdentifier: SectionHeader.headerId,
