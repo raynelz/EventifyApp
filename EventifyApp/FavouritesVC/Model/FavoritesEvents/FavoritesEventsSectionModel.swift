@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FavoritesSectionModel {
+enum FavoritesEventsSectionModel {
     case favorites([FavoritesModel])
     case recommendations([FavoritesModel])
     case empty
