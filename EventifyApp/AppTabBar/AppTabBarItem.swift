@@ -15,13 +15,14 @@ enum AppTabBarItem: CaseIterable {
     case profile
     var viewController: UIViewController {
         switch self {
-        case .main: return UIViewController() // MainViewController
+        case .main: return ViewController() // MainViewController
         case .search: return SearchViewController() // SearchViewController
-        case .events: return MyEventsViewController() // EventsViewController
-        case .favorites: return FavoritesViewController() // FavoritesViewController
+        case .events: return MyActivitiesViewController() // EventsViewController
+        case .favorites: return UIViewController() // FavoritesViewController
         case .profile: return UIViewController() // ProfileViewController
         }
     }
+
     var icon: UIImage? {
         switch self {
         case .main:
@@ -36,6 +37,7 @@ enum AppTabBarItem: CaseIterable {
             return UIImage(systemName: "person")
         }
     }
+
     var title: String {
         switch self {
         case .main:
