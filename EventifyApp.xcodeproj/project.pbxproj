@@ -12,10 +12,6 @@
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
 		EC1965EA2BC5855F008DE704 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1965E92BC5855F008DE704 /* FavoritesViewController.swift */; };
-		EC1965EC2BC58AAF008DE704 /* EventsItemsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1965EB2BC58AAF008DE704 /* EventsItemsCell.swift */; };
-		EC1965EE2BC58E68008DE704 /* FavouritesEventModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1965ED2BC58E68008DE704 /* FavouritesEventModel.swift */; };
-		EC1C314D2BB98BB7000FFBC9 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */; };
-		EC1C314F2BB99A6A000FFBC9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1C314E2BB99A6A000FFBC9 /* Section.swift */; };
 		EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
@@ -31,6 +27,12 @@
 		EC859D142BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = EC859D132BB0CDD6003FDF5C /* FirebaseFunctionsCombine-Community */; };
 		EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2862BB15AFD00633AA0 /* AuthService.swift */; };
 		EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC93D2892BB15C1500633AA0 /* UserModel.swift */; };
+		EC96BA432BDEAAC8007E430C /* FavoritesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA422BDEAAC8007E430C /* FavoritesModel.swift */; };
+		EC96BA452BDEAB9A007E430C /* FavoritesSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA442BDEAB9A007E430C /* FavoritesSectionModel.swift */; };
+		EC96BA472BDEAD3D007E430C /* FavoritesMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA462BDEAD3D007E430C /* FavoritesMockData.swift */; };
+		EC96BA492BDEB18F007E430C /* NoFavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA482BDEB18F007E430C /* NoFavoritesCell.swift */; };
+		EC96BA4B2BDEB394007E430C /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA4A2BDEB394007E430C /* FavoritesCell.swift */; };
+		EC96BA4D2BDEB46C007E430C /* FavoritesRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA4C2BDEB46C007E430C /* FavoritesRecommendationCell.swift */; };
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
 		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
 		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
@@ -38,9 +40,9 @@
 		ECAEE1B12BC430CE00027EEC /* DetailsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */; };
 		ECB3223B2BDD88DF006445AB /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3223A2BDD88DF006445AB /* RecommendationCell.swift */; };
 		ECB3223E2BDD9557006445AB /* HeaderSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3223D2BDD9557006445AB /* HeaderSupplementaryView.swift */; };
-		ECB322412BDD999D006445AB /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322402BDD999D006445AB /* ListItem.swift */; };
-		ECB322432BDD99D7006445AB /* ListSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322422BDD99D7006445AB /* ListSection.swift */; };
-		ECB322452BDD9A2F006445AB /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322442BDD9A2F006445AB /* MockData.swift */; };
+		ECB322412BDD999D006445AB /* MyEventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322402BDD999D006445AB /* MyEventsModel.swift */; };
+		ECB322432BDD99D7006445AB /* MyEventsSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322422BDD99D7006445AB /* MyEventsSectionModel.swift */; };
+		ECB322452BDD9A2F006445AB /* MyEventsMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB322442BDD9A2F006445AB /* MyEventsMockData.swift */; };
 		ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF42BA248E8004550F7 /* AppDelegate.swift */; };
 		ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */; };
 		ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB94FF82BA248E8004550F7 /* ViewController.swift */; };
@@ -59,10 +61,6 @@
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC1965E92BC5855F008DE704 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		EC1965EB2BC58AAF008DE704 /* EventsItemsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsItemsCell.swift; sourceTree = "<group>"; };
-		EC1965ED2BC58E68008DE704 /* FavouritesEventModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesEventModel.swift; sourceTree = "<group>"; };
-		EC1C314C2BB98BB7000FFBC9 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
-		EC1C314E2BB99A6A000FFBC9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewController.swift; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +70,12 @@
 		EC5B29922BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+CustomBottomLine.swift"; sourceTree = "<group>"; };
 		EC93D2862BB15AFD00633AA0 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EC93D2892BB15C1500633AA0 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		EC96BA422BDEAAC8007E430C /* FavoritesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesModel.swift; sourceTree = "<group>"; };
+		EC96BA442BDEAB9A007E430C /* FavoritesSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSectionModel.swift; sourceTree = "<group>"; };
+		EC96BA462BDEAD3D007E430C /* FavoritesMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesMockData.swift; sourceTree = "<group>"; };
+		EC96BA482BDEB18F007E430C /* NoFavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFavoritesCell.swift; sourceTree = "<group>"; };
+		EC96BA4A2BDEB394007E430C /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
+		EC96BA4C2BDEB46C007E430C /* FavoritesRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecommendationCell.swift; sourceTree = "<group>"; };
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -79,9 +83,9 @@
 		ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemCell.swift; sourceTree = "<group>"; };
 		ECB3223A2BDD88DF006445AB /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
 		ECB3223D2BDD9557006445AB /* HeaderSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderSupplementaryView.swift; sourceTree = "<group>"; };
-		ECB322402BDD999D006445AB /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		ECB322422BDD99D7006445AB /* ListSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSection.swift; sourceTree = "<group>"; };
-		ECB322442BDD9A2F006445AB /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		ECB322402BDD999D006445AB /* MyEventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsModel.swift; sourceTree = "<group>"; };
+		ECB322422BDD99D7006445AB /* MyEventsSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsSectionModel.swift; sourceTree = "<group>"; };
+		ECB322442BDD9A2F006445AB /* MyEventsMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsMockData.swift; sourceTree = "<group>"; };
 		ECB94FF12BA248E8004550F7 /* EventifyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventifyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB94FF42BA248E8004550F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ECB94FF62BA248E8004550F7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,9 +140,9 @@
 		EC1965E82BC584EF008DE704 /* FavouritesVC */ = {
 			isa = PBXGroup;
 			children = (
+				EC96BA412BDEAA6A007E430C /* Cells */,
+				EC96BA402BDEAA62007E430C /* Model */,
 				EC1965E92BC5855F008DE704 /* FavoritesViewController.swift */,
-				EC1965EB2BC58AAF008DE704 /* EventsItemsCell.swift */,
-				EC1965ED2BC58E68008DE704 /* FavouritesEventModel.swift */,
 			);
 			path = FavouritesVC;
 			sourceTree = "<group>";
@@ -160,6 +164,26 @@
 				EC93D2862BB15AFD00633AA0 /* AuthService.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		EC96BA402BDEAA62007E430C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EC96BA422BDEAAC8007E430C /* FavoritesModel.swift */,
+				EC96BA442BDEAB9A007E430C /* FavoritesSectionModel.swift */,
+				EC96BA462BDEAD3D007E430C /* FavoritesMockData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EC96BA412BDEAA6A007E430C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				EC96BA482BDEB18F007E430C /* NoFavoritesCell.swift */,
+				EC96BA4A2BDEB394007E430C /* FavoritesCell.swift */,
+				EC96BA4C2BDEB46C007E430C /* FavoritesRecommendationCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		ECA12F032BAC9E5700720D1A /* Authentication */ = {
@@ -187,9 +211,9 @@
 		ECB3223F2BDD998E006445AB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				ECB322402BDD999D006445AB /* ListItem.swift */,
-				ECB322422BDD99D7006445AB /* ListSection.swift */,
-				ECB322442BDD9A2F006445AB /* MockData.swift */,
+				ECB322402BDD999D006445AB /* MyEventsModel.swift */,
+				ECB322422BDD99D7006445AB /* MyEventsSectionModel.swift */,
+				ECB322442BDD9A2F006445AB /* MyEventsMockData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -393,14 +417,14 @@
 			files = (
 				ECB94FF92BA248E8004550F7 /* ViewController.swift in Sources */,
 				EC1965EA2BC5855F008DE704 /* FavoritesViewController.swift in Sources */,
-				EC1965EE2BC58E68008DE704 /* FavouritesEventModel.swift in Sources */,
-				ECD328282BA8CCC600234FCF /* MyEventsViewController.swift in Sources */,
-				EC7D5B1C2BA9CCE100DC4640 /* EventsModel.swift in Sources */,
 				ECB94FF52BA248E8004550F7 /* AppDelegate.swift in Sources */,
 				2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */,
+				EC96BA432BDEAAC8007E430C /* FavoritesModel.swift in Sources */,
 				ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */,
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				ECAEE1B12BC430CE00027EEC /* DetailsItemCell.swift in Sources */,
+				EC96BA4B2BDEB394007E430C /* FavoritesCell.swift in Sources */,
+				EC96BA492BDEB18F007E430C /* NoFavoritesCell.swift in Sources */,
 				EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */,
 				2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */,
 				ECB94FF72BA248E8004550F7 /* SceneDelegate.swift in Sources */,
@@ -411,19 +435,21 @@
 				EC5B29932BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift in Sources */,
 				ECB3223B2BDD88DF006445AB /* RecommendationCell.swift in Sources */,
 				ECF338142BA882770055994D /* CategoriesModel.swift in Sources */,
+				EC96BA4D2BDEB46C007E430C /* FavoritesRecommendationCell.swift in Sources */,
+				EC96BA452BDEAB9A007E430C /* FavoritesSectionModel.swift in Sources */,
 				EC5A9AD62BC1F7000028AB03 /* DetailModel.swift in Sources */,
-				EC1965EC2BC58AAF008DE704 /* EventsItemsCell.swift in Sources */,
 				ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */,
 				EC4138512BDC4B05000B0301 /* EventCell.swift in Sources */,
+				EC96BA472BDEAD3D007E430C /* FavoritesMockData.swift in Sources */,
 				ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */,
 				EC43D6DD2BDE610100DADD35 /* NoEventsCell.swift in Sources */,
 				ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */,
-				ECB322412BDD999D006445AB /* ListItem.swift in Sources */,
+				ECB322412BDD999D006445AB /* MyEventsModel.swift in Sources */,
 				EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */,
 				EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */,
-				ECB322432BDD99D7006445AB /* ListSection.swift in Sources */,
+				ECB322432BDD99D7006445AB /* MyEventsSectionModel.swift in Sources */,
 				EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */,
-				ECB322452BDD9A2F006445AB /* MockData.swift in Sources */,
+				ECB322452BDD9A2F006445AB /* MyEventsMockData.swift in Sources */,
 				ECB3223E2BDD9557006445AB /* HeaderSupplementaryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

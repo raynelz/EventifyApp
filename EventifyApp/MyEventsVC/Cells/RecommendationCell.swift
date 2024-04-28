@@ -169,7 +169,7 @@ final class RecommendationCell: UICollectionViewCell {
         })
     }
 
-    func configureCell(with model: ListItem) {
+    func configureCell(with model: MyEventsModel) {
         imageView.image = model.image
         title.text = model.name
         dayLabel.text = model.date
