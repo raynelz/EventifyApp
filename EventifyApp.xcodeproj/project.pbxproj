@@ -153,16 +153,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		ECACC3CD2BDC2710004D1EEC /* Refactor */ = {
-			isa = PBXGroup;
-			children = (
-				ECB3223F2BDD998E006445AB /* Model */,
-				ECB3223C2BDD9544006445AB /* Cells */,
-				ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */,
-			);
-			path = Refactor;
-			sourceTree = "<group>";
-		};
 		ECB3223C2BDD9544006445AB /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -265,7 +255,9 @@
 		ECD328262BA8CBFB00234FCF /* MyEventsVC */ = {
 			isa = PBXGroup;
 			children = (
-				ECACC3CD2BDC2710004D1EEC /* Refactor */,
+				ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */,
+				ECB3223F2BDD998E006445AB /* Model */,
+				ECB3223C2BDD9544006445AB /* Cells */,
 				ECCFED522BCC627D00F3F419 /* EventCard */,
 			);
 			path = MyEventsVC;
