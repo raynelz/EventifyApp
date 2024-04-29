@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct ListItem {
+struct MyEventsModel {
     let name: String
     let date: String
     let time: String

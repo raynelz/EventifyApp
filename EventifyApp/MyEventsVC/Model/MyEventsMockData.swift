@@ -7,10 +7,10 @@
 
 import UIKit
 
-struct MockData {
-    static let shared = MockData()
+struct MyEventsMockData {
+    static let shared = MyEventsMockData()
 
-    private let upcoming: ListSection = {
+    private let upcoming: MyEventsSectionModel = {
         .upcoming(
             [
                 .init(
@@ -57,7 +57,7 @@ struct MockData {
         )
     }()
 
-    private let recommendations: ListSection = {
+    private let recommendations: MyEventsSectionModel = {
         .recommendations([
             .init(
                 name: "День открытых дверей университета МИСИС",
@@ -65,7 +65,7 @@ struct MockData {
                 time: "17:30",
                 location: "онлайн",
                 color: "#000000",
-                image: UIImage(named: "recomendation")
+                image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
@@ -73,7 +73,7 @@ struct MockData {
                 time: "17:30",
                 location: "онлайн",
                 color: "#000000",
-                image: UIImage(named: "recomendation")
+                image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
@@ -81,12 +81,12 @@ struct MockData {
                 time: "17:30",
                 location: "онлайн",
                 color: "#000000",
-                image: UIImage(named: "recomendation")
+                image: UIImage(named: "eventIcon2")
             ),
         ])
     }()
 
-    var pageData: [ListSection] {
+    var pageData: [MyEventsSectionModel] {
         [upcoming, recommendations]
     }
 }

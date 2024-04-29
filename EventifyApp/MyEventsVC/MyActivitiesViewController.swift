@@ -8,7 +8,7 @@ import SnapKit
 import UIKit
 
 final class MyActivitiesViewController: UIViewController {
-    private let sections = MockData.shared.pageData
+    private let sections = MyEventsMockData.shared.pageData
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewLayout()
@@ -37,13 +37,12 @@ final class MyActivitiesViewController: UIViewController {
     private func setupLayout() {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin)
-            $0.horizontalEdges.equalToSuperview().inset(8)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.snp.bottomMargin)
         }
     }
 
     private func setupCollection() {
-        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(EventCell.self, forCellWithReuseIdentifier: EventCell.cellId)
         collectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.cellId)
@@ -164,8 +163,6 @@ extension MyActivitiesViewController {
     }
 }
 
-extension MyActivitiesViewController: UICollectionViewDelegate {}
-
 extension MyActivitiesViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -175,11 +172,11 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
         case .upcoming(let upcomingEvents):
-            return upcomingEvents.isEmpty ? 1 : upcomingEvents.count // Return 1 for empty cell
+            return upcomingEvents.isEmpty ? 1 : upcomingEvents.count
         case .recommendations(let recommendations):
             return recommendations.count
         case .empty:
-            return 1 // Always 1 for the empty section
+            return 1
         }
     }
 

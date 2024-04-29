@@ -1,20 +1,19 @@
 //
-//  RecommendationCell.swift
+//  OrganizerCell.swift
 //  EventifyApp
 //
-//  Created by Захар Литвинчук on 27.04.2024.
+//  Created by Захар Литвинчук on 28.04.2024.
 //
 import UIKit
 import SnapKit
 
-final class RecommendationCell: UICollectionViewCell {
-    static let cellId = "RecommendationCell"
+final class OrganizerCell: UICollectionViewCell {
+    static let cellId = "OrganizerCell"
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = imageView.frame.size.width / 2
         imageView.clipsToBounds = true
         return imageView
     }()
@@ -22,7 +21,7 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var likeButton: UIButton = {
         let button = UIButton()
         button.setImage(
-            UIImage(systemName: "heart")?.withTintColor(
+            UIImage(systemName: "heart.fill")?.withTintColor(
                 UIColor(hex: "#F18EF0"),
                 renderingMode: .alwaysOriginal
             ).resized(to: CGSize(width: 30, height: 25)),
@@ -106,7 +105,7 @@ final class RecommendationCell: UICollectionViewCell {
 
     private func setupViews() {
         contentView.backgroundColor = .black
-        contentView.layer.cornerRadius = 10
+        contentView.layer.cornerRadius = 12
         contentView.addSubviews(
             imageView,
             likeButton,
@@ -122,8 +121,8 @@ final class RecommendationCell: UICollectionViewCell {
 
     private func setupLayout() {
         imageView.snp.makeConstraints({
-            $0.top.equalToSuperview()
-            $0.horizontalEdges.equalToSuperview()
+            $0.top.equalToSuperview().offset(33)
+            $0.centerX.equalToSuperview()
         })
 
         likeButton.snp.makeConstraints({
@@ -131,12 +130,12 @@ final class RecommendationCell: UICollectionViewCell {
         })
 
         title.snp.makeConstraints({
-            $0.top.equalTo(imageView.snp.bottom).offset(12)
-            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.top.equalTo(imageView.snp.bottom).offset(16)
+            $0.centerX.equalToSuperview()
         })
 
         dayContainer.snp.makeConstraints({
-            $0.top.equalTo(title.snp.bottom).offset(12)
+            $0.top.equalTo(title.snp.bottom).offset(21)
             $0.leading.equalToSuperview().offset(16)
             $0.height.equalTo(20)
         })
@@ -158,7 +157,7 @@ final class RecommendationCell: UICollectionViewCell {
         })
 
         audienceContainer.snp.makeConstraints({
-            $0.top.equalTo(dayContainer.snp.bottom).offset(8)
+            $0.top.equalTo(dayContainer.snp.bottom).offset(4)
             $0.leading.equalToSuperview().offset(16)
             $0.height.equalTo(20)
         })
@@ -169,12 +168,12 @@ final class RecommendationCell: UICollectionViewCell {
         })
     }
 
-    func configureCell(with model: MyEventsModel) {
+    func configureCell(with model: FavoritesModel) {
         imageView.image = model.image
         title.text = model.name
-        dayLabel.text = model.date
-        timeLabel.text = model.time
-        audienceLabel.text = model.location
+        dayLabel.text = model.firstTag
+        timeLabel.text = model.secondTag
+        audienceLabel.text = model.thirdTag
     }
 
     @objc

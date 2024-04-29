@@ -1,20 +1,20 @@
 //
-//  ListSection.swift
+//  FavoritesSectionModel.swift
 //  EventifyApp
 //
-//  Created by Захар Литвинчук on 27.04.2024.
+//  Created by Захар Литвинчук on 28.04.2024.
 //
 
 import UIKit
 
-enum ListSection {
-    case upcoming([ListItem])
-    case recommendations([ListItem])
+enum FavoritesEventsSectionModel {
+    case favorites([FavoritesModel])
+    case recommendations([FavoritesModel])
     case empty
 
-    var items: [ListItem] {
+    var items: [FavoritesModel] {
         switch self {
-        case .upcoming(let items),
+        case .favorites(let items),
                 .recommendations(let items):
             return items
         case .empty: return []
@@ -27,9 +27,9 @@ enum ListSection {
 
     var title: String {
         switch self {
-        case .upcoming(_):
-            return "Предстоящие мероприятия"
-        case .recommendations(_):
+        case .favorites(_):
+            return ""
+        case .recommendations(_): 
             return "Рекомендации"
         case .empty:
             return ""

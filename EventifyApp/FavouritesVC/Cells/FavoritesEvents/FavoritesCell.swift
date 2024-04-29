@@ -1,14 +1,14 @@
 //
-//  RecommendationCell.swift
+//  FavoritesCell.swift
 //  EventifyApp
 //
-//  Created by Захар Литвинчук on 27.04.2024.
+//  Created by Захар Литвинчук on 28.04.2024.
 //
 import UIKit
 import SnapKit
 
-final class RecommendationCell: UICollectionViewCell {
-    static let cellId = "RecommendationCell"
+final class FavoritesCell: UICollectionViewCell {
+    static let cellId = "FavoritesCell"
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -22,7 +22,7 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var likeButton: UIButton = {
         let button = UIButton()
         button.setImage(
-            UIImage(systemName: "heart")?.withTintColor(
+            UIImage(systemName: "heart.fill")?.withTintColor(
                 UIColor(hex: "#F18EF0"),
                 renderingMode: .alwaysOriginal
             ).resized(to: CGSize(width: 30, height: 25)),
@@ -169,12 +169,12 @@ final class RecommendationCell: UICollectionViewCell {
         })
     }
 
-    func configureCell(with model: MyEventsModel) {
+    func configureCell(with model: FavoritesModel) {
         imageView.image = model.image
         title.text = model.name
-        dayLabel.text = model.date
-        timeLabel.text = model.time
-        audienceLabel.text = model.location
+        dayLabel.text = model.firstTag
+        timeLabel.text = model.secondTag
+        audienceLabel.text = model.thirdTag
     }
 
     @objc

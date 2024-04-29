@@ -166,7 +166,7 @@ class EventCell: UICollectionViewCell {
         }
     }
 
-    func configureCell(model: ListItem) {
+    func configureCell(model: MyEventsModel) {
         titleLabel.text = model.name
         dayLabel.text = model.date
         timeLabel.text = model.time
