@@ -37,7 +37,7 @@ final class MyActivitiesViewController: UIViewController {
     private func setupLayout() {
         collectionView.snp.makeConstraints {
             $0.top.equalTo(view.snp.topMargin)
-            $0.horizontalEdges.equalToSuperview().inset(8)
+            $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalTo(view.snp.bottomMargin)
         }
     }

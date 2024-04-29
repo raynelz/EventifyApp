@@ -189,28 +189,14 @@ extension FavoritesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 
         if segmentControl.selectedSegmentIndex == 0 {
-            switch favoritesEventsData[section] {
-            case .favorites(let favoritesEvents):
-                return favoritesEvents.isEmpty ? 1 : favoritesEvents.count
-            case .recommendations(let recommendations):
-                return recommendations.count
-            case .empty:
-                return 1
-            }
+            return numberOfEventsItems(in: favoritesEventsData[section])
         } else {
-            switch favoritesOrganizersData[section] {
-            case .favorites(let favoritesEvents):
-                return favoritesEvents.isEmpty ? 1 : favoritesEvents.count
-            case .recommendations(let recommendations):
-                return recommendations.count
-            case .empty:
-                return 1
-            }
+            return numberOfOrganizersItems(in: favoritesOrganizersData[section])
         }
     }
 
+    //TODO: Decrease complexity of this function
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
         if segmentControl.selectedSegmentIndex == 0 {
             switch favoritesEventsData[indexPath.section] {
             case let .favorites(favorites):
@@ -253,7 +239,10 @@ extension FavoritesViewController: UICollectionViewDataSource {
                     ) as? NoFavoritesOrganizersCell else { return UICollectionViewCell() }
                     return cell
                 } else {
-                    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OrganizerCell.cellId, for: indexPath) as? OrganizerCell else { return UICollectionViewCell() }
+                    guard let cell = collectionView.dequeueReusableCell(
+                        withReuseIdentifier: OrganizerCell.cellId,
+                        for: indexPath
+                    ) as? OrganizerCell else { return UICollectionViewCell() }
                     cell.configureCell(with: favorites[indexPath.row])
                     return cell
                 }
@@ -288,4 +277,24 @@ extension FavoritesViewController: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
     }
+
+    // Counting items in section
+    private func numberOfEventsItems(in sectionMockData: FavoritesEventsSectionModel) -> Int {
+        switch sectionMockData {
+        case .favorites(let items), .recommendations(let items):
+            return items.isEmpty ? 1 : items.count
+        case .empty:
+            return 1
+        }
+    }
+
+    private func numberOfOrganizersItems(in sectionMockData: FavoritesOrganizersSectionModel) -> Int {
+        switch sectionMockData {
+        case .favorites(let items), .recommendations(let items):
+            return items.isEmpty ? 1 : items.count
+        case .empty:
+            return 1
+        }
+    }
+
 }
