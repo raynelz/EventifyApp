@@ -119,8 +119,8 @@ extension UITableView {
         self.register(viewType, forHeaderFooterViewReuseIdentifier: viewType.id)
     }
 
-    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView & Reusable>() -> T {
-        guard let view = dequeueReusableHeaderFooterView(withIdentifier: T.id) as? T else {
+    func dequeueReusableHeaderFooterView<T: UITableViewHeaderFooterView & Reusable>(with cellType: T.Type) -> T {
+        guard let view = dequeueReusableHeaderFooterView(withIdentifier: cellType.id) as? T else {
             fatalError("Unable to dequeue header or footer with identifier \(T.id)")
         }
         return view

@@ -10,6 +10,9 @@
 		2D07AE7A2BE3FFB600C28BB7 /* UITableView+dequeueReusableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE792BE3FFB600C28BB7 /* UITableView+dequeueReusableCell.swift */; };
 		2D07AE7D2BE4000300C28BB7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE7C2BE4000300C28BB7 /* Reusable.swift */; };
 		2D07AE802BE41F5600C28BB7 /* FavoritesSectionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE7F2BE41F5600C28BB7 /* FavoritesSectionStrategy.swift */; };
+		2D07AE832BE42E3B00C28BB7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE822BE42E3B00C28BB7 /* ProfileViewController.swift */; };
+		2D07AE852BE440FF00C28BB7 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE842BE440FF00C28BB7 /* ProfileHeaderView.swift */; };
+		2D07AE872BE4428000C28BB7 /* ProfileSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D07AE862BE4428000C28BB7 /* ProfileSection.swift */; };
 		2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4BFC2BA7AA55009A5521 /* AppTabBarController.swift */; };
 		2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */; };
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
@@ -66,6 +69,9 @@
 		2D07AE792BE3FFB600C28BB7 /* UITableView+dequeueReusableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+dequeueReusableCell.swift"; sourceTree = "<group>"; };
 		2D07AE7C2BE4000300C28BB7 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		2D07AE7F2BE41F5600C28BB7 /* FavoritesSectionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesSectionStrategy.swift; sourceTree = "<group>"; };
+		2D07AE822BE42E3B00C28BB7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		2D07AE842BE440FF00C28BB7 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		2D07AE862BE4428000C28BB7 /* ProfileSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSection.swift; sourceTree = "<group>"; };
 		2DCD4BFC2BA7AA55009A5521 /* AppTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarController.swift; sourceTree = "<group>"; };
 		2DCD4BFF2BA7B116009A5521 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
@@ -146,6 +152,16 @@
 				2D07AE7F2BE41F5600C28BB7 /* FavoritesSectionStrategy.swift */,
 			);
 			path = Strategy;
+			sourceTree = "<group>";
+		};
+		2D07AE812BE42DD200C28BB7 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				2D07AE822BE42E3B00C28BB7 /* ProfileViewController.swift */,
+				2D07AE862BE4428000C28BB7 /* ProfileSection.swift */,
+				2D07AE842BE440FF00C28BB7 /* ProfileHeaderView.swift */,
+			);
+			path = ProfileVC;
 			sourceTree = "<group>";
 		};
 		2DCD4BFE2BA7B110009A5521 /* Extensions */ = {
@@ -307,6 +323,7 @@
 		ECB94FF32BA248E8004550F7 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
+				2D07AE812BE42DD200C28BB7 /* ProfileVC */,
 				ECB950172BA250D0004550F7 /* AppDelegate */,
 				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
 				ECA12F032BAC9E5700720D1A /* Authentication */,
@@ -490,6 +507,7 @@
 				2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */,
 				EC96BA432BDEAAC8007E430C /* FavoritesModel.swift in Sources */,
 				ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */,
+				2D07AE832BE42E3B00C28BB7 /* ProfileViewController.swift in Sources */,
 				EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */,
 				ECAEE1B12BC430CE00027EEC /* DetailsItemCell.swift in Sources */,
 				EC96BA4B2BDEB394007E430C /* FavoritesCell.swift in Sources */,
@@ -505,6 +523,7 @@
 				EC5B29932BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift in Sources */,
 				2D07AE7D2BE4000300C28BB7 /* Reusable.swift in Sources */,
 				ECB3223B2BDD88DF006445AB /* RecommendationCell.swift in Sources */,
+				2D07AE852BE440FF00C28BB7 /* ProfileHeaderView.swift in Sources */,
 				ECF338142BA882770055994D /* CategoriesModel.swift in Sources */,
 				EC96BA4D2BDEB46C007E430C /* FavoritesRecommendationCell.swift in Sources */,
 				2D07AE802BE41F5600C28BB7 /* FavoritesSectionStrategy.swift in Sources */,
@@ -523,6 +542,7 @@
 				EC71781A2BDEE4F500BCB478 /* FavoritesOrganizersMockData.swift in Sources */,
 				EC7178182BDEE3F500BCB478 /* FavoritesSectionModel.swift in Sources */,
 				ECB322432BDD99D7006445AB /* MyEventsSectionModel.swift in Sources */,
+				2D07AE872BE4428000C28BB7 /* ProfileSection.swift in Sources */,
 				EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */,
 				ECB322452BDD9A2F006445AB /* MyEventsMockData.swift in Sources */,
 				ECB3223E2BDD9557006445AB /* HeaderSupplementaryView.swift in Sources */,
@@ -679,7 +699,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -713,7 +733,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
