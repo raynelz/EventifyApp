@@ -8,8 +8,7 @@
 import UIKit
 import SnapKit
 
-final class HeaderSupplementaryView: UICollectionReusableView {
-    static let headerId = "HeaderSupplementaryView"
+final class HeaderSupplementaryView: UICollectionReusableView, Reusable {
     private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
@@ -39,7 +38,7 @@ final class HeaderSupplementaryView: UICollectionReusableView {
         })
     }
 
-    func configurateHeader(categoryName: String) {
+    func configure(categoryName: String) {
         headerLabel.text = categoryName
     }
 }

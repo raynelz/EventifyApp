@@ -145,7 +145,7 @@ final class EventCardViewController: UIViewController {
     private func configureCollection() {
         detailsCollectionView.delegate = self
         detailsCollectionView.dataSource = self
-        detailsCollectionView.register(DetailsItemCell.self, forCellWithReuseIdentifier: DetailsItemCell.cellId)
+        detailsCollectionView.register(DetailsItemCell.self)
     }
 
     @objc
@@ -166,10 +166,7 @@ extension EventCardViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: DetailsItemCell.cellId,
-            for: indexPath
-        ) as? DetailsItemCell  else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(DetailsItemCell.self, for: indexPath)
         cell.configure(with: data[indexPath.row])
         return cell
     }

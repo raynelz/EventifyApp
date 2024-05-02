@@ -1,5 +1,5 @@
 //
-//  FavoritesSectionModel.swift
+//  FavoritesOrganizersSectionModel.swift
 //  EventifyApp
 //
 //  Created by Захар Литвинчук on 28.04.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum FavoritesEventsSectionModel {
+enum FavoritesSectionModel {
     case favorites([FavoritesModel])
     case recommendations([FavoritesModel])
     case empty
@@ -29,7 +29,7 @@ enum FavoritesEventsSectionModel {
         switch self {
         case .favorites(_):
             return ""
-        case .recommendations(_): 
+        case .recommendations(_):
             return "Рекомендации"
         case .empty:
             return ""

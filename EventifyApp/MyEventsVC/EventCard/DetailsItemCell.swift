@@ -8,9 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailsItemCell: UICollectionViewCell {
-    static let cellId = "DetailsItemCell"
-
+class DetailsItemCell: UICollectionViewCell, Reusable {
     private lazy var title: UILabel = {
         let label = UILabel()
         label.textColor = .black

@@ -5,13 +5,17 @@
 //  Created by Захар Литвинчук on 09.04.2024.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class FavoritesViewController: UIViewController {
     private let favoritesEventsData = FavoritesEventsMockData.shared.favoritesPageData
     private let favoritesOrganizersData = FavoritesOrganizersMockData.shared.organizersPageData
     private let segmentItems = ["Ивенты", "Организаторы"]
+    private var currentStrategy: FavoritesSectionStrategy?
+    
+    private var eventStategy: FavoritesSectionStrategy { EventsStrategy(items: favoritesEventsData) }
+    private var organizerStategy: FavoritesSectionStrategy { OrganizersStrategy(items: favoritesOrganizersData) }
 
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
@@ -23,6 +27,7 @@ final class FavoritesViewController: UIViewController {
 
     @objc
     private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        currentStrategy = segmentControl.selectedSegmentIndex == 0 ? eventStategy : organizerStategy
         collectionView.reloadData()
     }
 
@@ -41,6 +46,7 @@ final class FavoritesViewController: UIViewController {
         setupViews()
         setupLayout()
         setupCollection()
+        currentStrategy = eventStategy
     }
 
     private func setupViews() {
@@ -51,40 +57,27 @@ final class FavoritesViewController: UIViewController {
     }
 
     private func setupLayout() {
-        segmentControl.snp.makeConstraints({
+        segmentControl.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(16)
-        })
+        }
 
-        collectionView.snp.makeConstraints({
+        collectionView.snp.makeConstraints {
             $0.top.equalTo(segmentControl.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview()
             $0.bottom.equalToSuperview()
-        })
+        }
     }
 
     private func setupCollection() {
         collectionView.dataSource = self
-        collectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: FavoritesCell.cellId)
-        collectionView.register(
-            FavoritesRecommendationCell.self,
-            forCellWithReuseIdentifier: FavoritesRecommendationCell.cellId
-        )
-        collectionView.register(NoFavoritesCell.self, forCellWithReuseIdentifier: NoFavoritesCell.cellId)
-        collectionView.register(OrganizerCell.self, forCellWithReuseIdentifier: OrganizerCell.cellId)
-        collectionView.register(
-            NoFavoritesOrganizersCell.self,
-            forCellWithReuseIdentifier: NoFavoritesOrganizersCell.cellId
-        )
-        collectionView.register(
-            OrganizersRecommendationCell.self,
-            forCellWithReuseIdentifier: OrganizersRecommendationCell.cellId
-        )
-        collectionView.register(
-            HeaderSupplementaryView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: HeaderSupplementaryView.headerId
-        )
+        collectionView.register(FavoritesCell.self)
+        collectionView.register(FavoritesRecommendationCell.self)
+        collectionView.register(NoFavoritesCell.self)
+        collectionView.register(OrganizerCell.self)
+        collectionView.register(NoFavoritesOrganizersCell.self)
+        collectionView.register(OrganizersRecommendationCell.self)
+        collectionView.registerHeader(HeaderSupplementaryView.self)
         collectionView.collectionViewLayout = createLayout()
     }
 }
@@ -181,120 +174,33 @@ extension FavoritesViewController {
 }
 
 extension FavoritesViewController: UICollectionViewDataSource {
-
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return segmentControl.selectedSegmentIndex == 0 ? favoritesEventsData.count : favoritesOrganizersData.count
+        currentStrategy?.countOfSections() ?? .zero
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
-        if segmentControl.selectedSegmentIndex == 0 {
-            return numberOfEventsItems(in: favoritesEventsData[section])
-        } else {
-            return numberOfOrganizersItems(in: favoritesOrganizersData[section])
-        }
+        currentStrategy?.countOfItems() ?? .zero
     }
 
-    //TODO: Decrease complexity of this function
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if segmentControl.selectedSegmentIndex == 0 {
-            switch favoritesEventsData[indexPath.section] {
-            case let .favorites(favorites):
-                if favorites.isEmpty {
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: NoFavoritesCell.cellId,
-                        for: indexPath
-                    ) as? NoFavoritesCell else { return UICollectionViewCell() }
-                    return cell
-                } else {
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: FavoritesCell.cellId,
-                        for: indexPath
-                    ) as? FavoritesCell else { return UICollectionViewCell() }
-                    cell.configureCell(with: favorites[indexPath.row])
-                    return cell
-                }
-            case let .recommendations(recommendations):
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: FavoritesRecommendationCell.cellId,
-                    for: indexPath
-                ) as? FavoritesRecommendationCell else { return UICollectionViewCell() }
-
-                cell.configureCell(with: recommendations[indexPath.row])
-                return cell
-            case .empty:
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: NoEventsCell.cellId,
-                    for: indexPath
-                ) as? NoEventsCell else { return UICollectionViewCell() }
-                return cell
-            }
-        } else {
-            switch favoritesOrganizersData[indexPath.section] {
-            case let .favorites(favorites):
-                if favorites.isEmpty {
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: NoFavoritesOrganizersCell.cellId,
-                        for: indexPath
-                    ) as? NoFavoritesOrganizersCell else { return UICollectionViewCell() }
-                    return cell
-                } else {
-                    guard let cell = collectionView.dequeueReusableCell(
-                        withReuseIdentifier: OrganizerCell.cellId,
-                        for: indexPath
-                    ) as? OrganizerCell else { return UICollectionViewCell() }
-                    cell.configureCell(with: favorites[indexPath.row])
-                    return cell
-                }
-            case let .recommendations(recommendations):
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: OrganizersRecommendationCell.cellId,
-                    for: indexPath
-                ) as? OrganizersRecommendationCell else { return UICollectionViewCell() }
-                cell.configureCell(with: recommendations[indexPath.row])
-                return cell
-            case .empty:
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: NoFavoritesOrganizersCell.cellId,
-                    for: indexPath
-                ) as? NoFavoritesOrganizersCell else { return UICollectionViewCell() }
-                return cell
-            }
-        }
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
+        currentStrategy?.cellForItem(at: indexPath, in: collectionView) ?? UICollectionViewCell()
     }
 
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            guard let cell = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HeaderSupplementaryView.headerId,
-                for: indexPath
-            ) as? HeaderSupplementaryView else { return UICollectionReusableView() }
-            cell.configurateHeader(categoryName: favoritesEventsData[indexPath.section].title)
+            let cell = collectionView.dequeueHeader(HeaderSupplementaryView.self, for: indexPath)
+            cell.configure(categoryName: favoritesEventsData[indexPath.section].title)
             return cell
         default:
             return UICollectionReusableView()
         }
     }
-
-    // Counting items in section
-    private func numberOfEventsItems(in sectionMockData: FavoritesEventsSectionModel) -> Int {
-        switch sectionMockData {
-        case .favorites(let items), .recommendations(let items):
-            return items.isEmpty ? 1 : items.count
-        case .empty:
-            return 1
-        }
-    }
-
-    private func numberOfOrganizersItems(in sectionMockData: FavoritesOrganizersSectionModel) -> Int {
-        switch sectionMockData {
-        case .favorites(let items), .recommendations(let items):
-            return items.isEmpty ? 1 : items.count
-        case .empty:
-            return 1
-        }
-    }
-
 }

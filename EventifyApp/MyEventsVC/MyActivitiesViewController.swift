@@ -44,14 +44,10 @@ final class MyActivitiesViewController: UIViewController {
 
     private func setupCollection() {
         collectionView.dataSource = self
-        collectionView.register(EventCell.self, forCellWithReuseIdentifier: EventCell.cellId)
-        collectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.cellId)
-        collectionView.register(NoEventsCell.self, forCellWithReuseIdentifier: NoEventsCell.cellId)
-        collectionView.register(
-            HeaderSupplementaryView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: HeaderSupplementaryView.headerId
-        )
+        collectionView.register(EventCell.self)
+        collectionView.register(RecommendationCell.self)
+        collectionView.register(NoEventsCell.self)
+        collectionView.registerHeader(HeaderSupplementaryView.self)
 
         collectionView.collectionViewLayout = createLayout()
     }
@@ -148,11 +144,9 @@ extension MyActivitiesViewController {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
 
-        // Define the group size to match the item size
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item]) // Ensure at least one subitem
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
 
-        // Create and configure the section with the group
         let section = NSCollectionLayoutSection(group: group)
         section.orthogonalScrollingBehavior = .none
         section.interGroupSpacing = 0
@@ -180,37 +174,24 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
         }
     }
 
+    // TODO: Сделать с extensions домашнее задание захару
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch sections[indexPath.section] {
         case let .upcoming(upcoming):
             if upcoming.isEmpty {
-                // If no upcoming events, dequeue a NoEventsCell or similar
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: NoEventsCell.cellId,
-                    for: indexPath
-                ) as? NoEventsCell else { return UICollectionViewCell() }
+                let cell = collectionView.dequeueReusableCell(NoEventsCell.self, for: indexPath)
                 return cell
             } else {
-                guard let cell = collectionView.dequeueReusableCell(
-                    withReuseIdentifier: EventCell.cellId,
-                    for: indexPath
-                ) as? EventCell else { return UICollectionViewCell() }
-                cell.configureCell(model: upcoming[indexPath.row])
+                let cell = collectionView.dequeueReusableCell(EventCell.self, for: indexPath)
+                cell.configure(with: upcoming[indexPath.row])
                 return cell
             }
         case let .recommendations(recommendations):
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: RecommendationCell.cellId,
-                for: indexPath
-            ) as? RecommendationCell else { return UICollectionViewCell() }
-
-            cell.configureCell(with: recommendations[indexPath.row])
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: recommendations[indexPath.row])
             return cell
         case .empty:
-            guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: NoEventsCell.cellId,
-                for: indexPath
-            ) as? NoEventsCell else { return UICollectionViewCell() }
+            let cell = collectionView.dequeueReusableCell(NoEventsCell.self, for: indexPath)
             return cell
         }
     }
@@ -218,13 +199,9 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            guard let cell = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HeaderSupplementaryView.headerId,
-                for: indexPath
-            ) as? HeaderSupplementaryView else { return UICollectionReusableView() }
-            cell.configurateHeader(categoryName: sections[indexPath.section].title)
-            return cell
+            let header = collectionView.dequeueHeader(HeaderSupplementaryView.self, for: indexPath)
+            header.configure(categoryName: sections[indexPath.section].title)
+            return header
         default:
             return UICollectionReusableView()
         }

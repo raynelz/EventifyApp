@@ -8,8 +8,6 @@ import UIKit
 import SnapKit
 
 final class NoFavoritesOrganizersCell: UICollectionViewCell {
-    static let cellId = "NoFavoritesOrganizersCell"
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -56,4 +54,9 @@ final class NoFavoritesOrganizersCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
         })
     }
+}
+
+extension NoFavoritesOrganizersCell: Configurable, Reusable {
+    typealias DataType = Void
+    func configure(with data: DataType) {}
 }
