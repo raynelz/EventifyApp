@@ -5,7 +5,7 @@
 //  Created by Рассказов Глеб on 02.05.2024.
 //
 
-import Foundation
+import UIKit
 
 protocol Reusable {
     static var id: String { get }
@@ -21,3 +21,5 @@ protocol Configurable {
     associatedtype DataType
     func configure(with data: DataType)
 }
+
+extension UITableViewCell: Reusable {}
