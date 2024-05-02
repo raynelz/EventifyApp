@@ -8,9 +8,7 @@
 import UIKit
 import SnapKit
 
-final class NoFavoritesCell: UICollectionViewCell {
-    static let cellId = "NoFavoritesCell"
-
+final class NoFavoritesCell: UICollectionViewCell, Reusable {
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit

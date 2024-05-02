@@ -8,8 +8,6 @@ import UIKit
 import SnapKit
 
 final class FavoritesCell: UICollectionViewCell {
-    static let cellId = "FavoritesCell"
-
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -169,14 +167,6 @@ final class FavoritesCell: UICollectionViewCell {
         })
     }
 
-    func configureCell(with model: FavoritesModel) {
-        imageView.image = model.image
-        title.text = model.name
-        dayLabel.text = model.firstTag
-        timeLabel.text = model.secondTag
-        audienceLabel.text = model.thirdTag
-    }
-
     @objc
     func likeTapped(_ sender: UIButton) {
         if sender.isSelected {
@@ -199,5 +189,17 @@ final class FavoritesCell: UICollectionViewCell {
             print("Like tapped!")
         }
         sender.isSelected.toggle()
+    }
+}
+
+extension FavoritesCell: Configurable, Reusable {
+    typealias DataType = FavoritesModel
+    
+    func configure(with model: DataType) {
+        imageView.image = model.image
+        title.text = model.name
+        dayLabel.text = model.firstTag
+        timeLabel.text = model.secondTag
+        audienceLabel.text = model.thirdTag
     }
 }

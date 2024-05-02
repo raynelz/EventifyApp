@@ -8,7 +8,6 @@ import UIKit
 import SnapKit
 
 final class RecommendationCell: UICollectionViewCell {
-    static let cellId = "RecommendationCell"
 
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
@@ -169,14 +168,6 @@ final class RecommendationCell: UICollectionViewCell {
         })
     }
 
-    func configureCell(with model: MyEventsModel) {
-        imageView.image = model.image
-        title.text = model.name
-        dayLabel.text = model.date
-        timeLabel.text = model.time
-        audienceLabel.text = model.location
-    }
-
     @objc
     func likeTapped(_ sender: UIButton) {
         if sender.isSelected {
@@ -199,5 +190,17 @@ final class RecommendationCell: UICollectionViewCell {
             print("Like tapped!")
         }
         sender.isSelected.toggle()
+    }
+}
+
+extension RecommendationCell: Configurable, Reusable {
+    typealias DataType = MyEventsModel
+    
+    func configure(with model: DataType) {
+        imageView.image = model.image
+        title.text = model.name
+        dayLabel.text = model.date
+        timeLabel.text = model.time
+        audienceLabel.text = model.location
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class CategoriesCollectionViewCell: UICollectionViewCell {
+final class CategoriesCollectionViewCell: UICollectionViewCell, Reusable {
 
     private lazy var textLabel: UILabel = {
         let label = UILabel()

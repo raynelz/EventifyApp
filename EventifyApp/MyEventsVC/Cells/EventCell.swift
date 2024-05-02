@@ -9,8 +9,7 @@ import SnapKit
 import UIKit
 
 class EventCell: UICollectionViewCell {
-    static let cellId = "eventCell"
-
+    
     // MARK: UI Elements
 
     private lazy var backgroundContainer: UIView = {
@@ -165,8 +164,12 @@ class EventCell: UICollectionViewCell {
             $0.width.equalTo(77)
         }
     }
+}
 
-    func configureCell(model: MyEventsModel) {
+extension EventCell: Configurable, Reusable {
+    typealias DataType = MyEventsModel
+    
+    func configure(with model: DataType) {
         titleLabel.text = model.name
         dayLabel.text = model.date
         timeLabel.text = model.time

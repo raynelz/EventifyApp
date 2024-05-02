@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class NoEventsCell: UICollectionViewCell {
-    static let cellId = "NoEventsCell"
 
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
@@ -57,4 +56,10 @@ final class NoEventsCell: UICollectionViewCell {
             $0.centerX.equalToSuperview()
         })
     }
+}
+
+extension NoEventsCell: Configurable, Reusable {
+    typealias DataType = Void
+    
+    func configure(with data: DataType) { }
 }

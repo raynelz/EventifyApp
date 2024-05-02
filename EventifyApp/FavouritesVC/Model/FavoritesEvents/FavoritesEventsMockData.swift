@@ -10,7 +10,7 @@ import UIKit
 struct FavoritesEventsMockData {
     static let shared = FavoritesEventsMockData()
 
-    private let favorites: FavoritesEventsSectionModel = {
+    private let favorites: FavoritesSectionModel = {
         .favorites(
             [
                 .init(
@@ -38,7 +38,7 @@ struct FavoritesEventsMockData {
         )
     }()
 
-    private let recommendations: FavoritesEventsSectionModel = {
+    private let recommendations: FavoritesSectionModel = {
         .recommendations([
             .init(
                 name: "День открытых дверей университета МИСИС",
@@ -64,7 +64,7 @@ struct FavoritesEventsMockData {
         ])
     }()
 
-    var favoritesPageData: [FavoritesEventsSectionModel] {
+    var favoritesPageData: [FavoritesSectionModel] {
         [favorites, recommendations]
     }
 }

@@ -8,8 +8,6 @@ import UIKit
 import SnapKit
 
 final class OrganizersRecommendationCell: UICollectionViewCell {
-    static let cellId = "OrganizersRecommendationCell"
-
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -198,5 +196,17 @@ final class OrganizersRecommendationCell: UICollectionViewCell {
             print("Like tapped!")
         }
         sender.isSelected.toggle()
+    }
+}
+
+extension OrganizersRecommendationCell: Configurable, Reusable {
+    typealias DataType = FavoritesModel
+    
+    func configure(with model: DataType) {
+        imageView.image = model.image
+        title.text = model.name
+        dayLabel.text = model.firstTag
+        timeLabel.text = model.secondTag
+        audienceLabel.text = model.thirdTag
     }
 }

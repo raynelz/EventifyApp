@@ -60,7 +60,7 @@ final class SearchViewController: UIViewController {
     private func setupCollection() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "categoriesCell")
+        collectionView.register(CategoriesCollectionViewCell.self)
     }
 
     private func setupLayout() {
@@ -94,10 +94,7 @@ extension SearchViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: "categoriesCell",
-            for: indexPath
-        ) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
+        let cell = collectionView.dequeueReusableCell(CategoriesCollectionViewCell.self, for: indexPath)
         cell.configureCell(model: categoriesItems[indexPath.row])
         return cell
     }
