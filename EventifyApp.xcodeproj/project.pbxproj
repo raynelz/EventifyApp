@@ -46,6 +46,7 @@
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
 		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
 		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
+		ECA6D4732BE5633C00C4AD6A /* SearchMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D4722BE5633C00C4AD6A /* SearchMockData.swift */; };
 		ECACC3CF2BDC2862004D1EEC /* MyActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */; };
 		ECAEE1B12BC430CE00027EEC /* DetailsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */; };
 		ECB3223B2BDD88DF006445AB /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECB3223A2BDD88DF006445AB /* RecommendationCell.swift */; };
@@ -99,6 +100,7 @@
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		ECA6D4722BE5633C00C4AD6A /* SearchMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMockData.swift; sourceTree = "<group>"; };
 		ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesViewController.swift; sourceTree = "<group>"; };
 		ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemCell.swift; sourceTree = "<group>"; };
 		ECB3223A2BDD88DF006445AB /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				EC3101822BA845BC00EC55D2 /* SearchViewController.swift */,
 				EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */,
 				ECF338132BA882770055994D /* CategoriesModel.swift */,
+				ECA6D4722BE5633C00C4AD6A /* SearchMockData.swift */,
 			);
 			path = SearchVC;
 			sourceTree = "<group>";
@@ -531,6 +534,7 @@
 				EC5A9AD62BC1F7000028AB03 /* DetailModel.swift in Sources */,
 				ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */,
 				EC4138512BDC4B05000B0301 /* EventCell.swift in Sources */,
+				ECA6D4732BE5633C00C4AD6A /* SearchMockData.swift in Sources */,
 				EC96BA472BDEAD3D007E430C /* FavoritesEventsMockData.swift in Sources */,
 				ECB94FFF2BA248E8004550F7 /* EventifyApp.xcdatamodeld in Sources */,
 				EC43D6DD2BDE610100DADD35 /* NoEventsCell.swift in Sources */,
@@ -699,7 +703,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -733,7 +737,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
