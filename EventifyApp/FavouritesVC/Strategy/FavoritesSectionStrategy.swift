@@ -36,7 +36,6 @@ class EventsStrategy: FavoritesSectionStrategy {
         }
     }
     
-    
     func countOfSections() -> Int {
         items.count
     }

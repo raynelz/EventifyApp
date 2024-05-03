@@ -11,11 +11,9 @@ import SnapKit
 final class SearchViewController: UIViewController {
 
     let segmentItems = ["Для студентов", "Для поступающих"]
-    let categoriesItems = [
-        CategoriesModel(title: "Спорт", image: UIImage(named: "sport"), color: "#A4473F"),
-        CategoriesModel(title: "Наука", image: UIImage(named: "science"), color: "#073B8F"),
-        CategoriesModel(title: "ITAM", image: UIImage(named: "itam"), color: "#000000")
-    ]
+
+    let students = SearchMockData.shared.studentsData
+    let abiturients = SearchMockData.shared.abiturientsData
 
     private lazy var searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -28,8 +26,14 @@ final class SearchViewController: UIViewController {
         let control = UISegmentedControl(items: segmentItems)
         control.selectedSegmentTintColor = UIColor(hex: "#161618")
         control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         return control
     }()
+
+    @objc
+    private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        collectionView.reloadData()
+    }
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -58,7 +62,6 @@ final class SearchViewController: UIViewController {
     }
 
     private func setupCollection() {
-        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(CategoriesCollectionViewCell.self)
     }
@@ -82,21 +85,21 @@ final class SearchViewController: UIViewController {
     }
 }
 
-extension SearchViewController: UICollectionViewDelegate {
-}
-
 extension SearchViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoriesItems.count
+        return segmentControl.selectedSegmentIndex == 0 ? students.count : abiturients.count
     }
     
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(CategoriesCollectionViewCell.self, for: indexPath)
-        cell.configureCell(model: categoriesItems[indexPath.row])
-        return cell
+        let currentModel = segmentControl.selectedSegmentIndex == 0 ? students : abiturients
+        
+        return collectionView.createCellForItems(
+            currentModel,
+            cellType: CategoriesCollectionViewCell.self,
+            at: indexPath
+        )
     }
-
 }
