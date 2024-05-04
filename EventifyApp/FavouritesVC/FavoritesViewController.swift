@@ -19,7 +19,7 @@ final class FavoritesViewController: UIViewController {
 
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
-        control.selectedSegmentTintColor = UIColor(hex: "#161618")
+        control.selectedSegmentTintColor = .mainBackground
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         return control
@@ -53,7 +53,7 @@ final class FavoritesViewController: UIViewController {
         title = "Избранное"
         navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
 
-        view.backgroundColor = UIColor(hex: "#161618")
+        view.backgroundColor = .mainBackground
         view.addSubviews(segmentControl, collectionView)
     }
 

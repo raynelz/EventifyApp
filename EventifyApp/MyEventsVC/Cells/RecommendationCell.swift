@@ -22,7 +22,7 @@ final class RecommendationCell: UICollectionViewCell {
         let button = UIButton()
         button.setImage(
             UIImage(systemName: "heart")?.withTintColor(
-                UIColor(hex: "#F18EF0"),
+                .brandPink,
                 renderingMode: .alwaysOriginal
             ).resized(to: CGSize(width: 30, height: 25)),
             for: .normal
@@ -34,16 +34,15 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var title: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .label
         label.numberOfLines = 0
         return label
     }()
 
     private lazy var dayContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .cellBackground
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1
         view.layer.masksToBounds = true
         return view
@@ -52,16 +51,15 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var dayLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .center
         return label
     }()
 
     private lazy var timeContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .cellBackground
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1
         view.layer.masksToBounds = true
         return view
@@ -70,16 +68,15 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var timeLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .center
         return label
     }()
 
     private lazy var audienceContainer: UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .cellBackground
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.white.cgColor
         view.layer.borderWidth = 1
         view.layer.masksToBounds = true
         return view
@@ -88,7 +85,7 @@ final class RecommendationCell: UICollectionViewCell {
     private lazy var audienceLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .label
         label.textAlignment = .center
         return label
     }()
@@ -103,8 +100,16 @@ final class RecommendationCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+
+        if traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            updateColors()
+        }
+    }
+
     private func setupViews() {
-        contentView.backgroundColor = .black
+        contentView.backgroundColor = .cellBackground
         contentView.layer.cornerRadius = 10
         contentView.addSubviews(
             imageView,
@@ -168,12 +173,18 @@ final class RecommendationCell: UICollectionViewCell {
         })
     }
 
+    private func updateColors() {
+        dayContainer.layer.borderColor = UIColor.cellTint.cgColor
+        timeContainer.layer.borderColor = UIColor.cellTint.cgColor
+        audienceContainer.layer.borderColor = UIColor.cellTint.cgColor
+    }
+
     @objc
     func likeTapped(_ sender: UIButton) {
         if sender.isSelected {
             likeButton.setImage(
                 UIImage(systemName: "heart")?.withTintColor(
-                    UIColor(hex: "#F18EF0"),
+                    .brandPink,
                     renderingMode: .alwaysOriginal
                 ).resized(to: CGSize(width: 30, height: 25)),
                 for: .normal
@@ -182,7 +193,7 @@ final class RecommendationCell: UICollectionViewCell {
         } else {
             likeButton.setImage(
                 UIImage(systemName: "heart.fill")?.withTintColor(
-                    UIColor(hex: "#F18EF0"),
+                    .brandPink,
                     renderingMode: .alwaysOriginal
                 ).resized(to: CGSize(width: 30, height: 25)),
                 for: .normal

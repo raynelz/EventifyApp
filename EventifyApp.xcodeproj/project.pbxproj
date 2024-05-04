@@ -45,8 +45,8 @@
 		EC96BA4B2BDEB394007E430C /* FavoritesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA4A2BDEB394007E430C /* FavoritesCell.swift */; };
 		EC96BA4D2BDEB46C007E430C /* FavoritesRecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC96BA4C2BDEB46C007E430C /* FavoritesRecommendationCell.swift */; };
 		ECA12F072BAC9E9900720D1A /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */; };
-		ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */; };
-		ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LogInViewController.swift */; };
+		ECA12F082BAC9E9900720D1A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F052BAC9E9900720D1A /* RegisterViewController.swift */; };
+		ECA12F092BAC9E9900720D1A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA12F062BAC9E9900720D1A /* LoginViewController.swift */; };
 		ECA6D4732BE5633C00C4AD6A /* SearchMockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA6D4722BE5633C00C4AD6A /* SearchMockData.swift */; };
 		ECACC3CF2BDC2862004D1EEC /* MyActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */; };
 		ECAEE1B12BC430CE00027EEC /* DetailsItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */; };
@@ -100,8 +100,8 @@
 		EC96BA4A2BDEB394007E430C /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
 		EC96BA4C2BDEB46C007E430C /* FavoritesRecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRecommendationCell.swift; sourceTree = "<group>"; };
 		ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
-		ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		ECA12F062BAC9E9900720D1A /* LogInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		ECA12F052BAC9E9900720D1A /* RegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		ECA12F062BAC9E9900720D1A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		ECA6D4722BE5633C00C4AD6A /* SearchMockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMockData.swift; sourceTree = "<group>"; };
 		ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyActivitiesViewController.swift; sourceTree = "<group>"; };
 		ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsItemCell.swift; sourceTree = "<group>"; };
@@ -281,8 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				EC93D2882BB15C0400633AA0 /* Firebase */,
-				ECA12F062BAC9E9900720D1A /* LogInViewController.swift */,
-				ECA12F052BAC9E9900720D1A /* SignUpViewController.swift */,
+				ECA12F062BAC9E9900720D1A /* LoginViewController.swift */,
+				ECA12F052BAC9E9900720D1A /* RegisterViewController.swift */,
 				ECA12F042BAC9E9900720D1A /* ResetPasswordViewController.swift */,
 			);
 			path = Authentication;
@@ -525,7 +525,7 @@
 				ECACC3CF2BDC2862004D1EEC /* MyActivitiesViewController.swift in Sources */,
 				2DCD4C002BA7B116009A5521 /* UIColor+hex.swift in Sources */,
 				2DCD4BFD2BA7AA55009A5521 /* AppTabBarController.swift in Sources */,
-				ECA12F092BAC9E9900720D1A /* LogInViewController.swift in Sources */,
+				ECA12F092BAC9E9900720D1A /* LoginViewController.swift in Sources */,
 				EC5B29932BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift in Sources */,
 				2D07AE7D2BE4000300C28BB7 /* Reusable.swift in Sources */,
 				ECB3223B2BDD88DF006445AB /* RecommendationCell.swift in Sources */,
@@ -535,7 +535,7 @@
 				2D07AE802BE41F5600C28BB7 /* FavoritesSectionStrategy.swift in Sources */,
 				EC7178202BDEEBF700BCB478 /* OrganizerCell.swift in Sources */,
 				EC5A9AD62BC1F7000028AB03 /* DetailModel.swift in Sources */,
-				ECA12F082BAC9E9900720D1A /* SignUpViewController.swift in Sources */,
+				ECA12F082BAC9E9900720D1A /* RegisterViewController.swift in Sources */,
 				EC4138512BDC4B05000B0301 /* EventCell.swift in Sources */,
 				ECA6D4732BE5633C00C4AD6A /* SearchMockData.swift in Sources */,
 				EC96BA472BDEAD3D007E430C /* FavoritesEventsMockData.swift in Sources */,

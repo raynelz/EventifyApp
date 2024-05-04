@@ -44,13 +44,13 @@ final class ProfileViewController: UIViewController {
         setupViews()
         setupLayout()
     }
-    
+
     private func setupViews() {
         title = "Профиль"
         navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
 
         view.addSubview(tableView)
-        view.backgroundColor = .background
+        view.backgroundColor = .mainBackground
     }
 
     private func setupLayout() {
@@ -77,7 +77,7 @@ extension ProfileViewController: UITableViewDataSource {
         cell.accessoryType = item.hasDisclosure ? .disclosureIndicator : .none
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
             let header = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 20))
@@ -90,6 +90,21 @@ extension ProfileViewController: UITableViewDataSource {
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        if indexPath.section == profileItems.count - 1 {
+            AuthService.shared.logOut { error in
+                if let error = error {
+                    print(error)
+                } else {
+                    if let window = self.view.window {
+                        let nextVc = UINavigationController(rootViewController: RegisterViewController())
+                        window.rootViewController = nextVc
+                        window.makeKeyAndVisible()
+                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {})
+                    }
+                }
+            }
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

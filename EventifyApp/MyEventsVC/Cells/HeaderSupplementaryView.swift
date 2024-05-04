@@ -13,7 +13,7 @@ final class HeaderSupplementaryView: UICollectionReusableView, Reusable {
         let label = UILabel()
         label.textAlignment = .center
         label.font = .systemFont(ofSize: 20, weight: .medium)
-        label.textColor = .white
+        label.textColor = .label
         return label
     }()
 

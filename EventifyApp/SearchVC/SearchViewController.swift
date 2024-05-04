@@ -24,7 +24,7 @@ final class SearchViewController: UIViewController {
 
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
-        control.selectedSegmentTintColor = UIColor(hex: "#161618")
+        control.selectedSegmentTintColor = .mainBackground
         control.selectedSegmentIndex = 0
         control.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         return control
@@ -58,7 +58,7 @@ final class SearchViewController: UIViewController {
         title = "Поиск"
         navigationController?.addCustomBottomLine(color: .navigationLine, height: 1)
         
-        view.backgroundColor = UIColor(hex: "#161618")
+        view.backgroundColor = .mainBackground
         view.addSubviews(searchBar, segmentControl, collectionView)
     }
 

@@ -9,12 +9,12 @@ import UIKit
 import SnapKit
 import FirebaseAuth
 
-final class LogInViewController: UIViewController {
+final class LoginViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Вход"
         label.font = .systemFont(ofSize: 40, weight: .semibold)
-        label.textColor = .white
+        label.textColor = .label
         return label
     }()
 
@@ -25,7 +25,7 @@ final class LogInViewController: UIViewController {
         Это займёт меньше минуты.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(hex: "#858591")
+        label.textColor = .secondaryLabel
         label.numberOfLines = 0
         return label
     }()
@@ -36,10 +36,10 @@ final class LogInViewController: UIViewController {
         field.backgroundColor = .clear
         field.layer.cornerRadius = 10
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.white.cgColor
+        field.layer.borderColor = UIColor.textfieldTint.cgColor
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
-        field.textColor = .white
+        field.textColor = .label
         field.delegate = self
         let placeholder = field.placeholder ?? ""
         field.attributedPlaceholder = NSAttributedString(
@@ -59,10 +59,10 @@ final class LogInViewController: UIViewController {
         field.backgroundColor = .clear
         field.layer.cornerRadius = 10
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.white.cgColor
+        field.layer.borderColor = UIColor.textfieldTint.cgColor
         field.isSecureTextEntry = true
         field.returnKeyType = .done
-        field.textColor = .white
+        field.textColor = .label
         field.delegate = self
 
         let placeholder = field.placeholder ?? ""
@@ -106,7 +106,7 @@ final class LogInViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Забыли пароль?", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16, weight: .regular)
-        button.setTitleColor(UIColor(hex: "#858591"), for: .normal)
+        button.setTitleColor(.secondaryLabel, for: .normal)
         button.addTarget(self, action: #selector(restorePassword), for: .touchUpInside)
         return button
     }()
@@ -115,7 +115,7 @@ final class LogInViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Войти", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(hex: "#DDF14A")
+        button.backgroundColor = .brandYellow
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(loginIntoAccount), for: .touchUpInside)
         return button
@@ -124,21 +124,24 @@ final class LogInViewController: UIViewController {
     private lazy var questionLabel: UILabel = {
         let label = UILabel()
         label.text = "Нет аккаунта?"
-        label.textColor = UIColor(hex: "#858591")
+        label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 16, weight: .regular)
         return label
     }()
     private lazy var registrationButton: UIButton = {
         let button = UIButton()
 
+        // swiftlint: disable all
         let attributedTitle = NSAttributedString(
             string: "Регистрация",
             attributes: [
                 .underlineStyle: NSUnderlineStyle.single.rawValue,
-                .foregroundColor: UIColor(hex: "#DDF14A"),
+                .foregroundColor: UIColor(named: "brandYellow")!,
                 .font: UIFont.systemFont(ofSize: 16, weight: .regular)
             ]
         )
+        // swiftlint: enable all
+        
         button.setAttributedTitle(attributedTitle, for: .normal)
         button.addTarget(self, action: #selector(registrationSegue), for: .touchUpInside)
         return button
@@ -148,7 +151,7 @@ final class LogInViewController: UIViewController {
         let label = UILabel()
         label.text = "Неправильно введён email или пароль."
         label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(hex: "#FF8F88")
+        label.textColor = .error
         label.isHidden = true
         return label
     }()
@@ -160,7 +163,7 @@ final class LogInViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.backgroundColor = UIColor(hex: "#161618")
+        view.backgroundColor = .authBackground
         navigationItem.setHidesBackButton(true, animated: true)
         view.addSubviews(
             registrationButton,
@@ -233,15 +236,15 @@ final class LogInViewController: UIViewController {
         AuthService.shared.loginUser(with: userModel) { error in
             if let error = error {
                 
-                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
-                self.passwordTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
-                
+                self.emailTextField.layer.borderColor = UIColor.error.cgColor
+                self.passwordTextField.layer.borderColor = UIColor.error.cgColor
+
                 self.errorLabel.isHidden = false
                 
                 Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
-                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
-                    self?.passwordTextField.layer.borderColor = UIColor.white.cgColor
-                    
+                    self?.emailTextField.layer.borderColor = UIColor.textfieldTint.cgColor
+                    self?.passwordTextField.layer.borderColor = UIColor.textfieldTint.cgColor
+
                     self?.errorLabel.isHidden = true
                 }
                 print(error.localizedDescription)
@@ -275,7 +278,7 @@ final class LogInViewController: UIViewController {
     }
 }
 
-extension LogInViewController: UITextFieldDelegate {
+extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == emailTextField {
             textField.resignFirstResponder()
