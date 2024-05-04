@@ -14,7 +14,7 @@ final class ProfileHeaderView: UIView {
         view.layer.cornerRadius = 16
         return view
     }()
-    
+
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Иванов Иван"
@@ -22,7 +22,7 @@ final class ProfileHeaderView: UIView {
         label.textColor = .black
         return label
     }()
-    
+
     private lazy var editLabel: UILabel = {
         let label = UILabel()
         label.text = "Редактировать профиль"
@@ -40,37 +40,37 @@ final class ProfileHeaderView: UIView {
         )
         return imageView
     }()
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupViews()
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setupViews() {
         let contentStack = makeContentStack()
-        
+
         addSubviews(contentView)
         contentView.addSubviews(contentStack, disclosure)
-        
+
         contentView.snp.makeConstraints {
             $0.horizontalEdges.equalToSuperview().inset(20)
             $0.height.equalTo(80)
         }
-        
+
         contentStack.snp.makeConstraints {
             $0.leading.verticalEdges.equalToSuperview().inset(16)
         }
-        
+
         disclosure.snp.makeConstraints {
             $0.centerY.equalTo(contentStack.snp.centerY)
             $0.trailing.equalToSuperview().inset(16)
         }
     }
-    
+
     private func makeContentStack() -> UIStackView {
         let stack = UIStackView(
             arrangedSubviews: [

@@ -15,11 +15,14 @@ final class ProfileViewController: UIViewController {
         tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.tableHeaderView = ProfileHeaderView()
+        tableView.setup(header: ProfileHeaderView())
         return tableView
     }()
 
     private let profileItems: [[ProfileSection]] = [
+        [
+            .item("Пустышка")
+        ],
         [
             .item("Добавить мероприятие"),
         ],
@@ -38,16 +41,22 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupViews()
+        setupLayout()
     }
     
     private func setupViews() {
+        title = "Профиль"
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+
         view.addSubview(tableView)
         view.backgroundColor = .background
+    }
 
+    private func setupLayout() {
         tableView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(view.snp.topMargin).offset(14)
+            $0.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }

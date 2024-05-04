@@ -55,8 +55,9 @@ final class SearchViewController: UIViewController {
     }
 
     private func setupViews() {
-        navigationController?.addCustomBottomLine(color: UIColor(hex: "#858591"), height: 1)
         title = "Поиск"
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1)
+        
         view.backgroundColor = UIColor(hex: "#161618")
         view.addSubviews(searchBar, segmentControl, collectionView)
     }

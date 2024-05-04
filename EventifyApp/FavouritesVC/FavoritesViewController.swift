@@ -51,8 +51,9 @@ final class FavoritesViewController: UIViewController {
 
     private func setupViews() {
         title = "Избранное"
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+
         view.backgroundColor = UIColor(hex: "#161618")
-        navigationController?.addCustomBottomLine(color: UIColor(hex: "#858591"), height: 1.0)
         view.addSubviews(segmentControl, collectionView)
     }
 
