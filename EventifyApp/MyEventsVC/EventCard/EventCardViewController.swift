@@ -25,7 +25,7 @@ final class EventCardViewController: UIViewController {
 
     private lazy var divider: UIView = {
         let view = UIView()
-        view.backgroundColor = .white
+        view.backgroundColor = .divider
         return view
     }()
 
@@ -73,13 +73,29 @@ final class EventCardViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.setImage(
             UIImage(systemName: "chevron.right")?.withTintColor(
-                .brandYellow,
+                .linker,
                 renderingMode: .alwaysOriginal
             ),
             for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
-        button.setTitleColor(.brandYellow, for: .normal)
+        button.setTitleColor(.linker, for: .normal)
         button.addTarget(self, action: #selector(linkTapped), for: .touchUpInside)
+        return button
+    }()
+
+    private lazy var cancelButton: UIButton = {
+        let button = UIButton()
+        let attributedTitle = NSAttributedString(
+            string: "Отменить запись на мероприятие",
+            attributes: [
+                .font: UIFont.systemFont(ofSize: 17, weight: .medium)
+            ]
+        )
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        button.backgroundColor = .error
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(cancelEvent), for: .touchUpInside)
         return button
     }()
 
@@ -99,47 +115,54 @@ final class EventCardViewController: UIViewController {
             titleLabel,
             detailsCollectionView,
             descriptionLabel,
-            linkButton
+            linkButton,
+            cancelButton
         )
     }
 
     private func setupLayout() {
-        qrImageView.snp.makeConstraints({
+        qrImageView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(65)
-        })
+        }
 
-        divider.snp.makeConstraints({
+        divider.snp.makeConstraints {
             $0.top.equalTo(qrImageView.snp.bottom).offset(24)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(1)
-        })
+        }
 
-        typeOfEventLabel.snp.makeConstraints({
+        typeOfEventLabel.snp.makeConstraints {
             $0.top.equalTo(divider.snp.top).offset(16)
             $0.leading.equalToSuperview().offset(16)
-        })
+        }
 
-        titleLabel.snp.makeConstraints({
+        titleLabel.snp.makeConstraints {
             $0.top.equalTo(typeOfEventLabel.snp.bottom).offset(4)
             $0.leading.equalTo(typeOfEventLabel.snp.leading)
-        })
-        
-        detailsCollectionView.snp.makeConstraints({
+        }
+
+        detailsCollectionView.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(16)
             $0.horizontalEdges.equalToSuperview().inset(16)
             $0.height.equalTo(40)
-        })
+        }
 
-        descriptionLabel.snp.makeConstraints({
+        descriptionLabel.snp.makeConstraints {
             $0.top.equalTo(detailsCollectionView.snp.bottom).offset(28)
             $0.horizontalEdges.equalToSuperview().inset(16)
-        })
+        }
 
-        linkButton.snp.makeConstraints({
+        linkButton.snp.makeConstraints {
             $0.top.equalTo(descriptionLabel.snp.bottom).offset(8)
             $0.leading.equalToSuperview().offset(16)
-        })
+        }
+
+        cancelButton.snp.makeConstraints {
+            $0.top.equalTo(linkButton.snp.bottom).offset(49)
+            $0.horizontalEdges.equalToSuperview().inset(16)
+            $0.height.equalTo(48)
+        }
     }
 
     private func configureCollection() {
@@ -154,6 +177,22 @@ final class EventCardViewController: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+
+    @objc
+    func cancelEvent(_ sender: UIButton) {
+        AlertPresenter.shared.makeAlert(
+            title: "Вы действительно хотите отменить запись на мероприятие?",
+            message: "Это мероприятие пропадет из раздела «Мои ивенты»"
+        ) {
+                AlertAction.default(title: "Нет") {
+                    print("Пользователь нажал Нет")
+                }
+            
+                AlertAction.default(title: "Да") {
+                    print("Пользователь нажал Да")
+                }
+        }
+    }
 }
 
 extension EventCardViewController: UICollectionViewDelegate {
@@ -164,7 +203,7 @@ extension EventCardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.count
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(DetailsItemCell.self, for: indexPath)
         cell.configure(with: data[indexPath.row])
