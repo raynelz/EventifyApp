@@ -26,8 +26,8 @@ class AppTabBarController: UITabBarController {
     private func setupAppearance() {
         let appearance = UITabBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(hex: "#242427")
-        tabBar.tintColor = UIColor(hex: "DDF14A")
+        appearance.backgroundColor = .secondaryBackground
+        tabBar.tintColor = .tabbarTint
         tabBar.scrollEdgeAppearance = appearance
         tabBar.layer.cornerRadius = 10
         tabBar.layer.masksToBounds = true

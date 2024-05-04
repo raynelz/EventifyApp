@@ -18,9 +18,4 @@ extension UITableView {
             header.topAnchor.constraint(equalTo: topAnchor)
         ])
     }
-
-    func updateHeaderLayout() {
-        guard let tableHeader = tableHeaderView else { return }
-        tableHeader.layoutIfNeeded()
-    }
 }

@@ -10,7 +10,7 @@ import UIKit
 final class ProfileHeaderView: UIView {
     private lazy var contentView: UIView = {
         let view = UIView()
-        view.backgroundColor = UIColor(hex: "DEF14A")
+        view.backgroundColor = .brandYellow
         view.layer.cornerRadius = 16
         return view
     }()

@@ -32,7 +32,7 @@ final class EventCardViewController: UIViewController {
     private lazy var typeOfEventLabel: UILabel = {
         let label = UILabel()
         label.text = "Экскурсия"
-        label.textColor = UIColor(hex: "#858591")
+        label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 17, weight: .light)
         return label
     }()
@@ -40,7 +40,7 @@ final class EventCardViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "День открытых дверей"
-        label.textColor = .white
+        label.textColor = .label
         label.font = .systemFont(ofSize: 24, weight: .medium)
         return label
     }()
@@ -61,7 +61,7 @@ final class EventCardViewController: UIViewController {
         // swiftlint: disable all
         label.text = "Дни открытых дверей — это уникальная возможность для старшеклассников больше узнать о специальностях, которым обучают в одном из лучших технических университетов России."
         // swiftlint: enable all
-        label.textColor = .white
+        label.textColor = .label
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 17, weight: .regular)
         return label
@@ -73,12 +73,12 @@ final class EventCardViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
         button.setImage(
             UIImage(systemName: "chevron.right")?.withTintColor(
-                UIColor(hex: "#DDF14A"),
+                .brandYellow,
                 renderingMode: .alwaysOriginal
             ),
             for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
-        button.setTitleColor(UIColor(hex: "#DDF14A"), for: .normal)
+        button.setTitleColor(.brandYellow, for: .normal)
         button.addTarget(self, action: #selector(linkTapped), for: .touchUpInside)
         return button
     }()
@@ -91,7 +91,7 @@ final class EventCardViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.backgroundColor = UIColor(hex: "#161618")
+        view.backgroundColor = .mainBackground
         view.addSubviews(
             qrImageView,
             divider,

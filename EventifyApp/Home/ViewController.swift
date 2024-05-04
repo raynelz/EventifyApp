@@ -9,15 +9,13 @@ import UIKit
 import SnapKit
 
 final class ViewController: UIViewController {
-    
-    private lazy var logOutButton: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 10
-        button.backgroundColor = .white
-        button.setTitle("Log Out", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(logOut), for: .touchUpInside)
-        return button
+
+    private lazy var textLabel: UILabel = {
+        let label = UILabel()
+        label.text = "IN WORK!"
+        label.textColor = .label
+        label.font = .systemFont(ofSize: 30, weight: .semibold)
+        return label
     }()
 
     override func viewDidLoad() {
@@ -27,14 +25,13 @@ final class ViewController: UIViewController {
     }
 
     private func setupViews() {
-        view.backgroundColor = UIColor(hex: "#161618")
-        view.addSubview(logOutButton)
+        view.backgroundColor = .mainBackground
+        view.addSubview(textLabel)
     }
 
     private func setupLayout() {
-        logOutButton.snp.makeConstraints({
+        textLabel.snp.makeConstraints({
             $0.center.equalToSuperview()
-            $0.size.equalTo(80)
         })
     }
 

@@ -15,8 +15,8 @@ final class ResetPasswordViewController: UIViewController {
         let label = UILabel()
         label.text = "Сброс пароля"
         label.font = .systemFont(ofSize: 40, weight: .semibold)
-        label.textColor = .white
-        
+        label.textColor = .label
+
         return label
     }()
     
@@ -28,7 +28,7 @@ final class ResetPasswordViewController: UIViewController {
         сыллкой для сброса пароля.
         """
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(hex: "#858591")
+        label.textColor = .secondaryLabel
         label.numberOfLines = 0
         
         return label
@@ -40,10 +40,10 @@ final class ResetPasswordViewController: UIViewController {
         field.backgroundColor = .clear
         field.layer.cornerRadius = 10
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.white.cgColor
+        field.layer.borderColor = UIColor.textfieldTint.cgColor
         field.keyboardType = .emailAddress
         field.returnKeyType = .next
-        field.textColor = .white
+        field.textColor = .label
         field.delegate = self
 
         let placeholder = field.placeholder ?? ""
@@ -62,7 +62,7 @@ final class ResetPasswordViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Отправить", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(hex: "#DDF14A")
+        button.backgroundColor = .brandYellow
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(sendResetEmail), for: .touchUpInside)
 
@@ -74,7 +74,7 @@ final class ResetPasswordViewController: UIViewController {
         label.text = "Электронная почта не найдена."
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 14)
-        label.textColor = UIColor(hex: "#FF8F88")
+        label.textColor = .error
         label.isHidden = true
         return label
     }()
@@ -87,7 +87,7 @@ final class ResetPasswordViewController: UIViewController {
     }
     
     private func setupViews() {
-        view.backgroundColor = UIColor(hex: "#161618")
+        view.backgroundColor = .authBackground
         view.addSubviews(titleLabel, descriptionLabel, emailTextField, sendButton, errorLabel)
     }
     
@@ -127,12 +127,12 @@ final class ResetPasswordViewController: UIViewController {
         let userModel = UserModel(email: email, password: "no password")
         AuthService.shared.forgotPassword(with: userModel) { error in
             if let error = error {
-                self.emailTextField.layer.borderColor = UIColor(hex: "#FF8F88").cgColor
+                self.emailTextField.layer.borderColor = UIColor.error.cgColor
                 
                 self.errorLabel.isHidden = false
                 
                 Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { [weak self] _ in
-                    self?.emailTextField.layer.borderColor = UIColor.white.cgColor
+                    self?.emailTextField.layer.borderColor = UIColor.textfieldTint.cgColor
                     
                     self?.errorLabel.isHidden = true
                 }
