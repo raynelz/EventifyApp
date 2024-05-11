@@ -63,9 +63,9 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
 extension CategoriesCollectionViewCell: Configurable, Reusable {
     typealias DataType = CategoriesModel
 
-    func configure(with data: DataType) {
-        textLabel.text = data.title
-        containerImageView.image = data.image
-        contentView.backgroundColor = UIColor(hex: data.color)
+    func configure(with model: DataType) {
+        textLabel.text = model.title
+        containerImageView.image = model.image
+        contentView.backgroundColor = UIColor(hex: model.color)
     }
 }

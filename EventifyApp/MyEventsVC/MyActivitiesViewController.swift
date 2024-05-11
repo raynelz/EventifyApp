@@ -97,11 +97,10 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
                 at: indexPath
             )
         case let .recommendations(recommendations):
-            return collectionView.createCellForItems(
-                recommendations,
-                cellType: RecommendationCell.self,
-                at: indexPath
-            )
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: recommendations[indexPath.row])
+            cell.configureLayout(for: .event)
+            return cell
         case .empty:
             return collectionView.createCellForItems(
                 [],

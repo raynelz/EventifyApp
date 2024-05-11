@@ -19,7 +19,7 @@ extension Reusable {
 
 protocol Configurable {
     associatedtype DataType
-    func configure(with data: DataType)
+    func configure(with model: DataType)
 }
 
 extension UITableViewCell: Reusable {}

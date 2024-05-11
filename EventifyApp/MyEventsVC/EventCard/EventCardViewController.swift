@@ -68,15 +68,15 @@ final class EventCardViewController: UIViewController {
     }()
 
     private lazy var linkButton: UIButton = {
+        let image = UIImage(systemName: "chevron.right")?.withTintColor(
+            .brandYellow,
+            renderingMode: .alwaysOriginal
+        )
+        
         let button = UIButton()
         button.setTitle("Перейти к странице мероприятия", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
-        button.setImage(
-            UIImage(systemName: "chevron.right")?.withTintColor(
-                .brandYellow,
-                renderingMode: .alwaysOriginal
-            ),
-            for: .normal)
+        button.setImage(image, for: .normal)
         button.semanticContentAttribute = .forceRightToLeft
         button.setTitleColor(.brandYellow, for: .normal)
         button.addTarget(self, action: #selector(linkTapped), for: .touchUpInside)
@@ -166,9 +166,7 @@ extension EventCardViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(DetailsItemCell.self, for: indexPath)
-        cell.configure(with: data[indexPath.row])
-        return cell
+        return collectionView.createCellForItems(data, cellType: DetailsItemCell.self, at: indexPath)
     }
 
 }

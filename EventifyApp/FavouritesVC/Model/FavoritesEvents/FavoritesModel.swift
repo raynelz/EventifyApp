@@ -6,11 +6,3 @@
 //
 
 import UIKit
-
-struct FavoritesModel {
-    let name: String
-    let firstTag: String
-    let secondTag: String
-    let thirdTag: String
-    let image: UIImage?
-}

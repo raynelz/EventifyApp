@@ -15,23 +15,17 @@ struct FavoritesEventsMockData {
             [
                 .init(
                     name: "День открытых дверей университета МИСИС",
-                    firstTag: "12 декабря",
-                    secondTag: "17:30",
-                    thirdTag: "онлайн",
+                    items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                     image: UIImage(named: "eventIcon2")
                 ),
                 .init(
                     name: "Ярмарка вакансий",
-                    firstTag: "21 марта",
-                    secondTag: "10:00",
-                    thirdTag: "онлайн",
+                    items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                     image: UIImage(named: "eventIcon")
                 ),
                 .init(
                     name: "Весенняя серия турнира «Что? Где? Когда?»",
-                    firstTag: "27 марта",
-                    secondTag: "18:00",
-                    thirdTag: "К-111",
+                    items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                     image: UIImage(named: "eventIcon3")
                 )
             ]
@@ -42,23 +36,17 @@ struct FavoritesEventsMockData {
         .recommendations([
             .init(
                 name: "День открытых дверей университета МИСИС",
-                firstTag: "12 декабря",
-                secondTag: "17:30",
-                thirdTag: "онлайн",
+                items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                 image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
-                firstTag: "12 декабря",
-                secondTag: "17:30",
-                thirdTag: "онлайн",
+                items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                 image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
-                firstTag: "12 декабря",
-                secondTag: "17:30",
-                thirdTag: "онлайн",
+                items: ["12 декабря", "17:30", "онлайн", "12 декабря", "17:30", "онлайн"],
                 image: UIImage(named: "eventIcon2")
             ),
         ])

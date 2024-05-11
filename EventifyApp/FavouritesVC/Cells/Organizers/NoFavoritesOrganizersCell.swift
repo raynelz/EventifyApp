@@ -9,13 +9,15 @@ import SnapKit
 
 final class NoFavoritesOrganizersCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(hex: "#858591")
-        imageView.image = UIImage(systemName: "heart")?.withTintColor(
+        let image = UIImage(systemName: "heart")?.withTintColor(
             UIColor(hex: "#858591"),
             renderingMode: .alwaysOriginal
         ).resized(to: CGSize(width: 120, height: 100))
+        
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = UIColor(hex: "#858591")
+        imageView.image = image
         return imageView
     }()
 
@@ -58,5 +60,6 @@ final class NoFavoritesOrganizersCell: UICollectionViewCell {
 
 extension NoFavoritesOrganizersCell: Configurable, Reusable {
     typealias DataType = Void
-    func configure(with data: DataType) {}
+    
+    func configure(with model: DataType) {}
 }

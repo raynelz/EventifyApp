@@ -22,20 +22,16 @@ class EventsStrategy: FavoritesSectionStrategy {
 
     func cellForItem(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
         switch items[indexPath.section] {
-        case .favorites(let favorites):
-            collectionView.createCellForItems(
-                favorites,
-                emptyCellType: NoEventsCell.self,
-                cellType: FavoritesCell.self,
-                at: indexPath
-            )
-        case .recommendations(let recommendations):
-            collectionView.createCellForItems(recommendations, cellType: FavoritesRecommendationCell.self, at: indexPath)
+        case .favorites(let data), .recommendations(let data):
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: data[indexPath.row])
+            cell.configureLayout(for: .event)
+            return cell
         case .empty:
-            collectionView.createCellForItems([], cellType: NoEventsCell.self, at: indexPath)
+            return collectionView.createCellForItems([], cellType: NoEventsCell.self, at: indexPath)
         }
     }
-    
+
     func countOfSections() -> Int {
         items.count
     }
@@ -51,23 +47,23 @@ class OrganizersStrategy: FavoritesSectionStrategy {
     init(items: [FavoritesSectionModel]) {
         self.items = items
     }
-    
+
     func cellForItem(at indexPath: IndexPath, in collectionView: UICollectionView) -> UICollectionViewCell {
         switch items[indexPath.section] {
-        case .favorites(let favorites):
-            collectionView.createCellForItems(
-                favorites,
-                emptyCellType: NoFavoritesOrganizersCell.self,
-                cellType: OrganizerCell.self,
+        case .favorites(let data), .recommendations(let data):
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: data[indexPath.row])
+            cell.configureLayout(for: .organizer)
+            return cell
+        case .empty:
+            return collectionView.createCellForItems(
+                [],
+                cellType: NoFavoritesOrganizersCell.self,
                 at: indexPath
             )
-        case .recommendations(let recommendations):
-            collectionView.createCellForItems(recommendations, cellType: OrganizersRecommendationCell.self, at: indexPath)
-        case .empty:
-            collectionView.createCellForItems([], cellType: NoFavoritesOrganizersCell.self, at: indexPath)
         }
     }
-    
+
     func countOfSections() -> Int {
         items.count
     }
