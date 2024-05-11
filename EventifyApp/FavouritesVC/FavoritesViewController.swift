@@ -40,6 +40,11 @@ final class FavoritesViewController: UIViewController {
         navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -91,6 +96,13 @@ extension FavoritesViewController {
             guard let self = self else { return nil }
             return self.favoritesEventsData[sectionIndex].makeLayout()
         }
+    }
+}
+
+extension FavoritesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = EventCardViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
