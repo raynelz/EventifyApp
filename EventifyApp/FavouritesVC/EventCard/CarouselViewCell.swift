@@ -25,10 +25,6 @@ final class CarouselViewCell: UICollectionViewCell {
         setupLayout()
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-    }
-
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

@@ -18,9 +18,16 @@ final class EventCardViewController: UIViewController {
         collection.backgroundColor = .clear
         collection.showsHorizontalScrollIndicator = false
 
-        layout.itemSize = CGSize(width: 398, height: 248)
-        layout.sectionInset = .zero
+        collection.register(CarouselViewCell.self, forCellWithReuseIdentifier: CarouselViewCell.cellId)
+        collection.dataSource = self
+        collection.delegate = self
+        collection.showsHorizontalScrollIndicator = false
+        collection.isPagingEnabled = true
+
         layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 398, height: 248)
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
 
         return collection
     }()
@@ -31,6 +38,9 @@ final class EventCardViewController: UIViewController {
         pageControl.currentPageIndicatorTintColor = .white
         pageControl.numberOfPages = images.count
         pageControl.currentPage = currentPage
+        pageControl.numberOfPages = images.count
+        pageControl.isHidden = pageControl.numberOfPages == 1
+        pageControl.addTarget(self, action: #selector(pageControlTapped), for: .touchUpInside)
         return pageControl
     }()
 
@@ -39,7 +49,6 @@ final class EventCardViewController: UIViewController {
         setupViews()
         setupNavBar()
         setupLayout()
-        setupCollection()
     }
 
     // MARK: - Setup Views
@@ -63,6 +72,8 @@ final class EventCardViewController: UIViewController {
             $0.centerX.equalToSuperview()
         }
     }
+
+    // MARK: - Setup Navigation Bar
 
     private func setupNavBar() {
         navigationController?.navigationBar.tintColor = .gray
@@ -88,10 +99,9 @@ final class EventCardViewController: UIViewController {
         navigationItem.titleView = customTitleView
     }
 
-    private func setupCollection() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CarouselViewCell.self, forCellWithReuseIdentifier: CarouselViewCell.cellId)
+    @objc
+    private func pageControlTapped() {
+        print("Tapped")
     }
 
     @objc
@@ -105,7 +115,13 @@ final class EventCardViewController: UIViewController {
     }
 }
 
-extension EventCardViewController: UICollectionViewDelegate {}
+extension EventCardViewController: UICollectionViewDelegate {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let currentIndex = Int(scrollView.contentOffset.x / scrollView.frame.size.width)
+        guard pageControl.currentPage != currentIndex else { return }
+        pageControl.currentPage = currentIndex
+    }
+}
 
 extension EventCardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
