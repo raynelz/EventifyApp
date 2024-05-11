@@ -68,15 +68,18 @@ extension UICollectionView {
 
     func createCellForItems<
         SomeCell: UICollectionViewCell & Configurable & Reusable,
-        EmptyCell: UICollectionViewCell & Reusable
+        EmptyContentCell: UICollectionViewCell & Configurable & Reusable
     >(
-        _ items: [SomeCell.DataType],
-        emptyCellType: EmptyCell.Type,
+        _ items: [SomeCell.DataType] = [],
+        emptyItems: [EmptyContentCell.DataType] = [],
+        emptyCellType: EmptyContentCell.Type,
         cellType: SomeCell.Type,
         at indexPath: IndexPath
     ) -> UICollectionViewCell {
         if items.isEmpty {
-            return dequeueReusableCell(emptyCellType.self, for: indexPath)
+            let cell = dequeueReusableCell(emptyCellType.self, for: indexPath)
+            cell.configure(with: emptyItems[indexPath.row])
+            return cell
         } else {
             let cell = dequeueReusableCell(cellType.self, for: indexPath)
             cell.configure(with: items[indexPath.row])

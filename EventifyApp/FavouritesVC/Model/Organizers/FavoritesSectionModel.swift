@@ -10,7 +10,7 @@ import UIKit
 enum FavoritesSectionModel {
     case favorites([MyEventsModel])
     case recommendations([MyEventsModel])
-    case empty
+    case empty(EmptyContent)
 
     var items: [MyEventsModel] {
         switch self {

@@ -7,17 +7,11 @@
 import UIKit
 import SnapKit
 
-final class NoFavoritesOrganizersCell: UICollectionViewCell {
+final class EmptyCell: UICollectionViewCell {
     private lazy var iconImageView: UIImageView = {
-        let image = UIImage(systemName: "heart")?.withTintColor(
-            UIColor(hex: "#858591"),
-            renderingMode: .alwaysOriginal
-        ).resized(to: CGSize(width: 120, height: 100))
-        
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = UIColor(hex: "#858591")
-        imageView.image = image
         return imageView
     }()
 
@@ -25,7 +19,7 @@ final class NoFavoritesOrganizersCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Нажмите на сердце на странице\nили карточке организатора,\nчтобы добавить его в список"
         label.font = .systemFont(ofSize: 17, weight: .regular)
-        label.textColor = UIColor(hex: "#858591")
+        label.textColor = .grey
         label.textAlignment = .center
         label.numberOfLines = 0
         return label
@@ -58,8 +52,14 @@ final class NoFavoritesOrganizersCell: UICollectionViewCell {
     }
 }
 
-extension NoFavoritesOrganizersCell: Configurable, Reusable {
-    typealias DataType = Void
+extension EmptyCell: Configurable, Reusable {
+    typealias DataType = EmptyContent
     
-    func configure(with model: DataType) {}
+    func configure(with model: DataType) {
+        iconImageView.image = model.icon?.withTintColor(
+            UIColor.grey,
+            renderingMode: .alwaysOriginal
+        ).resized(to: CGSize(width: 120, height: 100))
+        textLabel.text = model.title
+    }
 }

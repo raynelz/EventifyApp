@@ -47,7 +47,7 @@ final class MyActivitiesViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.register(EventCell.self)
         collectionView.register(RecommendationCell.self)
-        collectionView.register(NoEventsCell.self)
+        collectionView.register(EmptyCell.self)
         collectionView.registerHeader(HeaderSupplementaryView.self)
 
         collectionView.collectionViewLayout = createLayout()
@@ -90,9 +90,14 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch sections[indexPath.section] {
         case let .upcoming(upcoming):
+            let emptyData = EmptyContent(
+                icon: UIImage(systemName: "bookmark"),
+                title: "Нет предстоящих\nмероприятий"
+            )
             return collectionView.createCellForItems(
                 upcoming,
-                emptyCellType: NoEventsCell.self,
+                emptyItems: [emptyData],
+                emptyCellType: EmptyCell.self,
                 cellType: EventCell.self,
                 at: indexPath
             )
@@ -101,10 +106,10 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
             cell.configure(with: recommendations[indexPath.row])
             cell.configureLayout(for: .event)
             return cell
-        case .empty:
+        case .empty(let data):
             return collectionView.createCellForItems(
-                [],
-                cellType: NoEventsCell.self,
+                [data],
+                cellType: EmptyCell.self,
                 at: indexPath
             )
         }

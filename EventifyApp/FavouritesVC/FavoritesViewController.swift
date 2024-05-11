@@ -13,10 +13,6 @@ final class FavoritesViewController: UIViewController {
     private let favoritesOrganizersData = FavoritesOrganizersMockData.shared.organizersPageData
     private let segmentItems = ["Ивенты", "Организаторы"]
     
-    private var eventStategy: FavoritesSectionStrategy { EventsStrategy(items: favoritesEventsData) }
-    private var organizerStategy: FavoritesSectionStrategy { OrganizersStrategy(items: favoritesOrganizersData) }
-    private var currentStrategy: FavoritesSectionStrategy?
-
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
         control.selectedSegmentTintColor = .mainBackground
@@ -34,6 +30,10 @@ final class FavoritesViewController: UIViewController {
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
+    
+    private var currentItems: [FavoritesSectionModel] {
+        segmentControl.selectedSegmentIndex == 0 ? favoritesEventsData : favoritesOrganizersData
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,6 @@ final class FavoritesViewController: UIViewController {
         setupViews()
         setupLayout()
         setupCollection()
-        currentStrategy = eventStategy
     }
 
     private func setupViews() {
@@ -68,15 +67,13 @@ final class FavoritesViewController: UIViewController {
     private func setupCollection() {
         collectionView.dataSource = self
         collectionView.register(RecommendationCell.self)
-        collectionView.register(NoFavoritesCell.self)
-        collectionView.register(NoFavoritesOrganizersCell.self)
+        collectionView.register(EmptyCell.self)
         collectionView.registerHeader(HeaderSupplementaryView.self)
         collectionView.collectionViewLayout = createLayout()
     }
     
     @objc
     private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        currentStrategy = segmentControl.selectedSegmentIndex == 0 ? eventStategy : organizerStategy
         collectionView.reloadData()
     }
 }
@@ -92,18 +89,30 @@ extension FavoritesViewController {
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        currentStrategy?.countOfSections() ?? .zero
+        currentItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        currentStrategy?.countOfItems() ?? .zero
+        currentItems[section].count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        currentStrategy?.cellForItem(at: indexPath, in: collectionView) ?? UICollectionViewCell()
+        switch currentItems[indexPath.section] {
+        case .favorites(let data), .recommendations(let data):
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: data[indexPath.row])
+            cell.configureLayout(for: segmentControl.selectedSegmentIndex == 0 ? .event : .organizer)
+            return cell
+        case .empty(let data):
+            return collectionView.createCellForItems(
+                [data],
+                cellType: EmptyCell.self,
+                at: indexPath
+            )
+        }
     }
 
     func collectionView(
