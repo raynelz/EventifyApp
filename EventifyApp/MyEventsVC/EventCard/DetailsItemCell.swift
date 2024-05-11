@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class DetailsItemCell: UICollectionViewCell, Reusable {
+class DetailsItemCell: UICollectionViewCell {
     private lazy var title: UILabel = {
         let label = UILabel()
         label.textColor = .black
@@ -39,9 +39,12 @@ class DetailsItemCell: UICollectionViewCell, Reusable {
             $0.verticalEdges.equalToSuperview().inset(8)
         })
     }
+}
 
-    func configure(with model: DetailModel) {
+extension DetailsItemCell: Configurable, Reusable {
+    typealias DataType = DetailModel
+    
+    func configure(with model: DataType) {
         title.text = model.title
     }
-
 }

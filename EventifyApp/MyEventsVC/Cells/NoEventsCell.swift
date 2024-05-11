@@ -9,7 +9,6 @@ import UIKit
 import SnapKit
 
 final class NoEventsCell: UICollectionViewCell {
-
     private lazy var iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -61,5 +60,5 @@ final class NoEventsCell: UICollectionViewCell {
 extension NoEventsCell: Configurable, Reusable {
     typealias DataType = Void
     
-    func configure(with data: DataType) { }
+    func configure(with model: DataType) { }
 }

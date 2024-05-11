@@ -14,42 +14,32 @@ struct MyEventsMockData {
         .upcoming(
             [
                 .init(
-                    name: "День открытых дверей университета МИСИС",
-                    date: "12 декабря",
-                    time: "17:30",
-                    location: "Онлайн",
+                    name: "День дверей университета МИСИС",
+                    items: ["12 декабря", "17:30", "Онлайн"],
                     color: "#F18EF0",
                     image: UIImage(named: "qr")
                 ),
                 .init(
                     name: "ITAM-Hack",
-                    date: "26 апреля",
-                    time: "18:00",
-                    location: "Б-1",
+                    items: ["26 апреля", "18:00", "Б-1"],
                     color: "#DEF14A",
                     image: UIImage(named: "qr")
                 ),
                 .init(
                     name: "Открытый ректорат",
-                    date: "21 декабря",
-                    time: "16:30",
-                    location: "Б-2",
+                    items: ["21 декабря", "16:30", "Б-2"],
                     color: "F18EF0",
                     image: UIImage(named: "qr")
                 ),
                 .init(
                     name: "День открытых дверей университета МИСИС",
-                    date: "12 декабря",
-                    time: "17:30",
-                    location: "Онлайн",
+                    items: ["12 декабря", "17:30", "Онлайн"],
                     color: "#DEF14A",
                     image: UIImage(named: "qr")
                 ),
                 .init(
                     name: "День открытых дверей университета МИСИС",
-                    date: "12 декабря",
-                    time: "17:30",
-                    location: "Онлайн",
+                    items: ["12 декабря", "17:30", "Онлайн"],
                     color: "#F18EF0",
                     image: UIImage(named: "qr")
                 )
@@ -61,25 +51,19 @@ struct MyEventsMockData {
         .recommendations([
             .init(
                 name: "День открытых дверей университета МИСИС",
-                date: "12 декабря",
-                time: "17:30",
-                location: "онлайн",
+                items: ["12 декабря", "17:30", "Онлайн"],
                 color: "#000000",
                 image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
-                date: "12 декабря",
-                time: "17:30",
-                location: "онлайн",
+                items: ["12 декабря", "17:30", "Онлайн"],
                 color: "#000000",
                 image: UIImage(named: "eventIcon2")
             ),
             .init(
                 name: "День открытых дверей университета МИСИС",
-                date: "12 декабря",
-                time: "17:30",
-                location: "онлайн",
+                items: ["12 декабря", "17:30", "Онлайн"],
                 color: "#000000",
                 image: UIImage(named: "eventIcon2")
             ),

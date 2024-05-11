@@ -12,11 +12,7 @@ final class FavoritesViewController: UIViewController {
     private let favoritesEventsData = FavoritesEventsMockData.shared.favoritesPageData
     private let favoritesOrganizersData = FavoritesOrganizersMockData.shared.organizersPageData
     private let segmentItems = ["Ивенты", "Организаторы"]
-    private var currentStrategy: FavoritesSectionStrategy?
     
-    private var eventStategy: FavoritesSectionStrategy { EventsStrategy(items: favoritesEventsData) }
-    private var organizerStategy: FavoritesSectionStrategy { OrganizersStrategy(items: favoritesOrganizersData) }
-
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
         control.selectedSegmentTintColor = .mainBackground
@@ -24,12 +20,6 @@ final class FavoritesViewController: UIViewController {
         control.addTarget(self, action: #selector(segmentedControlValueChanged), for: .valueChanged)
         return control
     }()
-
-    @objc
-    private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        currentStrategy = segmentControl.selectedSegmentIndex == 0 ? eventStategy : organizerStategy
-        collectionView.reloadData()
-    }
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewLayout()
@@ -40,13 +30,17 @@ final class FavoritesViewController: UIViewController {
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
+    
+    private var currentItems: [FavoritesSectionModel] {
+        segmentControl.selectedSegmentIndex == 0 ? favoritesEventsData : favoritesOrganizersData
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         setupViews()
         setupLayout()
         setupCollection()
-        currentStrategy = eventStategy
     }
 
     private func setupViews() {
@@ -72,14 +66,15 @@ final class FavoritesViewController: UIViewController {
 
     private func setupCollection() {
         collectionView.dataSource = self
-        collectionView.register(FavoritesCell.self)
-        collectionView.register(FavoritesRecommendationCell.self)
-        collectionView.register(NoFavoritesCell.self)
-        collectionView.register(OrganizerCell.self)
-        collectionView.register(NoFavoritesOrganizersCell.self)
-        collectionView.register(OrganizersRecommendationCell.self)
+        collectionView.register(RecommendationCell.self)
+        collectionView.register(EmptyCell.self)
         collectionView.registerHeader(HeaderSupplementaryView.self)
         collectionView.collectionViewLayout = createLayout()
+    }
+    
+    @objc
+    private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
+        collectionView.reloadData()
     }
 }
 
@@ -87,107 +82,37 @@ extension FavoritesViewController {
     private func createLayout() -> UICollectionViewCompositionalLayout {
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
             guard let self = self else { return nil }
-            let section = self.favoritesEventsData[sectionIndex]
-            switch section {
-            case .favorites(let favoritesEvents):
-                if favoritesEvents.isEmpty {
-                    return self.createEmptySection()
-                } else {
-                    return self.createFavoritesSection()
-                }
-            case .recommendations:
-                return self.createRecommendationSection()
-            case .empty:
-                return self.createEmptySection()
-            }
+            return self.favoritesEventsData[sectionIndex].makeLayout()
         }
-    }
-
-    private func createLayoutSection(
-        group: NSCollectionLayoutGroup,
-        behavior: UICollectionLayoutSectionOrthogonalScrollingBehavior,
-        interGroupSpacing: CGFloat,
-        supplementaryItems: [NSCollectionLayoutBoundarySupplementaryItem],
-        contentInsets: Bool
-    ) -> NSCollectionLayoutSection {
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = behavior
-        section.interGroupSpacing = interGroupSpacing
-        section.boundarySupplementaryItems = supplementaryItems
-        section.supplementariesFollowContentInsets = contentInsets
-        return section
-    }
-
-    private func createFavoritesSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(280))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(280))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 8
-
-        return section
-    }
-
-    private func createRecommendationSection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(280))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.65), heightDimension: .estimated(280))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 10, bottom: 0, trailing: 0)
-
-        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                heightDimension: .estimated(66))
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
-        )
-
-        let section = createLayoutSection(
-            group: group,
-            behavior: .continuous,
-            interGroupSpacing: 16,
-            supplementaryItems: [header],
-            contentInsets: false
-        )
-        return section
-    }
-
-    private func createEmptySection() -> NSCollectionLayoutSection {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5))
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
-
-        let section = NSCollectionLayoutSection(group: group)
-        section.orthogonalScrollingBehavior = .none
-        section.interGroupSpacing = 0
-        section.boundarySupplementaryItems = []
-        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-
-        return section
     }
 }
 
 extension FavoritesViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        currentStrategy?.countOfSections() ?? .zero
+        currentItems.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        currentStrategy?.countOfItems() ?? .zero
+        currentItems[section].count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        currentStrategy?.cellForItem(at: indexPath, in: collectionView) ?? UICollectionViewCell()
+        switch currentItems[indexPath.section] {
+        case .favorites(let data), .recommendations(let data):
+            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            cell.configure(with: data[indexPath.row])
+            cell.configureLayout(for: segmentControl.selectedSegmentIndex == 0 ? .event : .organizer)
+            return cell
+        case .empty(let data):
+            return collectionView.createCellForItems(
+                [data],
+                cellType: EmptyCell.self,
+                at: indexPath
+            )
+        }
     }
 
     func collectionView(

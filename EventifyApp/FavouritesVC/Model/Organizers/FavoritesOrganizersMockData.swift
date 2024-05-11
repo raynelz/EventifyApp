@@ -14,16 +14,12 @@ struct FavoritesOrganizersMockData {
             [
                 .init(
                     name: "ITAM",
-                    firstTag: "backend",
-                    secondTag: "frontend",
-                    thirdTag: "design",
+                    items: ["backend", "frontend", "design"],
                     image: UIImage(named: "ItamCircle")
                 ),
                 .init(
                     name: "СПОРТ МИСИС",
-                    firstTag: "спорт",
-                    secondTag: "здоровье",
-                    thirdTag: "физ.подготовка",
+                    items: ["спорт", "здоровье", "design"],
                     image: UIImage(named: "sportMisisCircle")
                 )
             ]
@@ -35,30 +31,22 @@ struct FavoritesOrganizersMockData {
             [
                 .init(
                     name: "ITAM",
-                    firstTag: "backend",
-                    secondTag: "frontend",
-                    thirdTag: "design",
+                    items: ["backend", "frontend", "design"],
                     image: UIImage(named: "ItamCircle")
                 ),
                 .init(
                     name: "ITAM",
-                    firstTag: "backend",
-                    secondTag: "frontend",
-                    thirdTag: "design",
+                    items: ["backend", "frontend", "design"],
                     image: UIImage(named: "ItamCircle")
                 ),
                 .init(
                     name: "ITAM",
-                    firstTag: "backend",
-                    secondTag: "frontend",
-                    thirdTag: "design",
+                    items: ["backend", "frontend", "design"],
                     image: UIImage(named: "ItamCircle")
                 ),
                 .init(
                     name: "ITAM",
-                    firstTag: "backend",
-                    secondTag: "frontend",
-                    thirdTag: "design",
+                    items: ["backend", "frontend", "design"],
                     image: UIImage(named: "ItamCircle")
                 )
             ]

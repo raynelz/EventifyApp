@@ -10,7 +10,7 @@ import UIKit
 enum MyEventsSectionModel {
     case upcoming([MyEventsModel])
     case recommendations([MyEventsModel])
-    case empty
+    case empty(EmptyContent)
 
     var items: [MyEventsModel] {
         switch self {
