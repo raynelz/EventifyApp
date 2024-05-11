@@ -20,4 +20,16 @@ extension UINavigationController {
         lineView.centerXAnchor.constraint(equalTo: navigationBar.centerXAnchor).isActive = true
         lineView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor).isActive = true
     }
+
+    // swiftlint: disable all
+    func removeCustomBottomLine() {
+        navigationBar.setValue(false, forKey: "hidesShadow")
+        let lineHeight: CGFloat = 1.0
+        for view in navigationBar.subviews {
+            if view.frame.height == lineHeight {
+                view.removeFromSuperview()
+            }
+        }
+    }
+    // swiftlint: enable all
 }

@@ -18,7 +18,9 @@
 		2DCD4C042BA7B9AD009A5521 /* UIImage+resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */; };
 		2DCD4C072BA7BAD1009A5521 /* AppTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */; };
 		EC1965EA2BC5855F008DE704 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC1965E92BC5855F008DE704 /* FavoritesViewController.swift */; };
-		EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */; };
+		EC2D28672BBCA774005EDB10 /* EventInfoCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2D28662BBCA774005EDB10 /* EventInfoCardViewController.swift */; };
+		EC2ECCEC2BEA6C1F007D5EC3 /* EventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2ECCEB2BEA6C1F007D5EC3 /* EventCardViewController.swift */; };
+		EC2ECCEE2BEA7BAA007D5EC3 /* UIViewController+CustomNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC2ECCED2BEA7BAA007D5EC3 /* UIViewController+CustomNav.swift */; };
 		EC3101832BA845BC00EC55D2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101822BA845BC00EC55D2 /* SearchViewController.swift */; };
 		EC3101852BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */; };
 		EC4138512BDC4B05000B0301 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC4138502BDC4B05000B0301 /* EventCell.swift */; };
@@ -63,6 +65,7 @@
 		ECB950042BA248E9004550F7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = ECB950032BA248E9004550F7 /* Base */; };
 		ECB9500D2BA24A56004550F7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = ECB9500C2BA24A56004550F7 /* SnapKit */; };
 		ECB950122BA24D88004550F7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ECB950112BA24D88004550F7 /* GoogleService-Info.plist */; };
+		ECC312622BEEAD260076914A /* CarouselViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECC312612BEEAD260076914A /* CarouselViewCell.swift */; };
 		ECE0C8922BE6BC920036AADA /* AlertPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE0C8912BE6BC920036AADA /* AlertPresenter.swift */; };
 		ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */; };
 		ECF338142BA882770055994D /* CategoriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECF338132BA882770055994D /* CategoriesModel.swift */; };
@@ -80,7 +83,9 @@
 		2DCD4C032BA7B9AD009A5521 /* UIImage+resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resized.swift"; sourceTree = "<group>"; };
 		2DCD4C062BA7BAD1009A5521 /* AppTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarItem.swift; sourceTree = "<group>"; };
 		EC1965E92BC5855F008DE704 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewController.swift; sourceTree = "<group>"; };
+		EC2D28662BBCA774005EDB10 /* EventInfoCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventInfoCardViewController.swift; sourceTree = "<group>"; };
+		EC2ECCEB2BEA6C1F007D5EC3 /* EventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardViewController.swift; sourceTree = "<group>"; };
+		EC2ECCED2BEA7BAA007D5EC3 /* UIViewController+CustomNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+CustomNav.swift"; sourceTree = "<group>"; };
 		EC3101822BA845BC00EC55D2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		EC3101842BA8542D00EC55D2 /* CategoriesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesCollectionViewCell.swift; sourceTree = "<group>"; };
 		EC4138502BDC4B05000B0301 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -120,6 +125,7 @@
 		ECB950032BA248E9004550F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB950052BA248E9004550F7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECB950112BA24D88004550F7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ECC312612BEEAD260076914A /* CarouselViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewCell.swift; sourceTree = "<group>"; };
 		ECE0C8912BE6BC920036AADA /* AlertPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPresenter.swift; sourceTree = "<group>"; };
 		ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddSubviews.swift"; sourceTree = "<group>"; };
 		ECF338132BA882770055994D /* CategoriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesModel.swift; sourceTree = "<group>"; };
@@ -179,6 +185,7 @@
 				ECE1A52E2BAE287F006D7388 /* UIView+AddSubviews.swift */,
 				EC5B29922BC13E50006BACF7 /* UINavigationBar+CustomBottomLine.swift */,
 				EC5236302BE63B0500096C9C /* UITableViewHeaderSetup.swift */,
+				EC2ECCED2BEA7BAA007D5EC3 /* UIViewController+CustomNav.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -199,8 +206,18 @@
 				2D07AE7E2BE41F3D00C28BB7 /* Strategy */,
 				EC96BA412BDEAA6A007E430C /* Cells */,
 				EC96BA402BDEAA62007E430C /* Model */,
+				EC2ECCEA2BEA6BE9007D5EC3 /* EventCard */,
 			);
 			path = FavouritesVC;
+			sourceTree = "<group>";
+		};
+		EC2ECCEA2BEA6BE9007D5EC3 /* EventCard */ = {
+			isa = PBXGroup;
+			children = (
+				EC2ECCEB2BEA6C1F007D5EC3 /* EventCardViewController.swift */,
+				ECC312612BEEAD260076914A /* CarouselViewCell.swift */,
+			);
+			path = EventCard;
 			sourceTree = "<group>";
 		};
 		EC3101812BA845A900EC55D2 /* SearchVC */ = {
@@ -331,9 +348,9 @@
 		ECB94FF32BA248E8004550F7 /* EventifyApp */ = {
 			isa = PBXGroup;
 			children = (
-				2D07AE812BE42DD200C28BB7 /* ProfileVC */,
 				ECB950172BA250D0004550F7 /* AppDelegate */,
 				2DCD4C052BA7BAB7009A5521 /* AppTabBar */,
+				2D07AE812BE42DD200C28BB7 /* ProfileVC */,
 				ECA12F032BAC9E5700720D1A /* Authentication */,
 				EC3101812BA845A900EC55D2 /* SearchVC */,
 				ECD328262BA8CBFB00234FCF /* MyEventsVC */,
@@ -381,15 +398,15 @@
 			name = Firebase;
 			sourceTree = "<group>";
 		};
-		ECCFED522BCC627D00F3F419 /* EventCard */ = {
+		ECCFED522BCC627D00F3F419 /* EventInfoCard */ = {
 			isa = PBXGroup;
 			children = (
-				EC2D28662BBCA774005EDB10 /* EventCardViewController.swift */,
+				EC2D28662BBCA774005EDB10 /* EventInfoCardViewController.swift */,
 				ECAEE1B02BC430CE00027EEC /* DetailsItemCell.swift */,
 				EC5A9AD52BC1F7000028AB03 /* DetailModel.swift */,
 				ECE0C8912BE6BC920036AADA /* AlertPresenter.swift */,
 			);
-			path = EventCard;
+			path = EventInfoCard;
 			sourceTree = "<group>";
 		};
 		ECD328262BA8CBFB00234FCF /* MyEventsVC */ = {
@@ -398,7 +415,7 @@
 				ECACC3CE2BDC2862004D1EEC /* MyActivitiesViewController.swift */,
 				ECB3223F2BDD998E006445AB /* Model */,
 				ECB3223C2BDD9544006445AB /* Cells */,
-				ECCFED522BCC627D00F3F419 /* EventCard */,
+				ECCFED522BCC627D00F3F419 /* EventInfoCard */,
 			);
 			path = MyEventsVC;
 			sourceTree = "<group>";
@@ -548,17 +565,20 @@
 				ECE1A52F2BAE2880006D7388 /* UIView+AddSubviews.swift in Sources */,
 				ECB322412BDD999D006445AB /* MyEventsModel.swift in Sources */,
 				EC93D2872BB15AFD00633AA0 /* AuthService.swift in Sources */,
+				ECC312622BEEAD260076914A /* CarouselViewCell.swift in Sources */,
 				EC93D28A2BB15C1500633AA0 /* UserModel.swift in Sources */,
 				EC7178222BDEF02100BCB478 /* OrganizersRecommendationCell.swift in Sources */,
 				EC71781A2BDEE4F500BCB478 /* FavoritesOrganizersMockData.swift in Sources */,
 				EC7178182BDEE3F500BCB478 /* FavoritesSectionModel.swift in Sources */,
 				ECB322432BDD99D7006445AB /* MyEventsSectionModel.swift in Sources */,
+				EC2ECCEE2BEA7BAA007D5EC3 /* UIViewController+CustomNav.swift in Sources */,
 				ECE0C8922BE6BC920036AADA /* AlertPresenter.swift in Sources */,
 				2D07AE872BE4428000C28BB7 /* ProfileSection.swift in Sources */,
-				EC2D28672BBCA774005EDB10 /* EventCardViewController.swift in Sources */,
+				EC2D28672BBCA774005EDB10 /* EventInfoCardViewController.swift in Sources */,
 				ECB322452BDD9A2F006445AB /* MyEventsMockData.swift in Sources */,
 				ECB3223E2BDD9557006445AB /* HeaderSupplementaryView.swift in Sources */,
 				2D07AE7A2BE3FFB600C28BB7 /* UITableView+dequeueReusableCell.swift in Sources */,
+				EC2ECCEC2BEA6C1F007D5EC3 /* EventCardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

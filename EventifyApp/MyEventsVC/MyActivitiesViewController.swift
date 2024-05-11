@@ -65,7 +65,7 @@ extension MyActivitiesViewController {
 
 extension MyActivitiesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextVC = EventCardViewController()
+        let nextVC = EventInfoCardViewController()
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

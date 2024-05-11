@@ -1,5 +1,5 @@
 //
-//  EventCardViewController.swift
+//  EventInfoCardViewController.swift
 //  EventifyApp
 //
 //  Created by Захар Литвинчук on 02.04.2024.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-final class EventCardViewController: UIViewController {
+final class EventInfoCardViewController: UIViewController {
 
     let data = [
         DetailModel(id: 1, title: "2 марта"),
@@ -166,7 +166,6 @@ final class EventCardViewController: UIViewController {
     }
 
     private func configureCollection() {
-        detailsCollectionView.delegate = self
         detailsCollectionView.dataSource = self
         detailsCollectionView.register(DetailsItemCell.self)
     }
@@ -195,11 +194,7 @@ final class EventCardViewController: UIViewController {
     }
 }
 
-extension EventCardViewController: UICollectionViewDelegate {
-
-}
-
-extension EventCardViewController: UICollectionViewDataSource {
+extension EventInfoCardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.count
     }

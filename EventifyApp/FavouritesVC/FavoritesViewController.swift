@@ -13,7 +13,7 @@ final class FavoritesViewController: UIViewController {
     private let favoritesOrganizersData = FavoritesOrganizersMockData.shared.organizersPageData
     private let segmentItems = ["Ивенты", "Организаторы"]
     private var currentStrategy: FavoritesSectionStrategy?
-    
+
     private var eventStategy: FavoritesSectionStrategy { EventsStrategy(items: favoritesEventsData) }
     private var organizerStategy: FavoritesSectionStrategy { OrganizersStrategy(items: favoritesOrganizersData) }
 
@@ -41,6 +41,11 @@ final class FavoritesViewController: UIViewController {
         return collection
     }()
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -51,7 +56,8 @@ final class FavoritesViewController: UIViewController {
 
     private func setupViews() {
         title = "Избранное"
-        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         view.backgroundColor = .mainBackground
         view.addSubviews(segmentControl, collectionView)
@@ -71,6 +77,7 @@ final class FavoritesViewController: UIViewController {
     }
 
     private func setupCollection() {
+        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(FavoritesCell.self)
         collectionView.register(FavoritesRecommendationCell.self)
@@ -171,6 +178,13 @@ extension FavoritesViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
 
         return section
+    }
+}
+
+extension FavoritesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = EventCardViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
