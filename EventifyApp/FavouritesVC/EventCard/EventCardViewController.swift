@@ -25,7 +25,7 @@ final class EventCardViewController: UIViewController {
         collection.isPagingEnabled = true
 
         layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 398, height: 248)
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: 248)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
 
@@ -40,7 +40,7 @@ final class EventCardViewController: UIViewController {
         pageControl.currentPage = currentPage
         pageControl.numberOfPages = images.count
         pageControl.isHidden = pageControl.numberOfPages == 1
-        pageControl.addTarget(self, action: #selector(pageControlTapped), for: .touchUpInside)
+        pageControl.addTarget(self, action: #selector(pageControlSelectionAction), for: .touchUpInside)
         return pageControl
     }()
 
@@ -55,14 +55,17 @@ final class EventCardViewController: UIViewController {
 
     private func setupViews() {
         view.backgroundColor = .mainBackground
-        view.addSubviews(collectionView, pageControl)
+        view.addSubviews(
+            collectionView,
+            pageControl
+        )
     }
 
     // MARK: - Setup Layout
 
     private func setupLayout() {
         collectionView.snp.makeConstraints {
-            $0.top.equalTo(view.snp.topMargin).offset(8)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
             $0.horizontalEdges.equalToSuperview()
             $0.height.equalTo(248)
         }
@@ -100,11 +103,6 @@ final class EventCardViewController: UIViewController {
     }
 
     @objc
-    private func pageControlTapped() {
-        print("Tapped")
-    }
-
-    @objc
     private func likeTapped() {
         print("Like Tapped!!!")
     }
@@ -112,6 +110,13 @@ final class EventCardViewController: UIViewController {
     @objc
     private func shareTapped() {
         print("Share Tapped!!!")
+    }
+
+    @objc
+    private func pageControlSelectionAction(_ sender: UIPageControl) {
+        let page = sender.currentPage
+        let contentOffsetX = collectionView.bounds.width * CGFloat(page)
+        collectionView.setContentOffset(CGPoint(x: contentOffsetX, y: 0), animated: true)
     }
 }
 

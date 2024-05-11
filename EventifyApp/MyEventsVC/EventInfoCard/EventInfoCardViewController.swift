@@ -5,11 +5,10 @@
 //  Created by Захар Литвинчук on 02.04.2024.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 final class EventInfoCardViewController: UIViewController {
-
     let data = [
         DetailModel(id: 1, title: "2 марта"),
         DetailModel(id: 2, title: "17:30"),
@@ -48,7 +47,11 @@ final class EventInfoCardViewController: UIViewController {
     private lazy var detailsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+        collection.register(DetailsItemCell.self, forCellWithReuseIdentifier: DetailsItemCell.cellId)
         collection.backgroundColor = .clear
+        collection.dataSource = self
+
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.itemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
@@ -72,7 +75,7 @@ final class EventInfoCardViewController: UIViewController {
             .brandYellow,
             renderingMode: .alwaysOriginal
         )
-        
+
         let button = UIButton()
         button.setTitle("Перейти к странице мероприятия", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 14, weight: .medium)
@@ -104,8 +107,9 @@ final class EventInfoCardViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupLayout()
-        configureCollection()
     }
+
+    // MARK: - Setup Views()
 
     private func setupViews() {
         view.backgroundColor = .mainBackground
@@ -120,6 +124,8 @@ final class EventInfoCardViewController: UIViewController {
             cancelButton
         )
     }
+
+    // MARK: - Setup Layout
 
     private func setupLayout() {
         qrImageView.snp.makeConstraints {
@@ -166,11 +172,6 @@ final class EventInfoCardViewController: UIViewController {
         }
     }
 
-    private func configureCollection() {
-        detailsCollectionView.dataSource = self
-        detailsCollectionView.register(DetailsItemCell.self)
-    }
-
     @objc
     func linkTapped(_ sender: UIButton) {
         if let url = URL(string: "https://www.youtube.com/watch?v=dQw4w9WgXcQ") {
@@ -184,13 +185,13 @@ final class EventInfoCardViewController: UIViewController {
             title: "Вы действительно хотите отменить запись на мероприятие?",
             message: "Это мероприятие пропадет из раздела «Мои ивенты»"
         ) {
-                AlertAction.default(title: "Нет") {
-                    print("Пользователь нажал Нет")
-                }
-            
-                AlertAction.default(title: "Да") {
-                    print("Пользователь нажал Да")
-                }
+            AlertAction.default(title: "Нет") {
+                print("Пользователь нажал Нет")
+            }
+
+            AlertAction.default(title: "Да") {
+                print("Пользователь нажал Да")
+            }
         }
     }
 }
@@ -203,5 +204,4 @@ extension EventInfoCardViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.createCellForItems(data, cellType: DetailsItemCell.self, at: indexPath)
     }
-
 }
