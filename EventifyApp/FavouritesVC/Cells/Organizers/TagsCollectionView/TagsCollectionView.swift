@@ -8,13 +8,13 @@
 import UIKit
 
 final class TagsCollectionView: UICollectionView {
-    var items: [String] {
+    var items: [TagsModel] {
         didSet {
             reloadData()
         }
     }
 
-    init(items: [String]) {
+    init(items: [TagsModel]) {
         self.items = items
 
         let layout = LeftAlignedCollectionViewFlowLayout()
@@ -26,7 +26,7 @@ final class TagsCollectionView: UICollectionView {
         super.init(frame: .zero, collectionViewLayout: layout)
 
         self.backgroundColor = .clear
-        self.register(TagCollectionViewCell.self)
+        register(TagCollectionViewCell.self)
         self.dataSource = self
         self.delegate = self
     }
@@ -62,7 +62,7 @@ extension TagsCollectionView: UICollectionViewDelegateFlowLayout {
     ) -> CGSize {
         let label = UILabel()
         label.font = .systemFont(ofSize: 12, weight: .semibold)
-        label.text = items[indexPath.row]
+        label.text = items[indexPath.row].text
         label.sizeToFit()
 
         return CGSize(width: label.frame.width + 16, height: label.frame.height + 4)

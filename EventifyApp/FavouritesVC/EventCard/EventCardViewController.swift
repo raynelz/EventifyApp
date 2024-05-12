@@ -44,6 +44,21 @@ final class EventCardViewController: UIViewController {
         return pageControl
     }()
 
+    private lazy var detailsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+
+        collection.register(DetailsItemCell.self, forCellWithReuseIdentifier: DetailsItemCell.cellId)
+        collection.backgroundColor = .clear
+        collection.dataSource = self
+
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.itemSize = UICollectionViewFlowLayout.automaticSize
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 12
+        return collection
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()

@@ -8,7 +8,7 @@
 import SnapKit
 import UIKit
 
-class EventCell: UICollectionViewCell {
+class UpcomingEventViewCell: UICollectionViewCell {
     // MARK: UI Elements
 
     private lazy var backgroundContainer: UIView = {
@@ -85,14 +85,14 @@ class EventCell: UICollectionViewCell {
     }
 }
 
-extension EventCell: Configurable, Reusable {
+extension UpcomingEventViewCell: Configurable, Reusable {
     typealias DataType = MyEventsModel
 
     func configure(with model: DataType) {
         titleLabel.text = model.name
-        tagsCollectionView.items = model.items
+        tagsCollectionView.items = model.convertItemsToTags(borderColor: .black)
         qrImageView.image = model.image
-        
+
         if let color = model.color {
             backgroundContainer.backgroundColor = UIColor(hex: color)
         }

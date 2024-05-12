@@ -72,7 +72,7 @@ final class EventInfoCardViewController: UIViewController {
 
     private lazy var linkButton: UIButton = {
         let image = UIImage(systemName: "chevron.right")?.withTintColor(
-            .brandYellow,
+            .linker,
             renderingMode: .alwaysOriginal
         )
 
