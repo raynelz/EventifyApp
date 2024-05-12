@@ -12,7 +12,7 @@ final class FavoritesViewController: UIViewController {
     private let favoritesEventsData = FavoritesEventsMockData.shared.favoritesPageData
     private let favoritesOrganizersData = FavoritesOrganizersMockData.shared.organizersPageData
     private let segmentItems = ["Ивенты", "Организаторы"]
-    
+
     private lazy var segmentControl: UISegmentedControl = {
         let control = UISegmentedControl(items: segmentItems)
         control.selectedSegmentTintColor = .mainBackground
@@ -30,9 +30,14 @@ final class FavoritesViewController: UIViewController {
         collection.showsHorizontalScrollIndicator = false
         return collection
     }()
-    
+
     private var currentItems: [FavoritesSectionModel] {
         segmentControl.selectedSegmentIndex == 0 ? favoritesEventsData : favoritesOrganizersData
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
     }
 
     override func viewDidLoad() {
@@ -45,7 +50,8 @@ final class FavoritesViewController: UIViewController {
 
     private func setupViews() {
         title = "Избранное"
-        navigationController?.addCustomBottomLine(color: .navigationLine, height: 1.0)
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 
         view.backgroundColor = .mainBackground
         view.addSubviews(segmentControl, collectionView)
@@ -65,13 +71,14 @@ final class FavoritesViewController: UIViewController {
     }
 
     private func setupCollection() {
+        collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(RecommendationCell.self)
+        collectionView.register(EventViewCell.self)
         collectionView.register(EmptyCell.self)
         collectionView.registerHeader(HeaderSupplementaryView.self)
         collectionView.collectionViewLayout = createLayout()
     }
-    
+
     @objc
     private func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         collectionView.reloadData()
@@ -84,6 +91,13 @@ extension FavoritesViewController {
             guard let self = self else { return nil }
             return self.favoritesEventsData[sectionIndex].makeLayout()
         }
+    }
+}
+
+extension FavoritesViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = EventCardViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
@@ -102,7 +116,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
     ) -> UICollectionViewCell {
         switch currentItems[indexPath.section] {
         case .favorites(let data), .recommendations(let data):
-            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(EventViewCell.self, for: indexPath)
             cell.configure(with: data[indexPath.row])
             cell.configureLayout(for: segmentControl.selectedSegmentIndex == 0 ? .event : .organizer)
             return cell

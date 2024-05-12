@@ -12,7 +12,7 @@ struct MyEventsModel {
     let items: [String]
     let color: String?
     let image: UIImage?
-    
+
     init(
         name: String,
         items: [String],
@@ -23,5 +23,9 @@ struct MyEventsModel {
         self.items = items
         self.color = color
         self.image = image
+    }
+
+    func convertItemsToTags(borderColor: UIColor?) -> [TagsModel] {
+        return items.map { TagsModel(text: $0, borderColor: borderColor) }
     }
 }

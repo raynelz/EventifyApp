@@ -7,7 +7,7 @@
 import SnapKit
 import UIKit
 
-final class RecommendationCell: UICollectionViewCell {
+final class EventViewCell: UICollectionViewCell {
     // MARK: - UI Properties
 
     private lazy var imageView: UIImageView = {
@@ -41,7 +41,7 @@ final class RecommendationCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         setupViews()
         setupLayout()
     }
@@ -83,7 +83,7 @@ final class RecommendationCell: UICollectionViewCell {
             $0.bottom.equalToSuperview()
         }
     }
-    
+
     func configureLayout(for cell: FavoriteCellType) {
         switch cell {
         case .event:
@@ -92,34 +92,34 @@ final class RecommendationCell: UICollectionViewCell {
             configureOrganizer()
         }
     }
-    
+
     private func configureEvent() {
         imageView.snp.remakeConstraints {
             $0.top.equalToSuperview()
             $0.horizontalEdges.equalToSuperview()
         }
-        
+
         title.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(12)
             $0.horizontalEdges.equalToSuperview().inset(16)
         }
-        
+
         imageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         imageView.layer.cornerRadius = 10
     }
-    
+
     private func configureOrganizer() {
         imageView.snp.remakeConstraints {
             $0.top.equalToSuperview().offset(33)
             $0.size.equalTo(100)
             $0.centerX.equalToSuperview()
         }
-        
+
         title.snp.remakeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
             $0.centerX.equalToSuperview()
         }
-        
+
         imageView.layer.cornerRadius = 50
     }
 
@@ -136,13 +136,13 @@ final class RecommendationCell: UICollectionViewCell {
     }
 }
 
-extension RecommendationCell: Configurable, Reusable {
+extension EventViewCell: Configurable, Reusable {
     typealias DataType = MyEventsModel
 
     func configure(with model: DataType) {
         imageView.image = model.image
         title.text = model.name
-        tagsCollectionView.items = model.items
+        tagsCollectionView.items = model.convertItemsToTags(borderColor: .cellTint)
     }
 }
 

@@ -42,7 +42,7 @@ struct MyEventsMockData {
                     items: ["12 декабря", "17:30", "Онлайн"],
                     color: "#F18EF0",
                     image: UIImage(named: "qr")
-                )
+                ),
             ]
         )
     }()

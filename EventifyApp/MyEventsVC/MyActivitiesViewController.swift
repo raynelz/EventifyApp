@@ -45,8 +45,8 @@ final class MyActivitiesViewController: UIViewController {
     private func setupCollection() {
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(EventCell.self)
-        collectionView.register(RecommendationCell.self)
+        collectionView.register(UpcomingEventViewCell.self)
+        collectionView.register(EventViewCell.self)
         collectionView.register(EmptyCell.self)
         collectionView.registerHeader(HeaderSupplementaryView.self)
 
@@ -65,7 +65,7 @@ extension MyActivitiesViewController {
 
 extension MyActivitiesViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextVC = EventCardViewController()
+        let nextVC = EventInfoCardViewController()
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }
@@ -98,11 +98,11 @@ extension MyActivitiesViewController: UICollectionViewDataSource {
                 upcoming,
                 emptyItems: [emptyData],
                 emptyCellType: EmptyCell.self,
-                cellType: EventCell.self,
+                cellType: UpcomingEventViewCell.self,
                 at: indexPath
             )
         case let .recommendations(recommendations):
-            let cell = collectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+            let cell = collectionView.dequeueReusableCell(EventViewCell.self, for: indexPath)
             cell.configure(with: recommendations[indexPath.row])
             cell.configureLayout(for: .event)
             return cell
